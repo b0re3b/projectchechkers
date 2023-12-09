@@ -1,0 +1,551 @@
+#include <SFML/Graphics.hpp>
+#include <iostream>
+#include <vector>
+#include <climits>
+#include <algorithm>
+
+const int MAX_DEPTH = 5;        // максимальна глибина
+const int depth = 1;           // глибина
+using namespace std;
+
+class Move {
+public:
+    int startX;
+    int startY;
+    int endX;
+    int endY;
+
+    Move() : startX(0), startY(0), endX(0), endY(0) {} // ініціалізація за замовчуванням
+
+    Move(int startX, int startY, int endX, int endY) // ініціалізація початковиих занчень
+        : startX(startX), startY(startY), endX(endX), endY(endY) {}
+};
+
+class MoveNode { // клас для зберігання ходів
+public:
+    Move move;
+    int score;
+    std::vector<MoveNode> children;
+
+    MoveNode(const Move& move, int score) : move(move), score(score) {}
+};
+
+class Piece { // клас для зберігання фігур
+public:
+    bool isAlive;
+    bool isKing;
+    sf::Color color;
+    int x;
+    int y;
+
+    void Draw(sf::RenderWindow& window) {
+
+        if (isAlive) { // перевірка чи фігура жива
+            sf::CircleShape shape(30.f);
+            shape.setFillColor(color);
+
+            if (isKing) {
+                shape.setOutlineThickness(3.f);
+                shape.setOutlineColor(sf::Color::Yellow);
+            }
+
+            shape.setPosition(sf::Vector2f(x * 75 + (75 - 2 * 30) / 2, y * 75 + (75 - 2 * 30) / 2));
+            window.draw(shape);
+        }
+    }
+};
+
+class Player { // клас для зберігання гравців
+public:
+    enum class PlayerType {
+        Human,
+        Computer
+    };
+
+    sf::Color color;
+    std::vector<Piece> pieces;
+    PlayerType type;
+
+    Player(sf::Color color, PlayerType type) : color(color), type(type) {} // ініціалізація гравців
+
+    PlayerType getType() const { // отримання типу гравця
+        return type;
+    }
+};
+
+
+
+class Board {
+private:
+
+    const int size = 8;
+    Piece pieces[24];
+    Player& getRedPlayer() {
+        return redPlayer;
+    }
+    Player& getBlackPlayer() {
+        return blackPlayer;
+    }
+    int selectedPieceIndex = -1;
+
+
+public:
+    Player redPlayer;
+    Player blackPlayer;
+    Board(Player& red, Player& black) : redPlayer(sf::Color::Red, Player::PlayerType::Computer), blackPlayer(sf::Color::Black, Player::PlayerType::Human) {
+        InitializeGame(redPlayer, blackPlayer);
+    }
+
+    void InitializeGame(Player& redPlayer, Player& blackPlayer) { // функція для ініціалізації гри
+        int redIndex = 0;
+        int blackIndex = 0;
+
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                if ((i + j) % 2 == 0) {
+                    if (i <= 2) {
+                        pieces[redIndex].isAlive = true;
+                        pieces[redIndex].color = sf::Color::Red;
+                        pieces[redIndex].x = j;
+                        pieces[redIndex].y = i;
+                        redIndex++;
+                    }
+                    else if (i >= 5) {
+                        pieces[blackIndex + 12].isAlive = true;
+                        pieces[blackIndex + 12].color = sf::Color::Black;
+                        pieces[blackIndex + 12].x = j;
+                        pieces[blackIndex + 12].y = i;
+                        blackIndex++;
+                    }
+                }
+            }
+        }
+
+        redPlayer.color = sf::Color::Red;
+        for (int i = 0; i < 12; i++) {
+            redPlayer.pieces.push_back(pieces[i]);
+        }
+
+        blackPlayer.color = sf::Color::Black;
+        for (int i = 12; i < 24; i++) {
+            blackPlayer.pieces.push_back(pieces[i]);
+        }
+    }
+
+
+
+
+    bool validarity(const Piece& piece, int x, int y) {  // перевірка чи можна зробити хід
+        if (!piece.isAlive) {
+            return false;
+        }
+
+        if (x < 0 || x >= size || y < 0 || y >= size) {
+            return false;
+        }
+
+        if (pieces[y * size + x].isAlive) {
+            return false;
+        }
+
+        if (piece.isKing) {
+            return true;
+        }
+        else {
+            int deltaX = x - piece.x;
+            int deltaY = y - piece.y;
+            return (deltaX == 1 || deltaX == -1) && (deltaY == 1 || deltaY == -1);
+        }
+    }
+
+
+    void inputdata(sf::RenderWindow& window) {
+        sf::Event event;
+        while (window.pollEvent(event)) {
+            if (event.type == sf::Event::Closed) {
+                window.close();
+
+            }
+
+            if (event.type == sf::Event::MouseButtonPressed) {
+                if (event.mouseButton.button == sf::Mouse::Left) {
+                    sf::Vector2i mousePos = sf::Mouse::getPosition(window);
+                    int clickedPieceIndex = MousePosition(mousePos.x, mousePos.y);
+
+                    if (clickedPieceIndex != -1 && pieces[clickedPieceIndex].isAlive &&
+                        pieces[clickedPieceIndex].color == sf::Color::Black) {
+                        selectedPieceIndex = clickedPieceIndex;
+                    }
+                }
+            }
+
+            if (event.type == sf::Event::MouseButtonReleased) {
+                if (event.mouseButton.button == sf::Mouse::Left) {
+                    sf::Vector2i mousePos = sf::Mouse::getPosition(window);
+                    int newX = mousePos.x / 75;
+                    int newY = mousePos.y / 75;
+
+                    if (selectedPieceIndex != -1 && validarity(pieces[selectedPieceIndex], newX, newY)) {
+                        makeMove(*this, Move(pieces[selectedPieceIndex].x, pieces[selectedPieceIndex].y, newX, newY));
+                        selectedPieceIndex = -1;
+
+                        // Перевірка, чи гравець, який повинен робити наступний хід, - комп'ютер
+                        if (redPlayer.getType() == Player::PlayerType::Computer || blackPlayer.getType() == Player::PlayerType::Computer) {
+                            ComputerMove();
+                        }
+                    }
+                }
+            }
+
+            if (event.type == sf::Event::KeyPressed) {
+                if (event.key.code == sf::Keyboard::Enter) {
+                    if (blackPlayer.getType() == Player::PlayerType::Computer) {
+                        ComputerMove();
+                    }
+                }
+            }
+        }
+    }
+
+
+
+
+    void highlight(int pieceIndex, sf::RenderWindow& window, Board& board) { // функція для виділення можливих ходів
+        Piece& selectedPiece = pieces[pieceIndex];
+
+        int selectedX = selectedPiece.x;
+        int selectedY = selectedPiece.y;
+
+        for (int i = -1; i <= 1; i += 2) {
+            for (int j = -1; j <= 1; j += 2) {
+
+                int targetX = selectedX + i;
+                int targetY = selectedY + j;
+
+                if (validarity(selectedPiece, targetX, targetY)) {
+
+                    sf::RectangleShape highlight(sf::Vector2f(75.f, 75.f));
+                    highlight.setPosition(sf::Vector2f(targetX * 75, targetY * 75));
+                    highlight.setFillColor(sf::Color::Green);
+                    window.draw(highlight);
+                }
+            }
+        }
+
+
+        sf::RectangleShape highlight(sf::Vector2f(75.f, 75.f));
+        highlight.setPosition(sf::Vector2f(selectedX * 75, selectedY * 75));
+        highlight.setFillColor(sf::Color::Yellow);
+        window.draw(highlight);
+    }
+
+    int numberofmoves(Player* player) { // отримання кількості можливих ходів
+        int count = 0;
+
+        for (int i = 0; i < 24; i++) {
+            if (pieces[i].isAlive && pieces[i].color == player->color) {
+                for (int j = 0; j < size; j++) {
+                    for (int k = 0; k < size; k++) {
+                        if (validarity(pieces[i], j, k)) {
+                            count++;
+                        }
+                    }
+                }
+            }
+        }
+
+        return count;
+    }
+    bool endgame() { // перевірка чи гра закінчена
+        bool redPiecesLeft = false;
+        bool blackPiecesLeft = false;
+
+        for (const Piece& piece : pieces) {
+            if (piece.isAlive) {
+                if (piece.color == sf::Color::Red) {
+                    redPiecesLeft = true;
+                }
+                else if (piece.color == sf::Color::Black) {
+                    blackPiecesLeft = true;
+                }
+            }
+        }
+
+        return !redPiecesLeft || !blackPiecesLeft;
+    }
+
+
+    void draw(sf::RenderWindow& window) { // функція для відображення дошки
+        sf::RectangleShape tile;
+        tile.setSize(sf::Vector2f(75.f, 75.f));
+
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                tile.setPosition(sf::Vector2f(75 * i, 75 * j));
+
+                if ((i + j) % 2 == 0) {
+                    tile.setFillColor(sf::Color::White);
+                }
+                else {
+                    tile.setFillColor(sf::Color::Black);
+                }
+
+                window.draw(tile);
+            }
+        }
+
+        for (int i = 0; i < 24; i++) {
+            if (pieces[i].isAlive) {
+                pieces[i].Draw(window);
+            }
+        }
+    }
+
+
+    int evaluateBoard(Board& board) { // функція для оцінки дошки
+        int redPieces = 0;
+        int blackPieces = 0;
+        int redKings = 0;
+        int blackKings = 0;
+
+        for (const Piece& piece : pieces) {
+            if (piece.isAlive) {
+                if (piece.color == sf::Color::Red) {
+                    redPieces++;
+                    if (piece.isKing) {
+                        redKings++;
+                    }
+                }
+                else if (piece.color == sf::Color::Black) {
+                    blackPieces++;
+                    if (piece.isKing) {
+                        blackKings++;
+                    }
+                }
+            }
+        }
+
+        int redScore = redPieces + 2 * redKings;
+        int blackScore = blackPieces + 2 * blackKings;
+
+        return redScore - blackScore;
+    }
+
+    MoveNode MinMaxTree(Board& board, int depth, bool computerPlayer) { // функція для побудови дерева мінімакса
+        if (depth == 0 || endgame()) {
+            int evaluation = evaluateBoard(board);
+            return MoveNode(Move(), evaluation);
+        }
+
+        std::vector<Move> possibleMoves = generateMoves(board);
+
+        MoveNode bestMoveNode(Move(), computerPlayer ? INT_MIN : INT_MAX);
+
+        for (Move move : possibleMoves) {
+            Board tempBoard = board;
+            makeMove(tempBoard, move);
+
+            MoveNode childNode = MinMaxTree(tempBoard, depth - 1, !computerPlayer);
+            childNode.move = move;
+
+            if (computerPlayer) {
+                if (childNode.score > bestMoveNode.score) {
+                    bestMoveNode = childNode;
+                }
+            }
+            else {
+                if (childNode.score < bestMoveNode.score) {
+                    bestMoveNode = childNode;
+                }
+            }
+        }
+
+        return bestMoveNode;
+    }
+
+
+    Move BestMove(int depth, bool computerPlayer) { // отримання найкращого ходу
+        MoveNode root = MinMaxTree(*this, depth, computerPlayer);
+        return root.move;
+    }
+
+
+    bool opponentPiece(int x, int y, const sf::Color& colorToCheck) { // перевірка чи є фігура суперника
+        Piece& piece = pieces[y * size + x];
+        return piece.isAlive && piece.color != colorToCheck && piece.color == sf::Color::Black;
+    }
+
+
+    std::vector<Move> generateMoves(Board& board) { // функція для генерації ходів
+        std::vector<Move> possibleMoves;
+
+        for (const Piece& piece : pieces) {
+            if (piece.isAlive && piece.color == board.redPlayer.color) { // Змініть на відповідний колір
+                int x = piece.x;
+                int y = piece.y;
+
+                // Перевірка для червоних фігур
+                if (piece.color == sf::Color::Red || piece.isKing) {
+                    if (opponentPiece(x + 1, y + 1, piece.color) && validarity(piece, x + 2, y + 2)) {
+                        possibleMoves.push_back(Move(x, y, x + 2, y + 2));
+                    }
+
+                    if (opponentPiece(x - 1, y + 1, piece.color) && validarity(piece, x - 2, y + 2)) {
+                        possibleMoves.push_back(Move(x, y, x - 2, y + 2));
+                    }
+                }
+
+                // Перевірка для чорних фігур
+                if (piece.color == sf::Color::Black || piece.isKing) {
+                    if (opponentPiece(x + 1, y - 1, piece.color) && validarity(piece, x + 2, y - 2)) {
+                        possibleMoves.push_back(Move(x, y, x + 2, y - 2));
+                    }
+
+                    if (opponentPiece(x - 1, y - 1, piece.color) && validarity(piece, x - 2, y - 2)) {
+                        possibleMoves.push_back(Move(x, y, x - 2, y - 2));
+                    }
+                }
+            }
+        }
+
+        return possibleMoves;
+    }
+
+
+    int minimax(Board& board, int depth, bool computerPlayer) { // алгоритм мінімакс
+        if (depth == 0 || endgame()) {
+            return evaluateBoard(board);
+        }
+
+        std::vector<Move> possibleMoves = generateMoves(board); // генерація ходів
+
+        if (computerPlayer) {
+            int maxEval = INT_MIN;
+            for (Move move : possibleMoves) {
+                makeMove(board, move);
+                int eval = minimax(board, depth - 1, false);
+                maxEval = std::max(maxEval, eval);
+
+            }
+            return maxEval;
+        }
+        else {
+            int minEval = INT_MAX;
+            for (Move move : possibleMoves) {
+                makeMove(board, move);
+                int eval = minimax(board, depth - 1, true);
+                minEval = std::min(minEval, eval);
+
+            }
+            return minEval;
+        }
+    }
+
+    void ComputerMove() { // функція для ходу комп'ютера
+        int bestMoveIndex = -1;
+        int bestMoveScore = INT_MIN;
+        std::vector<Move> possibleMoves = generateMoves(*this);
+
+        for (int i = 0; i < possibleMoves.size(); ++i) {
+            Move currentMove = possibleMoves[i];
+
+            Board tempBoard = *this;
+            makeMove(tempBoard, currentMove);
+
+            int moveScore = minimax(tempBoard, depth, false);
+
+            if (moveScore > bestMoveScore) {
+                bestMoveScore = moveScore;
+                bestMoveIndex = i;
+            }
+        }
+
+        if (bestMoveIndex != -1) {
+            makeMove(*this, possibleMoves[bestMoveIndex]);
+        }
+    }
+
+
+    int MousePosition(int mouseX, int mouseY) {// отримання індексу фігури з позиції миші
+
+        if (mouseX < 0 || mouseX >= 75 * size || mouseY < 0 || mouseY >= 75 * size) {
+            return -1;
+        }
+
+        int x = mouseX / 75;
+        int y = mouseY / 75;
+
+        if (pieces[y * size + x].isAlive) {
+            return y * size + x;
+        }
+        else {
+            return -1;
+        }
+    }
+
+    void makeMove(Board& board, Move move) { //функція переміщення фігур
+        int startX = move.startX;
+        int startY = move.startY;
+        int endX = move.endX;
+        int endY = move.endY;
+
+        if (startX < 0 || startX >= size || startY < 0 || startY >= size ||
+            endX < 0 || endX >= size || endY < 0 || endY >= size) {
+            return;
+        }
+
+        Piece& pieceToMove = board.pieces[startY * size + startX];
+
+        pieceToMove.x = endX;
+        pieceToMove.y = endY;
+
+        if (endY == 0 || endY == (size - 1)) {
+            pieceToMove.isKing = true;
+        }
+
+        int jumpedPieceIndex = (startY + endY) / 2 * size + (startX + endX) / 2;
+
+        if (jumpedPieceIndex != -1) {
+            board.pieces[jumpedPieceIndex].isAlive = false;
+        }
+    }
+};
+
+int main() {
+    sf::RenderWindow window(sf::VideoMode(600, 600), "Checkers Game");
+    Player red(sf::Color::Red, Player::PlayerType::Computer); // ініціалізація гравців
+    Player black(sf::Color::Black, Player::PlayerType::Human);
+    Board board(red, black);
+    board.InitializeGame(red, black);
+
+    while (window.isOpen()) { // основний цикл
+        sf::Event event;
+        while (window.pollEvent(event)) {
+            if (event.type == sf::Event::Closed) {
+                window.close();
+
+            }
+        }
+
+        board.inputdata(window);
+
+        if (board.redPlayer.getType() == Player::PlayerType::Computer) { // Перевірка, чи гравець, який повинен робити наступний хід, - комп'ютер
+            Move bestMove = board.BestMove(depth, true);
+            board.makeMove(board, bestMove);
+
+            window.clear();
+            board.draw(window);
+            window.display();
+        }
+
+        if (board.endgame()) {
+            cout << "Game over!" << endl;
+            break;
+        }
+    }
+
+    return 0;
+}
+
+
+
