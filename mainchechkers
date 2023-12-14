@@ -80,18 +80,19 @@ private:
 
     const int size = 8;
     Piece pieces[24];
-    Player& getRedPlayer() {
-        return redPlayer;
-    }
-    Player& getBlackPlayer() {
-        return blackPlayer;
-    }
+    Player redPlayer;
+    Player blackPlayer;
     int selectedPieceIndex = -1;
 
 
 public:
-    Player redPlayer;
-    Player blackPlayer;
+   
+ Player& getRedPlayer() {
+        return redPlayer;
+    }
+ Player& getBlackPlayer() {
+        return blackPlayer;
+    }
     Board(Player& red, Player& black) : redPlayer(sf::Color::Red, Player::PlayerType::Computer), blackPlayer(sf::Color::Black, Player::PlayerType::Human) {
         InitializeGame(redPlayer, blackPlayer);
     }
