@@ -74,12 +74,7 @@ private:
     int selectedPieceIndex = -1;
 
 public:
-    Player& getRedPlayer() {
-        return redPlayer;
-    }
-    Player& getBlackPlayer() {
-        return blackPlayer;
-    }
+   
     Board(Player& red, Player& black) : redPlayer(red), blackPlayer(black) {
         InitializeGame(redPlayer, blackPlayer);
     }
