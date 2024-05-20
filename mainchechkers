@@ -87,12 +87,6 @@ private:
 
 public:
    
- Player& getRedPlayer() {
-        return redPlayer;
-    }
- Player& getBlackPlayer() {
-        return blackPlayer;
-    }
     Board(Player& red, Player& black) : redPlayer(sf::Color::Red, Player::PlayerType::Computer), blackPlayer(sf::Color::Black, Player::PlayerType::Human) {
         InitializeGame(redPlayer, blackPlayer);
     }
