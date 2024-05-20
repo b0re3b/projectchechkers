@@ -5,7 +5,7 @@ Menu::Menu(sf::RenderWindow& window) : window(window) {}
 
 PlayerColor Menu::chooseColor() {
     sf::Font font;
-    if (!font.loadFromFile("ArialMT.ttf")) {
+    if (!font.loadFromFile("/Users/bogdanresetko/Desktop/projects2024/дфддфдф/mainproject/ArialMT.ttf")) {
         std::cerr << "Font file not found!" << std::endl;
     }
 
@@ -46,11 +46,11 @@ PlayerColor Menu::chooseColor() {
                 }
             }
         }
-        window.clear();
+        window.clear(sf::Color::Green);
         window.draw(text);
         window.draw(redText);
         window.draw(blackText);
         window.display();
     }
-    return PlayerColor::Red; // Default to red if no color is chosen
+    return PlayerColor::Red;
 }

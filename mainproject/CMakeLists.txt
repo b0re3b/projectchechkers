@@ -22,5 +22,6 @@ add_executable(mainproject main.cpp
         gameloop.cpp
         menu.h
         menu.cpp
+        TSET.cpp
 )
 target_link_libraries(mainproject gtest sfml-graphics sfml-audio)
