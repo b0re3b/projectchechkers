@@ -1,418 +1,251 @@
-#include "board.h"
+#ifndef BOARD_HPP
+#define BOARD_HPP
+
+#include <SFML/Graphics.hpp>
+#include <iostream>
+#include <vector>
+#include <climits>
+#include <algorithm>
+const int depth = 1;
 /**
- *
- * @param window
+ * @brief Enumeration representing the possible colors of players.
  */
-void Piece::Draw(sf::RenderWindow& window) const {
-    if (isAlive) {
-        sf::CircleShape shape(30.f);
-        shape.setFillColor(color);
+enum class PlayerColor {
+    Red,    /**< Red player */
+    Black   /**< Black player */
+};
 
-        if (isKing) {
-            shape.setOutlineThickness(3.f);
-            shape.setOutlineColor(sf::Color::Yellow);
-        }
-
-        shape.setPosition(sf::Vector2f(x * 75 + (75 - 2 * 30) / 2, y * 75 + (75 - 2 * 30) / 2));
-        window.draw(shape);
-    }
-}
-
-
-
-Board::Board(Player& red, Player& black) : redPlayer(red), blackPlayer(black) {
-    InitializeGame(redPlayer, blackPlayer);
-}
 /**
- *
- * @param redPlayer
- * @param blackPlayer
+ * @brief Class representing a player in the game.
  */
-void Board::InitializeGame(Player& redPlayer, Player& blackPlayer) {
-    int redIndex = 0;
-    int blackIndex = 0;
+class Player {
+public:
+    /**
+     * @brief Constructor for Player class.
+     * @param color The color of the player.
+     */
+    Player(const sf::Color color) {}
 
-    for (int i = 0; i < size; i++) {
-        for (int j = 0; j < size; j++) {
-            if ((i + j) % 2 == 0) {
-                if (i <= 2) {
-                    pieces[redIndex].isAlive = true;
-                    pieces[redIndex].color = sf::Color::Red;
-                    pieces[redIndex].x = j;
-                    pieces[redIndex].y = i;
-                    redIndex++;
-                } else if (i >= 5) {
-                    pieces[blackIndex + 12].isAlive = true;
-                    pieces[blackIndex + 12].color = sf::Color::Black;
-                    pieces[blackIndex + 12].x = j;
-                    pieces[blackIndex + 12].y = i;
-                    blackIndex++;
-                }
-            }
-        }
-    }
+    /**
+     * @brief Enumeration representing the type of player.
+     */
+    enum class PlayerType {
+        Human,      /**< Human player */
+        Computer    /**< Computer player */
+    };
 
-    redPlayer.color = sf::Color::Red;
-    blackPlayer.color = sf::Color::Black;
-}
+    sf::Color color;    /**< The color of the player. */
+    PlayerType type;    /**< The type of the player. */
+
+    /**
+     * @brief Constructor for Player class.
+     * @param color The color of the player.
+     * @param type The type of the player.
+     */
+    Player(sf::Color color, PlayerType type) : color(color), type(type) {}
+};
+
 /**
- *
- * @param piece
- * @param x
- * @param y
- * @return
+ * @brief Structure representing a move in the game.
  */
-bool Board::validarity(const Piece& piece, int x, int y) {
-    if (!piece.isAlive) {
-        return false;
-    }
+class Move {
+public:
+    int startX; /**< The starting X-coordinate of the move. */
+    int startY; /**< The starting Y-coordinate of the move. */
+    int endX;   /**< The ending X-coordinate of the move. */
+    int endY;   /**< The ending Y-coordinate of the move. */
 
-    if (x < 0 || x >= size || y < 0 || y >= size) {
-        return false;
-    }
+    /**
+     * @brief Default constructor for Move class.
+     */
+    Move() : startX(0), startY(0), endX(0), endY(0) {}
 
-    if (pieces[y * size + x].isAlive) {
-        return false;
-    }
+    /**
+     * @brief Constructor for Move class.
+     * @param startX The starting X-coordinate of the move.
+     * @param startY The starting Y-coordinate of the move.
+     * @param endX The ending X-coordinate of the move.
+     * @param endY The ending Y-coordinate of the move.
+     */
+    Move(int startX, int startY, int endX, int endY)
+            : startX(startX), startY(startY), endX(endX), endY(endY) {}
+};
 
-    if (piece.isKing) {
-        return true;
-    } else {
-        int deltaX = x - piece.x;
-        int deltaY = y - piece.y;
-        return (deltaX == 1 || deltaX == -1) && (deltaY == 1 || deltaY == -1);
-    }
-}
 /**
- *
- * @param window
+ * @brief Node representing a move in the move tree.
  */
-void Board::inputdata(sf::RenderWindow& window) {
-    sf::Event event;
-    while (window.pollEvent(event)) {
-        if (event.type == sf::Event::Closed) {
-            window.close();
-        }
-
-        if (event.type == sf::Event::MouseButtonPressed) {
-            if (event.mouseButton.button == sf::Mouse::Left) {
-                sf::Vector2i mousePos = sf::Mouse::getPosition(window);
-                int clickedPieceIndex = MousePosition(mousePos.x, mousePos.y);
-
-                if (clickedPieceIndex != -1 && pieces[clickedPieceIndex].isAlive &&
-                    pieces[clickedPieceIndex].color == sf::Color::Black) {
-                    selectedPieceIndex = clickedPieceIndex;
-                    highlight(selectedPieceIndex, window, *this); // Highlight the selected piece
-                }
-            }
-        }
-
-
-        if (event.type == sf::Event::MouseButtonReleased) {
-            if (event.mouseButton.button == sf::Mouse::Left) {
-                sf::Vector2i mousePos = sf::Mouse::getPosition(window);
-                int newX = mousePos.x / 75;
-                int newY = mousePos.y / 75;
-
-                if (selectedPieceIndex != -1 && validarity(pieces[selectedPieceIndex], newX, newY)) {
-                    makeMove(*this, Move(pieces[selectedPieceIndex].x, pieces[selectedPieceIndex].y, newX, newY));
-                    selectedPieceIndex = -1;
-
-                    if (redPlayer.color == sf::Color::Black || blackPlayer.color == sf::Color::Black) {
-                        ComputerMove();
-                    }
-                }
-            }
-        }
-
-        if (event.type == sf::Event::KeyPressed) {
-            if (event.key.code == sf::Keyboard::Enter) {
-                if (blackPlayer.color == sf::Color::Black) {
-                    ComputerMove();
-                }
-            }
-        }
-    }
-}
-
-void Board::highlight(int pieceIndex, sf::RenderWindow& window, Board& board) {
-    Piece& selectedPiece = pieces[pieceIndex];
-
-    int selectedX = selectedPiece.x;
-    int selectedY = selectedPiece.y;
-
-    for (int i = -1; i <= 1; i += 2) {
-        for (int j = -1; j <= 1; j += 2) {
-
-            int targetX = selectedX + i;
-            int targetY = selectedY + j;
-
-            if (validarity(selectedPiece, targetX, targetY)) {
-
-                sf::RectangleShape highlight(sf::Vector2f(75.f, 75.f));
-                highlight.setPosition(sf::Vector2f(targetX * 75, targetY * 75));
-                highlight.setFillColor(sf::Color::Green);
-                window.draw(highlight);
-            }
-        }
-    }
-
-    sf::RectangleShape highlight(sf::Vector2f(75.f, 75.f));
-    highlight.setPosition(sf::Vector2f(selectedX * 75, selectedY * 75));
-    highlight.setFillColor(sf::Color::Yellow);
-    window.draw(highlight);
-}
-
-int Board::numberofmoves(Player* player) {
-    int count = 0;
-
-    for (int i = 0; i < 24; i++) {
-        if (pieces[i].isAlive && pieces[i].color == player->color) {
-            for (int j = 0; j < size; j++) {
-                for (int k = 0; k < size; k++) {
-                    if (validarity(pieces[i], j, k)) {
-                        count++;
-                    }
-                }
-            }
-        }
-    }
-
-    return count;
-}
-
-bool Board::endgame() {
-    bool redPiecesLeft = false;
-    bool blackPiecesLeft = false;
-
-    for (const Piece& piece : pieces) {
-        if (piece.isAlive) {
-            if (piece.color == sf::Color::Red) {
-                redPiecesLeft = true;
-            } else if (piece.color == sf::Color::Black) {
-                blackPiecesLeft = true;
-            }
-        }
-    }
-
-    return !redPiecesLeft || !blackPiecesLeft;
-}
-
-void Board::draw(sf::RenderWindow& window) {
-    sf::RectangleShape tile;
-    tile.setSize(sf::Vector2f(75.f, 75.f));
-
-    for (int i = 0; i < size; i++) {
-        for (int j = 0; j < size; j++) {
-            tile.setPosition(sf::Vector2f(75 * i, 75 * j));
-
-            if ((i + j) % 2 == 0) {
-                tile.setFillColor(sf::Color::White);
-            } else {
-                tile.setFillColor(sf::Color::Black);
-            }
-
-            window.draw(tile);
-        }
-    }
-
-    for (auto & piece : pieces) {
-        if (piece.isAlive) {
-            piece.Draw(window);
-        }
-    }
-}
-
-int Board::evaluateBoard(Board& board) {
-    int redPieces = 0;
-    int blackPieces = 0;
-    int redKings = 0;
-    int blackKings = 0;
-
-    for (const Piece& piece : pieces) {
-        if (piece.isAlive) {
-            if (piece.color == sf::Color::Red) {
-                redPieces++;
-                if (piece.isKing) {
-                    redKings++;
-                }
-            } else if (piece.color == sf::Color::Black) {
-                blackPieces++;
-                if (piece.isKing) {
-                    blackKings++;
-                }
-            }
-        }
-    }
-
-    int redScore = redPieces + 2 * redKings;
-    int blackScore = blackPieces + 2 * blackKings;
-
-    return redScore - blackScore;
-}
-
-MoveNode Board::MinMaxTree(Board& board, int depth, bool computerPlayer) {
-    if (depth == 0 || endgame()) {
-        int evaluation = evaluateBoard(board);
-        return MoveNode(Move(), evaluation);
-    }
-
-    std::vector<Move> possibleMoves = generateMoves(board);
-
-    MoveNode bestMoveNode(Move(), computerPlayer ? INT_MIN : INT_MAX);
-
-    for (Move move : possibleMoves) {
-        Board tempBoard = board;
-        makeMove(tempBoard, move);
-
-        MoveNode childNode = MinMaxTree(tempBoard, depth - 1, !computerPlayer);
-        childNode.move = move;
-
-        if (computerPlayer) {
-            if (childNode.score > bestMoveNode.score) {
-                bestMoveNode = childNode;
-            }
-        } else {
-            if (childNode.score < bestMoveNode.score) {
-                bestMoveNode = childNode;
-            }
-        }
-    }
-
-    return bestMoveNode;
-}
-
-Move Board::BestMove(int depth, bool computerPlayer) {
-    MoveNode root = MinMaxTree(*this, depth, computerPlayer);
-    return root.move;
-}
-
-bool Board::opponentPiece(int x, int y, const sf::Color& colorToCheck) {
-    Piece& piece = pieces[y * size + x];
-    return piece.isAlive && piece.color != colorToCheck && piece.color == sf::Color::Black;
-}
-
-std::vector<Move> Board::generateMoves(Board& board) {
-    std::vector<Move> possibleMoves;
-
-    for (const Piece& piece : pieces) {
-        if (piece.isAlive && piece.color == board.redPlayer.color) {
-            int x = piece.x;
-            int y = piece.y;
-
-            if (piece.color == sf::Color::Red || piece.isKing) {
-                if (opponentPiece(x + 1, y + 1, piece.color) && validarity(piece, x + 2, y + 2)) {
-                    possibleMoves.emplace_back(x, y, x + 2, y + 2);
-                }
-
-                if (opponentPiece(x - 1, y + 1, piece.color) && validarity(piece, x - 2, y + 2)) {
-                    possibleMoves.emplace_back(x, y, x - 2, y + 2);
-                }
-            }
-
-            if (piece.color == sf::Color::Black || piece.isKing) {
-                if (opponentPiece(x + 1, y - 1, piece.color) && validarity(piece, x + 2, y - 2)) {
-                    possibleMoves.emplace_back(x, y, x + 2, y - 2);
-                }
-
-                if (opponentPiece(x - 1, y - 1, piece.color) && validarity(piece, x - 2, y - 2)) {
-                    possibleMoves.emplace_back(x, y, x - 2, y - 2);
-                }
-            }
-        }
-    }
-
-    return possibleMoves;
-}
-
-
-int Board::minimax(Board& board, int depth, bool computerPlayer) {
-    if (depth == 0 || endgame()) {
-        return evaluateBoard(board);
-    }
-
-    std::vector<Move> possibleMoves = generateMoves(board);
-
-    if (computerPlayer) {
-        int maxEval = INT_MIN;
-        for (Move move : possibleMoves) {
-            makeMove(board, move);
-            int eval = minimax(board, depth - 1, false);
-            maxEval = std::max(maxEval, eval);
-        }
-        return maxEval;
-    } else {
-        int minEval = INT_MAX;
-        for (Move move : possibleMoves) {
-            makeMove(board, move);
-            int eval = minimax(board, depth - 1, true);
-            minEval = std::min(minEval, eval);
-        }
-        return minEval;
-    }
-}
-
-void Board::ComputerMove() {
-    int bestMoveIndex = -1;
-    int bestMoveScore = INT_MIN;
-    std::vector<Move> possibleMoves = generateMoves(*this);
-
-    for (int i = 0; i < possibleMoves.size(); ++i) {
-        Move currentMove = possibleMoves[i];
-
-        Board tempBoard = *this;
-        makeMove(tempBoard, currentMove);
-
-        int moveScore = minimax(tempBoard, depth, false);
-
-        if (moveScore > bestMoveScore) {
-            bestMoveScore = moveScore;
-            bestMoveIndex = i;
-        }
-    }
-
-    if (bestMoveIndex != -1) {
-        makeMove(*this, possibleMoves[bestMoveIndex]);
-    }
-}
-
-
-int Board::MousePosition(int mouseX, int mouseY) {
-
-    if (mouseX < 0 || mouseX > 600 || mouseY < 0 || mouseY > 600) {
-        return -1;
-    }
-
-    int col = mouseX / 75;
-    int row = mouseY / 75;
-
-    if (row >= 0 && row < 8 && col >= 0 && col < 8) {
-        int pieceIndex = row * 8 + col;
-        return pieceIndex;
-    } else {
-        return -1;
-    }
-}
-
-void Board::makeMove(Board& board, const Move& move) {
-    int startX = move.startX;
-    int startY = move.startY;
-    int endX = move.endX;
-    int endY = move.endY;
-
-    Piece& startPiece = pieces[startY * size + startX];
-    Piece& endPiece = pieces[endY * size + endX];
-
-    if (startPiece.isAlive) {
-        endPiece = startPiece;
-        endPiece.x = endX;
-        endPiece.y = endY;
-
-        startPiece.isAlive = false;
-
-        if (endY == 0 || endY == 7) {
-            endPiece.isKing = true;
-        }
-    }
-}
-
+class MoveNode {
+public:
+    Move move;      /**< The move. */
+    int score;      /**< The score associated with the move. */
+    std::vector<MoveNode> children; /**< The children of the move node. */
+
+    /**
+     * @brief Constructor for MoveNode class.
+     * @param move The move.
+     * @param score The score associated with the move.
+     */
+    MoveNode(const Move& move, int score) : move(move), score(score) {}
+};
+
+/**
+ * @brief Class representing a piece on the board.
+ */
+class Piece {
+public:
+    bool isAlive;   /**< Indicates if the piece is alive. */
+    bool isKing;    /**< Indicates if the piece is a king. */
+    sf::Color color;    /**< The color of the piece. */
+    int x;  /**< The X-coordinate of the piece. */
+    int y;  /**< The Y-coordinate of the piece. */
+
+    /**
+     * @brief Method to draw the piece on the window.
+     * @param window The SFML window to draw the piece on.
+     */
+    void Draw(sf::RenderWindow& window) const;
+};
+
+/**
+ * @brief Class representing the game board.
+ */
+class Board {
+private:
+    const int size = 8; /**< The size of the board. */
+    /**< The black player. */
+    int selectedPieceIndex = -1;    /**< The index of the selected piece on the board. */
+
+public:
+
+    /**
+     * @brief Constructor for Board class.
+     * @param red The red player.
+     * @param black The black player.
+     */
+    Board(Player &red, Player &black);
+
+    /**
+     * @brief Initializes the game.
+     * @param redPlayer The red player.
+     * @param blackPlayer The black player.
+     */
+    void InitializeGame(Player &redPlayer, Player &blackPlayer);
+
+    /**
+     * @brief Checks the validity of a move.
+     * @param piece The piece to be moved.
+     * @param x The target X-coordinate.
+     * @param y The target Y-coordinate.
+     * @return True if the move is valid, false otherwise.
+     */
+    bool validarity(const Piece &piece, int x, int y);
+
+    /**
+     * @brief Handles user input during the game.
+     * @param window The SFML window.
+     */
+    void inputdata(sf::RenderWindow &window);
+
+/**
+ * @brief Highlights valid moves for a selected piece.
+ * @param pieceIndex The index of the selected piece.
+ * @param window The SFML window.
+ * @param board The game board instance.
+*/
+    void highlight(int pieceIndex, sf::RenderWindow &window, Board &board);
+
+    /**
+ * @brief Calculates the number of possible moves for a player.
+ * @param player The player for whom to calculate the moves.
+ * @return The number of possible moves.
+ */
+    int numberofmoves(Player *player);
+
+/**
+ * @brief Checks if the game has ended.
+ * @return True if the game has ended, false otherwise.
+ */
+    bool endgame();
+
+/**
+ * @brief Draws the game board on the SFML window.
+ * @param window The SFML window.
+ */
+    void draw(sf::RenderWindow &window);
+
+/**
+ * @brief Evaluates the current state of the board.
+ * @param board The game board.
+ * @return The evaluation score of the board.
+ */
+    int evaluateBoard(Board &board);
+
+/**
+ * @brief Constructs the minimax tree for the game board.
+ * @param board The game board.
+ * @param depth The depth of the tree.
+ * @param computerPlayer Indicates if the current player is the computer.
+ * @return The root node of the minimax tree.
+ */
+    MoveNode MinMaxTree(Board &board, int depth, bool computerPlayer);
+
+/**
+ * @brief Finds the best move for the current player using minimax algorithm.
+ * @param depth The depth of the minimax search.
+ * @param computerPlayer Indicates if the current player is the computer.
+ * @return The best move.
+ */
+    Move BestMove(int depth, bool computerPlayer);
+
+/**
+ * @brief Checks if a piece of the opponent exists at a given position.
+ * @param x The X-coordinate of the position.
+ * @param y The Y-coordinate of the position.
+ * @param colorToCheck The color of the current player.
+ * @return True if an opponent's piece exists at the position, false otherwise.
+ */
+    bool opponentPiece(int x, int y, const sf::Color &colorToCheck);
+
+/**
+ * @brief Generates all possible moves for the current player.
+ * @param board The game board.
+ * @return A vector containing all possible moves.
+ */
+    std::vector<Move> generateMoves(Board &board);
+
+/**
+ * @brief Implements the minimax algorithm to find the optimal move.
+ * @param board The game board.
+ * @param depth The depth of the minimax search.
+ * @param computerPlayer Indicates if the current player is the computer.
+ * @return The evaluation score of the current board state.
+ */
+    int minimax(Board &board, int depth, bool computerPlayer);
+
+/**
+ * @brief Executes the computer's move.
+ */
+    void ComputerMove();
+
+/**
+ * @brief Converts mouse coordinates to board indices.
+ * @param mouseX The X-coordinate of the mouse.
+ * @param mouseY The Y-coordinate of the mouse.
+ * @return The index of the piece on the board.
+ */
+    static int MousePosition(int mouseX, int mouseY);
+
+/**
+ * @brief Makes a move on the game board.
+ * @param board The game board.
+ * @param move The move to be made.
+ */
+    void makeMove(Board &board, const Move &move);
+
+    Piece pieces[24];  /**< Array containing all pieces on the board. */
+
+    Player redPlayer;
+/**< The red player. */
+Player blackPlayer;
+};
+#endif
