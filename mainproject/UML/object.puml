@@ -1,0 +1,20 @@
+@startuml
+package "Game" {
+    component Game {
+        component Board {
+            component "Square[8][8]" as Square
+        }
+        component Players {
+            component HumanPlayer
+            component ComputerPlayer
+        }
+        component Menu
+        component RenderWindow
+    }
+}
+
+Game.Board - Square
+Game.Board - Players
+Game.Players - Menu
+Game - RenderWindow
+@enduml

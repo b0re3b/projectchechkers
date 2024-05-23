@@ -1,0 +1,28 @@
+@startuml
+
+package "Game" {
+    package "Components" {
+        class Game
+        class Board
+        class Piece
+        class Move
+        class MoveNode
+    }
+    
+    package "Players" {
+        class Player
+        enum PlayerType {
+            Human
+            Computer
+        }
+    }
+    
+    class Menu
+    class RenderWindow
+}
+
+Game.Components --> Game.Players
+Game.Components --> Menu
+Game --> RenderWindow
+
+@enduml

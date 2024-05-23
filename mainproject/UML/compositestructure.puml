@@ -1,0 +1,21 @@
+@startuml
+node "User Machine" {
+    artifact "Game Application" {
+        [Game] 
+        [Menu]
+        [Board]
+        [Player]
+        [Piece]
+        [Move]
+        [MoveNode]
+    }
+    [Game] ..> [Menu] : uses
+    [Game] ..> [Board] : uses
+    [Game] ..> [Player] : controls
+    [Board] ..> [Piece] : contains
+    [Board] ..> [Move] : uses
+    [Piece] ..> [Move] : involves
+    [Player] ..> [Move] : makes
+    [Move] ..> [MoveNode] : uses
+}
+@enduml

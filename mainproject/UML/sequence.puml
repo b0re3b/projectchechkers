@@ -1,0 +1,32 @@
+@startuml
+actor "Human Player" as HP
+actor "Computer Player" as CP
+participant "Game" as G
+participant "Board" as B
+participant "Piece" as P
+participant "Menu" as M
+
+HP -> M : Choose Color
+M -> G : Start Game
+G -> B : Initialize Board
+loop While Game Continues
+    HP -> B : Select Piece
+    B -> HP : Show Possible Moves
+    HP -> B : Choose Move
+    B -> HP : Validate Move
+    alt Move Allowed
+        B -> HP : Execute Move
+    else Move Not Allowed
+        B -> HP : Invalid Move
+    end
+    B -> CP : Computer Move
+    CP -> B : Choose Move
+    B -> CP : Validate Move
+    alt Move Allowed
+        B -> CP : Execute Move
+    else Move Not Allowed
+        B -> CP : Invalid Move
+    end
+end
+G -> RenderWindow : Display Results
+@enduml

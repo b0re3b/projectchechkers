@@ -1,0 +1,18 @@
+@startuml
+
+object Game
+object Board
+object HumanPlayer
+object ComputerPlayer
+object Piece
+object Menu
+object RenderWindow
+
+Game -- Board : controls
+Game -- HumanPlayer : manages
+Game -- ComputerPlayer : manages
+Board -- Piece : contains
+Game -- Menu : utilizes
+Game -- RenderWindow : interacts
+
+@enduml

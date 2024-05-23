@@ -1,0 +1,47 @@
+
+@startuml
+[*] --> Idle
+
+state Idle {
+    [*] --> WaitingForPlayers
+}
+
+Idle --> InitializeGame : startGame()
+InitializeGame --> PlayerTurn : gameStarted()
+
+state PlayerTurn {
+    [*] --> HumanPlayerTurn : humanPlayer's turn
+    HumanPlayerTurn --> ValidateMove : clickPiece(x, y)
+    ValidateMove --> MovePiece : selectPiece(x, y)
+    MovePiece --> UpdateBoard : movePiece(selectedPiece, x, y)
+    UpdateBoard --> CheckGameOver : updateBoard()
+
+    state CheckGameOver {
+        [*] --> IsGameOver
+        IsGameOver --> GameOver : gameOver()
+        IsGameOver --> HumanPlayerTurn : !gameOver()
+    }
+    
+    CheckGameOver --> ComputerPlayerTurn : !gameOver()
+}
+
+PlayerTurn --> ComputerTurn : computerPlayer's turn
+
+state ComputerTurn {
+    [*] --> ComputerGenerateMove
+    ComputerGenerateMove --> ComputerChooseMove : generateMoves()
+    ComputerChooseMove --> ComputerMakeMove : chooseBestMove()
+    ComputerMakeMove --> UpdateBoard : makeMove(bestMove)
+    UpdateBoard --> CheckGameOver : updateBoard()
+
+    state CheckGameOver {
+        [*] --> IsGameOver
+        IsGameOver --> GameOver : gameOver()
+        IsGameOver --> ComputerTurn : !gameOver()
+    }
+    
+    CheckGameOver --> PlayerTurn : !gameOver()
+}
+
+GameOver --> [*] : Game Over
+@enduml

@@ -1,0 +1,44 @@
+@startuml
+actor HumanPlayer as HP
+actor ComputerPlayer as CP
+participant Game
+participant Board
+participant Piece
+participant Move
+
+Game -> Board: startGame()
+Board -> Game: gameStarted()
+
+HP -> Game: clickPiece(x, y)
+Game -> Board: selectPiece(x, y)
+Board -> Piece: isAlive()
+Piece --> Board: true
+Board -> Game: pieceSelected(piece)
+
+HP -> Game: clickMove(x, y)
+Game -> Board: movePiece(selectedPiece, x, y)
+Board -> Board: validateMove(selectedPiece, x, y)
+Board --> Game: moveValid(valid)
+alt Move is valid
+    Board -> Move: new Move(startX, startY, x, y)
+    Game -> Board: updateBoard()
+else Move is invalid
+    Game -> HP: invalidMove()
+end
+
+Game -> CP: computerMove()
+CP -> Board: generateMoves()
+Board --> CP: availableMoves(moves)
+CP -> CP: chooseBestMove(moves)
+CP -> Board: makeMove(bestMove)
+Board -> Move: new Move(startX, startY, x, y)
+Board -> Game: movePiece(bestMove)
+Board -> Game: updateBoard()
+
+alt Game Over Check
+    Board -> Game: checkGameOver()
+    Game --> HP: Game Over
+else Continue Game
+    Game -> HP: continueGame()
+end
+@enduml
