@@ -1,0 +1,38 @@
+@startuml
+start
+
+:Initialize Game;
+:Display Menu;
+:Choose Color;
+
+partition "Game Loop" {
+    repeat
+        :Draw Board;
+        :Human Player Turn;
+        
+        :Select Piece;
+        :Validate Move;
+        :Update Board;
+
+        :Check Game Over;
+        if (Game Over?) then (yes)
+            :Display Game Over;
+            stop
+        else (no)
+            :Computer Player Turn;
+            
+            :Generate Moves;
+            :Select Best Move;
+            :Update Board;
+            
+            :Check Game Over;
+            if (Game Over?) then (yes)
+                :Display Game Over;
+                stop
+            endif
+        endif
+    repeat while (Game Not Over)
+}
+
+stop
+@enduml
