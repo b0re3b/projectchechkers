@@ -43,6 +43,21 @@ void Board::InitializeGame(Player& redPlayer, Player& blackPlayer) {
 }
 
 /**
+ * @brief Checks if there is a piece at the given coordinates.
+ * @param x The x-coordinate.
+ * @param y The y-coordinate.
+ * @return True if a piece is found at the coordinates, false otherwise.
+ */
+bool Board::isPieceAt(int x, int y) const {
+    for (const auto& piece : pieces) {
+        if (piece.isAlive && piece.x == x && piece.y == y) {
+            return true;
+        }
+    }
+    return false;
+}
+
+/**
  * @brief Checks the validity of a move for a given piece.
  * @param piece The piece to check the move for.
  * @param x The x-coordinate of the destination.
@@ -50,15 +65,7 @@ void Board::InitializeGame(Player& redPlayer, Player& blackPlayer) {
  * @return True if the move is valid, false otherwise.
  */
 bool Board::validarity(const Piece& piece, int x, int y) {
-    if (!piece.isAlive) {
-        return false;
-    }
-
-    if (x < 0 || x >= size || y < 0 || y >= size) {
-        return false;
-    }
-
-    if (pieces[y * size + x].isAlive) {
+    if (!piece.isAlive || x < 0 || x >= size || y < 0 || y >= size || pieces[y * size + x].isAlive) {
         return false;
     }
 
