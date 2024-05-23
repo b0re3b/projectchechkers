@@ -1,0 +1,90 @@
+@startuml
+class Game {
+    - Board board
+    - Player humanPlayer
+    - Player computerPlayer
+    - sf::RenderWindow window
+    + Game(window: sf::RenderWindow&, humanPlayer: Player&, computerPlayer: Player&)
+    + run(): void
+}
+
+class Menu {
+    - sf::RenderWindow& window
+    + Menu(window: sf::RenderWindow&)
+    + chooseColor(): Player
+}
+
+class Board {
+    - Piece pieces[24]
+    + selectPiece(x: int, y: int): void
+    + validateAndMakeMove(player: Player, x: int, y: int): void
+    + updateBoard(): void
+    + checkGameOver(): bool
+    + generateMoves(): Move[]
+    + makeMove(move: Move): void
+    + highlight(pieceIndex: int, window: sf::RenderWindow&, board: Board): void
+    + inputdata(window: sf::RenderWindow&): void
+    + endgame(): bool
+    + evaluateBoard(board: Board): int
+    + MinMaxTree(board: Board, depth: int, computerPlayer: bool): MoveNode
+    + BestMove(depth: int, computerPlayer: bool): Move
+    + opponentPiece(x: int, y: int, colorToCheck: sf::Color): bool
+    + numberofmoves(player: Player*): int
+    + MousePosition(mouseX: int, mouseY: int): int
+}
+
+class Piece {
+    - bool isKing
+    - bool isAlive
+    - int x
+    - int y
+    - sf::Color color
+    + Draw(window: sf::RenderWindow&): void
+}
+
+class Player {
+    - sf::Color color
+    - PlayerType type
+    + Player(color: sf::Color)
+    + Player(color: sf::Color, type: PlayerType)
+    + getColor(): sf::Color
+}
+
+enum PlayerType {
+    Human
+    Computer
+}
+
+class Move {
+    - int startX
+    - int startY
+    - int endX
+    - int endY
+    + Move()
+    + Move(startX: int, startY: int, endX: int, endY: int)
+    + getStartX(): int
+    + getStartY(): int
+    + getEndX(): int
+    + getEndY(): int
+}
+
+class MoveNode {
+    - Move move
+    - int score
+    - MoveNode[] children
+    + MoveNode(move: Move, score: int)
+    + getMove(): Move
+    + getScore(): int
+    + getChildren(): MoveNode[]
+    + addChild(child: MoveNode): void
+}
+
+Game -- Menu: uses >
+Game -- Board: uses >
+Game -- Player: controls >
+Board -- Piece: contains >
+Board -- Move: uses >
+Piece -- Move: involves >
+Player -- Move: makes >
+Move -- MoveNode: uses >
+@enduml
