@@ -19,15 +19,16 @@ int main() {
     sf::RenderWindow window(sf::VideoMode(600, 600), "Checkers");
 
     Menu menu(window);
-    PlayerColor playerColor = menu.chooseColor();
+    Player playerColor = menu.chooseColor();
 
-    // Гравець, який вибрав колір, буде людиною
-    Player humanPlayer(sf::Color::Red);
-    // Комп'ютер або людина, залежно від обраного кольору
-    Player computerPlayer(playerColor == PlayerColor::Red ? sf::Color::Black : sf::Color::Red);
+    // The player who chooses the color will be the human
+    Player humanPlayer(playerColor.getColor(), Player::PlayerType::Human);
+    // The opponent, either computer or human depending on the chosen color
+    Player opponent(playerColor.getColor() == sf::Color::Red ? sf::Color::Black : sf::Color::Red, Player::PlayerType::Computer);
 
-    Game game(window, humanPlayer, computerPlayer);
+    Game game(window, humanPlayer, opponent);
     game.run();
 
     return 0;
 }
+
