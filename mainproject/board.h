@@ -3,7 +3,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <vector>
-#include <limits.h>
+#include <limits>
 #include "player.h"
 #include "piece.h"
 #include "move.h"
@@ -60,6 +60,14 @@ public:
      * @param window The SFML window.
      */
     void inputdata(sf::RenderWindow& window);
+
+    /**
+     * @brief Checks if there is a piece at the given coordinates.
+     * @param x The x-coordinate.
+     * @param y The y-coordinate.
+     * @return True if there is a piece, false otherwise.
+     */
+    bool isPieceAt(int x, int y) const;
 
     /**
      * @brief Highlights the possible moves for a selected piece.
@@ -157,13 +165,17 @@ public:
      */
     void makeMove(Board& board, const Move& move);
 
+    Player& redPlayer;
+///< Reference to the red player.
+Player& blackPlayer;
+    Piece pieces[24];
+    static constexpr int size = 8;
 private:
-    static const int size = 8;  ///< The size of the board.
-    Piece pieces[24];           ///< Array of pieces on the board.
-    Player& redPlayer;          ///< Reference to the red player.
-    Player& blackPlayer;        ///< Reference to the black player.
-    int selectedPieceIndex = -1; ///< Index of the currently selected piece.
-    const int depth = 5;        ///< Depth for the minimax algorithm.
+    ///< The size of the board.
+    ///< Array of pieces on the board.
+    ///< Reference to the black player.
+    int selectedPieceIndex = -1;    ///< Index of the currently selected piece.
+    const int depth = 5;            ///< Depth for the minimax algorithm.
 };
 
 #endif // BOARD_HPP
