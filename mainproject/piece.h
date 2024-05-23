@@ -18,27 +18,6 @@ private:
      * @brief Indicates if the piece is still alive (not captured).
      */
     friend class Board;
-    bool isAlive;
-
-    /**
-     * @brief Indicates if the piece is a king (can move backwards).
-     */
-    bool isKing;
-
-    /**
-     * @brief Color of the piece (Red or Black).
-     */
-    sf::Color color;
-
-    /**
-     * @brief x-coordinate of the piece on the board.
-     */
-    int x;
-
-    /**
-     * @brief y-coordinate of the piece on the board.
-     */
-    int y;
 
 public:
 
@@ -56,6 +35,23 @@ public:
      * @param window Reference to the SFML RenderWindow object where the piece will be drawn.
      */
     void Draw(sf::RenderWindow& window);  // Function to draw the piece
+/**
+ * @brief Indicates if the piece is a king (can move backwards).
+ */
+bool isKing;
+    bool isAlive;
+/**
+ * @brief x-coordinate of the piece on the board.
+ */
+int x;
+/**
+ * @brief y-coordinate of the piece on the board.
+ */
+int y;
+/**
+ * @brief Color of the piece (Red or Black).
+ */
+sf::Color color;
 };
 
 #endif //MAINPROJECT_PIECE_H
