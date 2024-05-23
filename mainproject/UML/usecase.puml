@@ -1,0 +1,26 @@
+@startuml
+actor "Human Player" as HP
+actor "Computer Player" as CP
+
+rectangle "Game" {
+    usecase "Initialize Game" as UC1
+    usecase "Choose Color" as UC2
+    usecase "Select Piece" as UC3
+    usecase "Make Move" as UC4
+    usecase "Handle Player Move" as UC5
+    usecase "Handle Computer Move" as UC6
+    usecase "Check Game Over" as UC7
+}
+
+HP -> UC1 : Start Game
+HP -> UC2 : Choose Color
+HP -> UC3 : Select Piece
+HP -> UC4 : Make Move
+UC4 -> UC5 : Process Move
+
+CP -> UC6 : Make Move
+UC6 -> UC4 : Process Move
+
+UC5 -> UC7 : Check Game Over
+UC6 -> UC7 : Check Game Over
+@enduml
