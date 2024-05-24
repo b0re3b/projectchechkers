@@ -9,3 +9,17 @@
 2	637	1716555048671750670	CMakeFiles/mainproject.dir/board.cpp.o	a4810c586478ff3e
 595	851	1716555048885851177	CMakeFiles/mainproject.dir/movenode.cpp.o	f84571ad2c921d51
 851	883	1716555048918866080	mainproject	c3ef470e29db7320
+3	1423	1716567799470367714	_deps/googletest-build/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o	8fb7309309c0a039
+1424	1456	1716567799510617000	lib/libgtestd.a	66bc469ad9e163d8
+4	33	1716567799649633729	CMakeFiles/testproject.dir/logic.cpp.o	39a28eec382bf241
+5	502	1716567800113410872	CMakeFiles/testproject.dir/gameloop.cpp.o	a888c4e9c13ad485
+4	514	1716567800126415567	CMakeFiles/testproject.dir/piece.cpp.o	2ac89abc9518ac8e
+5	528	1716567800139607258	CMakeFiles/testproject.dir/menu.cpp.o	ad35680a935e1aee
+34	529	1716567800141714618	CMakeFiles/testproject.dir/player.cpp.o	9b6d49a5ea1927e3
+503	534	1716567800150244891	CMakeFiles/testproject.dir/move.cpp.o	2c6583019a6fdb34
+5	552	1716567800166419585	CMakeFiles/testproject.dir/board.cpp.o	308881dbc3557d07
+4	719	1716567800331186945	CMakeFiles/testproject.dir/testproject.cpp.o	4dd6bacc31c028b3
+514	796	1716567800411229687	CMakeFiles/testproject.dir/movenode.cpp.o	dddd4da846571c4d
+528	929	1716567800543014301	_deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o	8b6d1e14b1b44db5
+929	949	1716567800566696000	lib/libgtest_maind.a	f90a32413b14fddb
+949	1048	1716567800662611906	testproject	f6abb0b06bcb0869
