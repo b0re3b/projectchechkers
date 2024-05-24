@@ -1,0 +1,11 @@
+# ninja log v5
+1	34	1716555048070671674	CMakeFiles/mainproject.dir/logic.cpp.o	be9877c6f22d9b61
+35	568	1716555048599864931	CMakeFiles/mainproject.dir/player.cpp.o	86d5de9a4a2d014c
+571	595	1716555048631322457	CMakeFiles/mainproject.dir/move.cpp.o	dc4f0684af987050
+2	602	1716555048631495036	CMakeFiles/mainproject.dir/gameloop.cpp.o	e909e6d1333e6b7b
+2	604	1716555048636377369	CMakeFiles/mainproject.dir/piece.cpp.o	2b655c3e6fd8b2a7
+2	610	1716555048643485853	CMakeFiles/mainproject.dir/menu.cpp.o	b5db52dfe6d8376a
+1	611	1716555048644736071	CMakeFiles/mainproject.dir/main.cpp.o	9646755aa5c41654
+2	637	1716555048671750670	CMakeFiles/mainproject.dir/board.cpp.o	a4810c586478ff3e
+595	851	1716555048885851177	CMakeFiles/mainproject.dir/movenode.cpp.o	f84571ad2c921d51
+851	883	1716555048918866080	mainproject	c3ef470e29db7320
