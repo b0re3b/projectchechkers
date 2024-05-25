@@ -46,6 +46,7 @@ public:
 
 private:
     friend class Board;
+    friend class logic;
     int startX; /**< Starting X coordinate. */
     int startY; /**< Starting Y coordinate. */
     int endX;   /**< Ending X coordinate. */

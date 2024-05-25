@@ -23,13 +23,13 @@ Menu::Menu(sf::RenderWindow& window) : window(window) {}
  * @return Player object with the chosen color. If the window closes before a choice is made, it defaults to a Player object with color Red.
  */
 Player Menu::chooseColor() {
-    // Load the font for the text
+
     sf::Font font;
     if (!font.loadFromFile("/Users/bogdanresetko/Desktop/projects2024/дфддфдф/mainproject/ArialMT.ttf")) {
         std::cerr << "Font file not found!" << std::endl;
     }
 
-    // Create and position text elements
+
     sf::Text text, redText, blackText;
 
     text.setFont(font);
@@ -50,7 +50,7 @@ Player Menu::chooseColor() {
     blackText.setFillColor(sf::Color::Black);
     blackText.setPosition(100, 300);
 
-    // Main menu loop
+
     while (window.isOpen()) {
         sf::Event event;
         while (window.pollEvent(event)) {
@@ -58,23 +58,22 @@ Player Menu::chooseColor() {
                 window.close();
             }
 
-            // Handle mouse click events
             if (event.type == sf::Event::MouseButtonPressed) {
                 sf::Vector2i mousePos = sf::Mouse::getPosition(window);
 
-                // Check if the click is within the bounds of the "Red" text
+
                 if (redText.getGlobalBounds().contains(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y))) {
                     return Player(sf::Color::Red);
                 }
 
-                // Check if the click is within the bounds of the "Black" text
+
                 if (blackText.getGlobalBounds().contains(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y))) {
                     return Player(sf::Color::Black);
                 }
             }
         }
 
-        // Render the menu
+
         window.clear(sf::Color::Green);
         window.draw(text);
         window.draw(redText);
@@ -82,6 +81,6 @@ Player Menu::chooseColor() {
         window.display();
     }
 
-    // Default return value if the window closes unexpectedly
+
     return Player(sf::Color::Red);
 }

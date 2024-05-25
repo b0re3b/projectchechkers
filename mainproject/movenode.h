@@ -42,6 +42,7 @@ public:
 
 private:
     friend class Board;
+    friend class logic;
     Move move;                     /**< The move associated with this node. */
     int score;                     /**< The score of this node. */
     std::vector<MoveNode> children; /**< The children of this node. */

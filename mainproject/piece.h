@@ -18,6 +18,7 @@ private:
      * @brief Indicates if the piece is still alive (not captured).
      */
     friend class Board;
+    friend class logic;
 
 public:
 
@@ -38,20 +39,20 @@ public:
 /**
  * @brief Indicates if the piece is a king (can move backwards).
  */
-bool isKing;
+    bool isKing;
     bool isAlive;
 /**
  * @brief x-coordinate of the piece on the board.
  */
-int x;
+    int x;
 /**
  * @brief y-coordinate of the piece on the board.
  */
-int y;
+    int y;
 /**
  * @brief Color of the piece (Red or Black).
  */
-sf::Color color;
+    sf::Color color;
 };
 
 #endif //MAINPROJECT_PIECE_H

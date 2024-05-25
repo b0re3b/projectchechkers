@@ -38,6 +38,7 @@ public:
     PlayerType type;
 private:
     friend class Board;
+    friend class logic;
     sf::Color color;    /**< The color of the player. */
     /**< The type of the player. */
 };

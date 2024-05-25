@@ -4,7 +4,7 @@
 #include "piece.h"
 #include "menu.h"
 #include "board.h"
-
+#include "logic.h"
 
 class MoveNodeTest : public ::testing::Test {
 protected:
