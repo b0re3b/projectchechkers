@@ -25,6 +25,13 @@ add_executable(mainproject
         player.cpp
         move.cpp
         movenode.cpp
+        drawobjects.cpp
+        gamefacade.h
+        piecestate.h
+        piecestate.cpp
+        observer.h
+        observer.cpp
+        gameobserver.h
 )
 target_link_libraries(mainproject sfml-graphics sfml-audio)
 # Підключаємо заголовкові файли основного проекту та бібліотеку Google Test
@@ -41,6 +48,7 @@ add_executable(testproject
         player.cpp
         move.cpp
         movenode.cpp
+        drawobjects.cpp
 )
 
 # Підключаємо заголовкові файли та бібліотеку Google Test для тестів

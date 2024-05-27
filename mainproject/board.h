@@ -9,17 +9,20 @@
 #include "move.h"
 #include "movenode.h"
 #include "logic.h"
+#include "observer.h"
 
 /**
  * @file board.h
  * @brief Declaration of the Board class and related structures.
  */
+
 class logic;
+
 /**
  * @class Board
  * @brief Represents the game board and its functionality.
  */
-class Board {
+class Board: public Subject {
 public:
     /**
      * @brief Constructor for the Board class.
@@ -58,6 +61,7 @@ public:
     * @return True if the game has ended, false otherwise.
     */
     bool endgame();
+
     /**
      * @brief Checks if there is a piece at the given coordinates.
      * @param x The x-coordinate.
@@ -74,7 +78,6 @@ public:
      */
     void highlight(int pieceIndex, sf::RenderWindow& window, Board& board);
 
-
     /**
      * @brief Draws the game board and pieces on the SFML window.
      * @param window The SFML window.
@@ -89,12 +92,14 @@ public:
      * @return True if the piece belongs to the opponent, false otherwise.
      */
     bool opponentPiece(int x, int y, const sf::Color& colorToCheck);
+
     /**
- * @brief Evaluates the board for the Minimax algorithm.
- * @param board The game board.
- * @return The evaluated score.
- */
+     * @brief Evaluates the board for the Minimax algorithm.
+     * @param board The game board.
+     * @return The evaluated score.
+     */
     int evaluateBoard(Board& board);
+
     /**
      * @brief Generates the index of the piece that was clicked by the mouse.
      * @param mouseX The x-coordinate of the mouse.
@@ -103,18 +108,14 @@ public:
      */
     int MousePosition(int mouseX, int mouseY);
 
-    Player& redPlayer;///< Reference to the red player.
-    Player& blackPlayer;
-    Piece pieces[24];
-    static constexpr int size = 8;
+    Player& redPlayer;  ///< Reference to the red player.
+    Player& blackPlayer;///< Reference to the black player.
+    Piece pieces[24];   ///< Array storing the pieces on the board.
+    static constexpr int size = 8; ///< Size of the game board.
+
 private:
-    ///< The size of the board.
-    ///< Array of pieces on the board.
-    ///< Reference to the black player.
     int selectedPieceIndex = -1;    ///< Index of the currently selected piece.
-    logic gameLogic;
-
-
+    logic gameLogic;                ///< Logic object to handle game rules and logic.
 };
 
-#endif
+#endif // BOARD_HPP

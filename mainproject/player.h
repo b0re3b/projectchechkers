@@ -1,3 +1,8 @@
+/**
+ * @file player.h
+ * @brief Header file for the Player class, representing a player in the game.
+ */
+
 #ifndef MAINPROJECT_PLAYER_H
 #define MAINPROJECT_PLAYER_H
 
@@ -35,12 +40,12 @@ public:
      */
     sf::Color getColor() const { return color; }
 
-    PlayerType type;
+    PlayerType type; /**< The type of the player. */
+
 private:
     friend class Board;
     friend class logic;
-    sf::Color color;    /**< The color of the player. */
-    /**< The type of the player. */
+    sf::Color color; /**< The color of the player. */
 };
 
 #endif // MAINPROJECT_PLAYER_H

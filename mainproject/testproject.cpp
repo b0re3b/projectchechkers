@@ -65,7 +65,7 @@ TEST(BoardTest, MinimaxTest) {
 
     Board board(redPlayer, blackPlayer);
     int depth = 3;
-    int evaluation = board.minimax(board, depth, true);
+    int evaluation = gameLogic.minimax(board, depth, true);
     EXPECT_GE(evaluation, -100);
     EXPECT_LE(evaluation, 100);
 }

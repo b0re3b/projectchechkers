@@ -8,6 +8,7 @@
 #include <SFML/Graphics.hpp>
 #include "board.h"
 
+
 /**
  * @brief Represents the main game logic and interaction.
  *
@@ -61,6 +62,7 @@ public:
      * The loop continues until the game window is closed.
      */
     void run();
+
 };
 
 #endif // GAME_HPP

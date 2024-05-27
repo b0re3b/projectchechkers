@@ -7,13 +7,11 @@
 #include "player.h"
 #include <climits>
 #include <algorithm>
-
+#include "iostream"
 class Board;
 class logic {
 
 public:
-
-
 /**
         * @brief Checks the validity of a move for a given piece.
         * @param piece The piece to check the move for.
@@ -65,12 +63,8 @@ public:
    * @param move The move to make.
    */
     static void makeMove(Board& board, const Move& move);
-
-
     Piece pieces[24];
     static constexpr int size = 8;
-
-
 /**
 * @brief Counts the number of possible moves for a player.
 * @param player The player.

@@ -1,7 +1,7 @@
 #include "logic.h"
 #include "board.h"
 #include "player.h"
-
+#include "piece.h"
 /**
  * @brief Checks the validity of a move for a given piece.
  * @param piece The piece to check the move for.
@@ -10,7 +10,10 @@
  * @return True if the move is valid, false otherwise.
  */
 bool logic::validarity(const Piece& piece, int x, int y) {
-    if (!piece.isAlive || x < 0 || x >= size || y < 0 || y >= size || pieces[y * size + x].isAlive) {
+    if (!piece.isAlive || x < 0 || x >= size || y < 0 || y >= size ||
+        std::find_if(std::begin(pieces), std::end(pieces), [&](const Piece& p) {
+            return p.isAlive && p.x == x && p.y == y;
+        }) != std::end(pieces)) {
         return false;
     }
 
@@ -22,22 +25,18 @@ bool logic::validarity(const Piece& piece, int x, int y) {
         return (deltaX == 1 || deltaX == -1) && (deltaY == 1 || deltaY == -1);
     }
 }
+
 /**
  * @brief Counts the number of possible moves for a player.
  * @param player The player.
  * @return The number of possible moves.
  */
 int logic::numberofmoves(Player* player, Board& board) {
-    int count = 0;
-
-    for (int i = 0; i < 24; i++) {
-        if (pieces[i].isAlive && pieces[i].color == player->color) {
-            count += generateMoves(board).size();
-        }
-    }
-
-    return count;
+    return std::count_if(std::begin(pieces), std::end(pieces), [&](const Piece& p) {
+        return p.isAlive && p.color == player->color && !generateMoves(board).empty();
+    });
 }
+
 
 /**
  * @brief Generates the Minimax tree and returns the best move.
@@ -180,9 +179,6 @@ void logic::makeMove(Board& board, const Move& move) {
         piece.isKing = true;
     }
 
-    board.pieces[move.startY * size + move.startX].isAlive = false;
+    piece.isAlive = false;
     board.pieces[move.endY * size + move.endX] = piece;
 }
-
-
-

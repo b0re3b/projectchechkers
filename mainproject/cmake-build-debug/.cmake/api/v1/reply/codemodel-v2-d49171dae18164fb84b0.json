@@ -174,14 +174,14 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "mainproject::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-mainproject-Debug-cc8b2153b97c4a28255b.json",
+					"jsonFile" : "target-mainproject-Debug-fb2d2292cc19561fd00a.json",
 					"name" : "mainproject",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "testproject::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-testproject-Debug-bc93500491e1f46009b6.json",
+					"jsonFile" : "target-testproject-Debug-3760a5c9f1bc03337272.json",
 					"name" : "testproject",
 					"projectIndex" : 0
 				}

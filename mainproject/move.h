@@ -53,4 +53,4 @@ private:
     int endY;   /**< Ending Y coordinate. */
 };
 
-#endif //MAINPROJECT_MOVE_H
+#endif

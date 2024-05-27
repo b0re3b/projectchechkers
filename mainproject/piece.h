@@ -2,10 +2,15 @@
  * @file piece.h
  * @brief Header file for the Piece class, which represents a checker piece on the board.
  */
+
 #ifndef MAINPROJECT_PIECE_H
 #define MAINPROJECT_PIECE_H
 
 #include <SFML/Graphics.hpp>
+#include "piecestate.h" // Including the file with PieceState declaration
+
+class PieceState;
+class Board;
 
 /**
  * @brief Represents a checker piece on the board.
@@ -14,45 +19,59 @@
  */
 class Piece {
 private:
-    /**
-     * @brief Indicates if the piece is still alive (not captured).
-     */
-    friend class Board;
-    friend class logic;
+    PieceState* state;
 
 public:
+    /**
+     * @brief Constructor for the Piece class.
+     * @param initialState The initial state of the piece.
+     * @param king Flag indicating whether the piece is a king.
+     */
+    Piece(PieceState* initialState = nullptr, bool king = false);
 
     /**
-     * @brief Default constructor for the Piece class.
+     * @brief Draws the piece on the given SFML window.
+     * @param window The SFML window on which to draw the piece.
      */
-    Piece();
+    void Draw(sf::RenderWindow& window);
 
     /**
-     * @brief Renders the checker piece on the screen.
-     *
-     * This function draws a circle shape representing the checker piece within the specified SFML RenderWindow.
-     * The piece is only drawn if it is alive (isAlive). If the piece is a king, an additional yellow outline is added to distinguish it.
-     *
-     * @param window Reference to the SFML RenderWindow object where the piece will be drawn.
+     * @brief Destructor for the Piece class.
      */
-    void Draw(sf::RenderWindow& window);  // Function to draw the piece
-/**
- * @brief Indicates if the piece is a king (can move backwards).
- */
-    bool isKing;
-    bool isAlive;
-/**
- * @brief x-coordinate of the piece on the board.
- */
-    int x;
-/**
- * @brief y-coordinate of the piece on the board.
- */
-    int y;
-/**
- * @brief Color of the piece (Red or Black).
- */
-    sf::Color color;
+    ~Piece() {
+        delete state;
+    }
+
+    /**
+     * @brief Sets the state of the piece.
+     * @param newState The new state of the piece.
+     */
+    void setState(PieceState* newState) {
+        delete state;
+        state = newState;
+    }
+
+    /**
+     * @brief Moves the piece to the specified position on the board.
+     * @param newX The x-coordinate of the new position.
+     * @param newY The y-coordinate of the new position.
+     * @param board Reference to the game board.
+     */
+    void move(int newX, int newY, Board& board);
+
+    /**
+     * @brief Attacks the piece at the specified position on the board.
+     * @param targetX The x-coordinate of the target position.
+     * @param targetY The y-coordinate of the target position.
+     * @param board Reference to the game board.
+     */
+    void attack(int targetX, int targetY, Board& board);
+
+    bool isKing;    /**< Flag indicating whether the piece is a king. */
+    bool isAlive;   /**< Flag indicating whether the piece is still in play. */
+    int x;          /**< The x-coordinate of the piece on the board. */
+    int y;          /**< The y-coordinate of the piece on the board. */
+    sf::Color color; /**< The color of the piece. */
 };
 
-#endif //MAINPROJECT_PIECE_H
+#endif // MAINPROJECT_PIECE_H
