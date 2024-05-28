@@ -1,0 +1,17 @@
+# ninja log v5
+6	770	1716630826655935389	CMakeFiles/binominaltree.dir/treetemplate.cpp.o	da5320679605639e
+4	594	1716400428719894313	CMakeFiles/binominaltree.dir/rtyui.cpp.o	6bc735bc8c3240e0
+770	891	1716630826778646657	binominaltree	5a1c92b86eaa5fc
+3	249	1716631086574423838	build.ninja	245f224882299580
+3	716	1716630826602198756	CMakeFiles/binominaltree.dir/binomtree.cpp.o	d7633c07cb4d7455
+5	718	1716630826602199714	CMakeFiles/binominaltree.dir/dpstrategy.cpp.o	d92e92f6c6428c4
+1	422	1715715086384586590	CMakeFiles/binominaltree.dir/main.cpp.o	f247beff9c00e3ac
+5	521	1715971119951940332	_deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o	221e32e54accb3e0
+5	1335	1715971120763958954	_deps/googletest-build/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o	f22070ae5e4cbcfd
+1335	1370	1715971120805100000	lib/libgtestd.a	66bc469ad9e163d8
+1370	1385	1715971120820337000	lib/libgtest_maind.a	f90a32413b14fddb
+3	298	1716631086574423838	build.ninja	245f224882299580
+7	662	1716631087240796176	CMakeFiles/testbinom.dir/dpstrategy.cpp.o	fa2ed4b117055d30
+8	719	1716631087298813741	CMakeFiles/testbinom.dir/treetemplate.cpp.o	452db8eed731983c
+7	741	1716631087320668923	CMakeFiles/testbinom.dir/testbinom.cpp.o	4efb524861a158ce
+741	845	1716631087425247960	testbinom	7caaf880f5976360

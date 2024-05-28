@@ -1,0 +1,13 @@
+digraph "BinomialHeapSingleton"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  Node1 [id="Node000001",label="BinomialHeapSingleton",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Singleton class for managing a single instance of BinomialHeap."];
+  Node2 -> Node1 [id="edge1_Node000001_Node000002",dir="back",color="darkorchid3",style="dashed",tooltip=" ",label=" instance",fontcolor="grey" ];
+  Node2 [id="Node000002",label="BinomialHeap",height=0.2,width=0.4,color="gray40", fillcolor="white", style="filled",URL="$class_binomial_heap.html",tooltip="Class representing a binomial heap."];
+  Node3 -> Node2 [id="edge2_Node000002_Node000003",dir="back",color="darkorchid3",style="dashed",tooltip=" ",label=" min_node",fontcolor="grey" ];
+  Node3 [id="Node000003",label="Node",height=0.2,width=0.4,color="gray40", fillcolor="white", style="filled",URL="$class_node.html",tooltip="Class representing a node in the binomial heap."];
+  Node3 -> Node3 [id="edge3_Node000003_Node000003",dir="back",color="darkorchid3",style="dashed",tooltip=" ",label=" parent",fontcolor="grey" ];
+}

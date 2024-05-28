@@ -1,0 +1,23 @@
+# ninja log v5
+1493	1507	1715971074146185873	/Users/bogdanresetko/Desktop/projects2024/binominaltree/cmake-build-debug/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-done	b1c440f87d9aa373
+1445	1455	1715971074093775690	googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-patch	cadd7f0330ec5acd
+1445	1455	1715971074093775690	/Users/bogdanresetko/Desktop/projects2024/binominaltree/cmake-build-debug/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-patch	cadd7f0330ec5acd
+0	16	1715971072654785594	googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-mkdir	3be996ad9cb8776b
+16	1435	1715971074074075690	/Users/bogdanresetko/Desktop/projects2024/binominaltree/cmake-build-debug/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-download	bfdcfc4ef460226f
+16	1435	1715971074074075690	googletest-populate-prefix/src/release-1.11.0.tar.gz	bfdcfc4ef460226f
+1435	1445	1715971074083933565	googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-update	3542904006d2ef95
+16	1435	1715971074074075690	/Users/bogdanresetko/Desktop/projects2024/binominaltree/cmake-build-debug/_deps/googletest-subbuild/googletest-populate-prefix/src/release-1.11.0.tar.gz	bfdcfc4ef460226f
+0	16	1715971072654785594	/Users/bogdanresetko/Desktop/projects2024/binominaltree/cmake-build-debug/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-mkdir	3be996ad9cb8776b
+1455	1465	1715971074103797642	googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-configure	a75a720372b9ef3a
+1465	1474	1715971074113218656	googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-build	c2bcc74cc5e505f0
+1465	1474	1715971074113218656	/Users/bogdanresetko/Desktop/projects2024/binominaltree/cmake-build-debug/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-build	c2bcc74cc5e505f0
+1455	1465	1715971074103797642	/Users/bogdanresetko/Desktop/projects2024/binominaltree/cmake-build-debug/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-configure	a75a720372b9ef3a
+1474	1484	1715971074122698585	googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-install	b2bbbc1eac98e3d4
+16	1435	1715971074074075690	googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-download	bfdcfc4ef460226f
+1435	1445	1715971074083933565	/Users/bogdanresetko/Desktop/projects2024/binominaltree/cmake-build-debug/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-update	3542904006d2ef95
+1493	1507	1715971074146185873	googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-done	b1c440f87d9aa373
+1474	1484	1715971074122698585	/Users/bogdanresetko/Desktop/projects2024/binominaltree/cmake-build-debug/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-install	b2bbbc1eac98e3d4
+1484	1493	1715971074132236095	/Users/bogdanresetko/Desktop/projects2024/binominaltree/cmake-build-debug/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-test	9ba9578fc93718c1
+1484	1493	1715971074132236095	googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-test	9ba9578fc93718c1
+1493	1507	1715971074146185873	CMakeFiles/googletest-populate-complete	b1c440f87d9aa373
+1493	1507	1715971074146185873	/Users/bogdanresetko/Desktop/projects2024/binominaltree/cmake-build-debug/_deps/googletest-subbuild/CMakeFiles/googletest-populate-complete	b1c440f87d9aa373

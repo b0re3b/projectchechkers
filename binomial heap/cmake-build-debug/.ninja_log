@@ -1,0 +1,17 @@
+# ninja log v5
+7	550	1716631184418277924	CMakeFiles/binomial_heap.dir/binomial_heap.cpp.o	f214ba8342d142df
+550	649	1716631184519207757	binomial_heap	78a7ab9960f38446
+6	492	1716283345295413581	CMakeFiles/binomial_heap.dir/node.cpp.o	6853e23827d04eb4
+8	507	1716631184373181442	CMakeFiles/binomial_heap.dir/heaprealization.cpp.o	6ec1b4abab9fffa4
+4	445	1716631931381256467	CMakeFiles/testheap.dir/node.cpp.o	a05db8f9142c5e5c
+3	506	1716631931442327836	CMakeFiles/testheap.dir/heaprealization.cpp.o	6d7961d7b5475124
+4	604	1716631931540847187	_deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o	4fb79d845498718e
+3	636	1716631931573115556	CMakeFiles/testheap.dir/testheap.cpp.o	86dfef54027d3111
+4	1424	1716631932358292112	_deps/googletest-build/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o	56dce4bf5bd11a38
+1424	1460	1716631932400777000	lib/libgtestd.a	66bc469ad9e163d8
+1460	1474	1716631932415407000	lib/libgtest_maind.a	f90a32413b14fddb
+1474	1568	1716631932505863604	testheap	87faccfd87d8b9
+19	536	1716882678864513135	CMakeFiles/testheap.dir/node.cpp.o	a05db8f9142c5e5c
+18	580	1716882678911112947	CMakeFiles/testheap.dir/heaprealization.cpp.o	6d7961d7b5475124
+17	716	1716882679045993773	CMakeFiles/testheap.dir/testheap.cpp.o	86dfef54027d3111
+716	876	1716882679206549602	testheap	87faccfd87d8b9
