@@ -1,8 +1,3 @@
-/**
- * @file player.h
- * @brief Header file for the Player class, representing a player in the game.
- */
-
 #ifndef MAINPROJECT_PLAYER_H
 #define MAINPROJECT_PLAYER_H
 
@@ -25,14 +20,14 @@ public:
      * @brief Constructor for Player class with default type as Human.
      * @param color The color of the player.
      */
-    Player(const sf::Color color);
+    Player(const sf::Color color, int difficulty = 1);
 
     /**
      * @brief Constructor for Player class.
      * @param color The color of the player.
      * @param type The type of the player.
      */
-    Player(sf::Color color, PlayerType type);
+    Player(sf::Color color, PlayerType type, int difficulty = 1);
 
     /**
      * @brief Getter function for the color of the player.
@@ -40,12 +35,25 @@ public:
      */
     sf::Color getColor() const { return color; }
 
-    PlayerType type; /**< The type of the player. */
+    /**
+     * @brief Getter function for the type of the player.
+     * @return The type of the player.
+     */
+    PlayerType getType() const { return type; }
+
+    /**
+     * @brief Setter function for the type of the player.
+     * @param newType The new type of the player.
+     */
+    void setType(PlayerType newType) { type = newType; }
 
 private:
+    int difficulty; /**< The difficulty level of the computer player. */
+    sf::Color color; /**< The color of the player. */
+    PlayerType type; /**< The type of the player. */
+
     friend class Board;
     friend class logic;
-    sf::Color color; /**< The color of the player. */
 };
 
 #endif // MAINPROJECT_PLAYER_H

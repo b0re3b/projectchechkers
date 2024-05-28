@@ -24,6 +24,6 @@ CMake Deprecation Warning at cmake-build-debug/_deps/googletest-src/googletest/C
 
 
 -- Found SFML 2.6.1 in /Library/Frameworks/SFML.framework/Resources/CMake
--- Configuring done (0.2s)
+-- Configuring done (0.3s)
 -- Generating done (0.0s)
 -- Build files have been written to: /Users/bogdanresetko/Documents/GitHub/projectchechkers/mainproject/cmake-build-debug

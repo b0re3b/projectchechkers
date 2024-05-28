@@ -38,7 +38,7 @@
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 36,
+				"line" : 37,
 				"parent" : 0
 			},
 			{
@@ -82,7 +82,7 @@
 			{
 				"command" : 6,
 				"file" : 0,
-				"line" : 38,
+				"line" : 39,
 				"parent" : 0
 			}
 		]
@@ -231,7 +231,8 @@
 				10,
 				11,
 				13,
-				15
+				15,
+				16
 			]
 		}
 	],
@@ -327,6 +328,11 @@
 		{
 			"backtrace" : 1,
 			"path" : "gameobserver.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "paralel.h",
 			"sourceGroupIndex" : 1
 		}
 	],

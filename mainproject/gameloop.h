@@ -62,7 +62,7 @@ public:
      * The loop continues until the game window is closed.
      */
     void run();
-
+    int difficulty = 1;
 };
 
 #endif // GAME_HPP

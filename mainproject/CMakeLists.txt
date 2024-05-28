@@ -32,6 +32,7 @@ add_executable(mainproject
         observer.h
         observer.cpp
         gameobserver.h
+        paralel.h
 )
 target_link_libraries(mainproject sfml-graphics sfml-audio)
 # Підключаємо заголовкові файли основного проекту та бібліотеку Google Test

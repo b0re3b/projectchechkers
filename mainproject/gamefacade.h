@@ -12,6 +12,7 @@ private:
     Menu menu; /**< Menu object for player color selection. */
 
 public:
+
     /**
      * @brief Constructs a GameFacade object.
      */
@@ -21,16 +22,16 @@ public:
      * @brief Runs the game.
      */
     void runGame() {
-        // Choose player colors
+
         Player playerColor = menu.chooseColor();
         Player humanPlayer(playerColor.getColor(), Player::PlayerType::Human);
         Player opponent(playerColor.getColor() == sf::Color::Red ? sf::Color::Black : sf::Color::Red, Player::PlayerType::Computer);
 
-        // Create game observer
-        GameObserver observer(Board, sf::Window); // Assuming 'board' and 'window' are defined somewhere
 
-        // Start the game
-        Game game(window, humanPlayer, opponent);
+        GameObserver observer(Board, sf::Window);
+
+
+        Game game(window,  opponent, humanPlayer);
         game.run();
     }
 };

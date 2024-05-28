@@ -9,6 +9,7 @@
 #include <algorithm>
 #include "iostream"
 class Board;
+
 class logic {
 
 public:
@@ -20,15 +21,6 @@ public:
         * @return True if the move is valid, false otherwise.
         */
     bool validarity(const Piece& piece, int x, int y);
-
-    /**
-     * @brief Implements the Minimax algorithm to search for the best move.
-     * @param board The current board state.
-     * @param depth The depth of the search tree.
-     * @param computerPlayer Boolean indicating if it's the computer's turn.
-     * @return The MoveNode representing the best move found.
-     */
-    MoveNode MinMaxTree(Board board, int depth, bool computerPlayer);
 
     /**
      * @brief Finds the best move using the Minimax algorithm.
@@ -44,19 +36,10 @@ public:
     */
     std::vector<Move> generateMoves(Board& board);
 
-    /**
-     * @brief Minimax algorithm to evaluate the board and choose the best move.
-     * @param board The current board state.
-     * @param depth The depth of the search tree.
-     * @param computerPlayer Boolean indicating if it's the computer's turn.
-     * @return The evaluation score of the board.
-     */
-    int minimax(Board& board, int depth, bool computerPlayer);
-
-    /**
+     /**
      * @brief Executes the computer's move.
      */
-    void ComputerMove(Board& board);
+    void ComputerMove(Board& board) ;
     /**
    * @brief Makes a move on the board.
    * @param board The current board state.
@@ -72,8 +55,10 @@ public:
 */
     int numberofmoves(Player* player,  Board& board);
 
-private:
-    static const int depth = 5;///< Depth for the minimax algorithm.
+    static constexpr int EASY_DEPTH = 1;
+    static constexpr int MEDIUM_DEPTH = 5;
+    static constexpr int HARD_DEPTH = 10;
+    ///< Depth for the minimax algorithm.
 
 };
 

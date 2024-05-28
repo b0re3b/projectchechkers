@@ -1,7 +1,8 @@
 #include "logic.h"
 #include "board.h"
-#include "player.h"
-#include "piece.h"
+#include "thread"
+#include "paralel.h"
+
 /**
  * @brief Checks the validity of a move for a given piece.
  * @param piece The piece to check the move for.
@@ -37,50 +38,6 @@ int logic::numberofmoves(Player* player, Board& board) {
     });
 }
 
-
-/**
- * @brief Generates the Minimax tree and returns the best move.
- * @param board The game board.
- * @param depth The depth of the tree.
- * @param computerPlayer True if the computer is playing, false otherwise.
- * @return The best move.
- */
-MoveNode logic::MinMaxTree(Board board, int depth, bool computerPlayer) {
-    if (depth == 0 || board.endgame()) {
-        return MoveNode(Move(), board.evaluateBoard(board));
-    }
-
-    std::vector<Move> moves = generateMoves(board);
-
-    if (moves.empty()) {
-        return MoveNode(Move(), computerPlayer ? INT_MIN : INT_MAX);
-    }
-
-    Move bestMove;
-    int bestScore = computerPlayer ? INT_MIN : INT_MAX;
-
-    for (const Move& move : moves) {
-        Board newBoard = board;
-        makeMove(newBoard, move);
-        int score = MinMaxTree(newBoard, depth - 1, !computerPlayer).score;
-
-        if (computerPlayer) {
-            if (score > bestScore) {
-                bestScore = score;
-                bestMove = move;
-            }
-        } else {
-            if (score < bestScore) {
-                bestScore = score;
-                bestMove = move;
-            }
-        }
-    }
-
-    return MoveNode(bestMove, bestScore);
-}
-
-
 /**
  * @brief Determines the best move for the computer player.
  * @param depth The depth of the Minimax algorithm.
@@ -88,8 +45,26 @@ MoveNode logic::MinMaxTree(Board board, int depth, bool computerPlayer) {
  * @return The best move.
  */
 Move logic::BestMove(int depth, bool computerPlayer, Board& board) {
-    return MinMaxTree(board, depth, computerPlayer).move;
+    MinimaxThread minm;
+    std::vector<Move> moves = generateMoves(board);
+
+    Move bestMove;
+    int bestScore = computerPlayer ? INT_MIN : INT_MAX;
+
+    for (const Move& move : moves) {
+        Board newBoard = board;
+        makeMove(newBoard, move);
+        int score = minm.minimax(newBoard, depth, INT_MIN, INT_MAX, !computerPlayer);
+
+        if ((computerPlayer && score > bestScore) || (!computerPlayer && score < bestScore)) {
+            bestScore = score;
+            bestMove = move;
+        }
+    }
+
+    return bestMove;
 }
+
 /**
  * @brief Generates possible moves for all pieces on the board.
  * @param board The game board.
@@ -119,66 +94,9 @@ std::vector<Move> logic::generateMoves(Board& board) {
 }
 
 /**
- * @brief Implements the Minimax algorithm for move selection.
- * @param board The game board.
- * @param depth The depth of the Minimax algorithm.
- * @param computerPlayer True if the computer is playing, false otherwise.
- * @return The score of the board state.
- */
-int logic::minimax(Board& board, int depth, bool computerPlayer) {
-    if (depth == 0 || board.endgame()) {
-        return board.evaluateBoard(board);
-    }
-
-    std::vector<Move> moves = generateMoves(board);
-
-    if (computerPlayer) {
-        int maxEval = INT_MIN;
-        for (const Move& move : moves) {
-            Board newBoard = board;
-            makeMove(newBoard, move);
-            int eval = minimax(newBoard, depth - 1, false);
-            maxEval = std::max(maxEval, eval);
-        }
-        return maxEval;
-    } else {
-        int minEval = INT_MAX;
-        for (const Move& move : moves) {
-            Board newBoard = board;
-            makeMove(newBoard, move);
-            int eval = minimax(newBoard, depth - 1, true);
-            minEval = std::min(minEval, eval);
-        }
-        return minEval;
-    }
-}
-
-/**
  * @brief Executes the computer's move.
  */
 void logic::ComputerMove(Board& board) {
-    Move bestMove = BestMove(depth, true, board);
+    Move bestMove = BestMove(EASY_DEPTH, true, board);
     makeMove(board, bestMove);
-}
-
-
-
-
-/**
- * @brief Makes a move on the board.
- * @param board The game board.
- * @param move The move to make.
- */
-void logic::makeMove(Board& board, const Move& move) {
-    Piece& piece = board.pieces[move.startY * size + move.startX];
-    piece.x = move.endX;
-    piece.y = move.endY;
-
-    if ((piece.color == sf::Color::Red && piece.y == size - 1) ||
-        (piece.color == sf::Color::Black && piece.y == 0)) {
-        piece.isKing = true;
-    }
-
-    piece.isAlive = false;
-    board.pieces[move.endY * size + move.endX] = piece;
 }

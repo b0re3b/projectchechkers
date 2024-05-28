@@ -4,7 +4,7 @@
  */
 
 #include "gameloop.h"
-
+#include "logic.h"
 /**
  * @brief Constructs a Game object.
  *
@@ -53,6 +53,7 @@ void Board::InitializeGame(Player& redPlayer, Player& blackPlayer) {
  * @param window The SFML window.
  */
 void Board::inputdata(sf::RenderWindow& window) {
+    logic logicInstance;
     sf::Event event;
     while (window.pollEvent(event)) {
         if (event.type == sf::Event::Closed) {
@@ -79,7 +80,7 @@ void Board::inputdata(sf::RenderWindow& window) {
                 int newY = mousePos.y / 75;
 
                 if (selectedPieceIndex != -1 && gameLogic.validarity(pieces[selectedPieceIndex], newX, newY)) {
-                    logic::makeMove(*this, Move(pieces[selectedPieceIndex].x, pieces[selectedPieceIndex].y, newX, newY));
+                    logicInstance.makeMove(*this, Move(pieces[selectedPieceIndex].x, pieces[selectedPieceIndex].y, newX, newY)); // Виклик методу на екземплярі класу
                     selectedPieceIndex = -1;
                     notify();
                     if (redPlayer.color == sf::Color::Black || blackPlayer.color == sf::Color::Black) {
@@ -100,6 +101,7 @@ void Board::inputdata(sf::RenderWindow& window) {
         }
     }
 }
+
 /**
  * @brief Runs the main game loop.
  *
