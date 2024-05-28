@@ -2,11 +2,14 @@
 #include "menu.h"
 #include "iostream"
 
+/**
+ * @brief Draws the game board on the SFML window.
+ * @param window The SFML window to draw on.
+ */
 void Board::draw(sf::RenderWindow& window) {
-
-
     window.clear();
 
+    // Draw the squares of the board
     for (int i = 0; i < size; i++) {
         for (int j = 0; j < size; j++) {
             sf::RectangleShape square(sf::Vector2f(75.f, 75.f));
@@ -22,13 +25,14 @@ void Board::draw(sf::RenderWindow& window) {
         }
     }
 
+    // Draw the pieces on the board
     for (int i = 0; i < 24; i++) {
         pieces[i].Draw(window);
     }
 
     window.display();
-
 }
+
 /**
  * @brief Highlights the possible moves for a selected piece.
  * @param pieceIndex The index of the selected piece.
@@ -36,7 +40,6 @@ void Board::draw(sf::RenderWindow& window) {
  * @param board The game board.
  */
 void Board::highlight(int pieceIndex, sf::RenderWindow& window, Board& board) {
-
     Piece& selectedPiece = pieces[pieceIndex];
 
     int selectedX = selectedPiece.x;
@@ -44,12 +47,10 @@ void Board::highlight(int pieceIndex, sf::RenderWindow& window, Board& board) {
 
     for (int i = -1; i <= 1; i += 2) {
         for (int j = -1; j <= 1; j += 2) {
-
             int targetX = selectedX + i;
             int targetY = selectedY + j;
 
             if (gameLogic.validarity(selectedPiece, targetX, targetY)) {
-
                 sf::RectangleShape highlight(sf::Vector2f(75.f, 75.f));
                 highlight.setPosition(sf::Vector2f(targetX * 75, targetY * 75));
                 highlight.setFillColor(sf::Color::Green);
@@ -64,32 +65,36 @@ void Board::highlight(int pieceIndex, sf::RenderWindow& window, Board& board) {
     window.draw(highlight);
 }
 
+/**
+ * @brief Draws the piece on the SFML window.
+ * @param window The SFML window to draw on.
+ */
 void Piece::Draw(sf::RenderWindow& window) {
-    /// Check if the piece is alive (not captured)
     if (isAlive) {
-        /// Create a circle shape for the piece
-        sf::CircleShape shape(30.f); /// Radius of 30 pixels
-        shape.setFillColor(color);  /// Set the fill color of the piece (red or black)
+        sf::CircleShape shape(30.f);
+        shape.setFillColor(color);
 
-        /// If the piece is a king, add a yellow outline
         if (isKing) {
-            shape.setOutlineThickness(3.f);   /// Outline thickness
-            shape.setOutlineColor(sf::Color::Yellow); /// Outline color
+            shape.setOutlineThickness(3.f);
+            shape.setOutlineColor(sf::Color::Yellow);
         }
 
-        /// Calculate the position on the board and draw the shape
         shape.setPosition(sf::Vector2f(x * 75 + (75 - 2 * 30) / 2, y * 75 + (75 - 2 * 30) / 2));
         window.draw(shape);
     }
 }
 
+/**
+ * @brief Allows the player to choose their color and difficulty level.
+ * @return The player's chosen color and difficulty level.
+ */
 Player Menu::chooseColor() {
     sf::Font font;
     if (!font.loadFromFile("/Users/bogdanresetko/Desktop/projects2024/дфддфдф/mainproject/ArialMT.ttf")) {
         std::cerr << "Font file not found!" << std::endl;
     }
 
-    sf::Text text, redText, blackText, easyText, mediumText, hardText; // Додамо текстові об'єкти для вибору рівня складності
+    sf::Text text, redText, blackText, easyText, mediumText, hardText;
 
     text.setFont(font);
     text.setString("Choose your color and difficulty:");
@@ -109,19 +114,19 @@ Player Menu::chooseColor() {
     blackText.setFillColor(sf::Color::Black);
     blackText.setPosition(100, 250);
 
-    easyText.setFont(font); // Текст для легкого рівня складності
+    easyText.setFont(font);
     easyText.setString("Easy");
     easyText.setCharacterSize(30);
     easyText.setFillColor(sf::Color::White);
     easyText.setPosition(100, 300);
 
-    mediumText.setFont(font); // Текст для середнього рівня складності
+    mediumText.setFont(font);
     mediumText.setString("Medium");
     mediumText.setCharacterSize(30);
     mediumText.setFillColor(sf::Color::White);
     mediumText.setPosition(100, 350);
 
-    hardText.setFont(font); // Текст для важкого рівня складності
+    hardText.setFont(font);
     hardText.setString("Hard");
     hardText.setCharacterSize(30);
     hardText.setFillColor(sf::Color::White);
@@ -137,29 +142,24 @@ Player Menu::chooseColor() {
             if (event.type == sf::Event::MouseButtonPressed) {
                 sf::Vector2i mousePos = sf::Mouse::getPosition(window);
 
-                // Перевірка, чи обрано червоний колір
                 if (redText.getGlobalBounds().contains(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y))) {
                     return Player(sf::Color::Red);
                 }
 
-                // Перевірка, чи обрано чорний колір
                 if (blackText.getGlobalBounds().contains(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y))) {
                     return Player(sf::Color::Black);
                 }
 
-                // Перевірка, чи обрано легкий рівень складності
                 if (easyText.getGlobalBounds().contains(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y))) {
-                    return Player(sf::Color::Red, 1); // Повертаємо об'єкт гравця з обраним кольором і рівнем складності
+                    return Player(sf::Color::Red, 1);
                 }
 
-                // Перевірка, чи обрано середній рівень складності
                 if (mediumText.getGlobalBounds().contains(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y))) {
-                    return Player(sf::Color::Red, 5); // Повертаємо об'єкт гравця з обраним кольором і рівнем складності
+                    return Player(sf::Color::Red, 5);
                 }
 
-                // Перевірка, чи обрано важкий рівень складності
                 if (hardText.getGlobalBounds().contains(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y))) {
-                    return Player(sf::Color::Red, 10); // Повертаємо об'єкт гравця з обраним кольором і рівнем складності
+                    return Player(sf::Color::Red, 10);
                 }
             }
         }
@@ -168,12 +168,11 @@ Player Menu::chooseColor() {
         window.draw(text);
         window.draw(redText);
         window.draw(blackText);
-        window.draw(easyText); // Виводимо текст для легкого рівня складності
-        window.draw(mediumText); // Виводимо текст для середнього рівня складності
-        window.draw(hardText); // Виводимо текст для важкого рівня складності
+        window.draw(easyText);
+        window.draw(mediumText);
+        window.draw(hardText);
         window.display();
     }
 
-    return Player(sf::Color::Red); // Повертаємо об'єкт гравця з червоним кольором за замовчуванням
+    return Player(sf::Color::Red);
 }
-

@@ -68,7 +68,7 @@ void Board::inputdata(sf::RenderWindow& window) {
                 if (clickedPieceIndex != -1 && pieces[clickedPieceIndex].isAlive &&
                     pieces[clickedPieceIndex].color == sf::Color::Black) {
                     selectedPieceIndex = clickedPieceIndex;
-                    highlight(selectedPieceIndex, window, *this); // Highlight the selected piece
+                    highlight(selectedPieceIndex, window, *this);
                 }
             }
         }

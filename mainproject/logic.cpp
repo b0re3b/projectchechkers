@@ -11,16 +11,20 @@
  * @return True if the move is valid, false otherwise.
  */
 bool logic::validarity(const Piece& piece, int x, int y) {
+    // Перевіряємо, чи шашка є живою та чи не виходить за межі дошки
     if (!piece.isAlive || x < 0 || x >= size || y < 0 || y >= size ||
+        // Перевіряємо, чи на полі вже є інша шашка
         std::find_if(std::begin(pieces), std::end(pieces), [&](const Piece& p) {
             return p.isAlive && p.x == x && p.y == y;
         }) != std::end(pieces)) {
         return false;
     }
 
+    // Якщо шашка король, будь-який хід можливий
     if (piece.isKing) {
         return true;
     } else {
+        // Якщо шашка не король, дозволені тільки діагональні ходи на одну клітинку
         int deltaX = x - piece.x;
         int deltaY = y - piece.y;
         return (deltaX == 1 || deltaX == -1) && (deltaY == 1 || deltaY == -1);
@@ -33,6 +37,7 @@ bool logic::validarity(const Piece& piece, int x, int y) {
  * @return The number of possible moves.
  */
 int logic::numberofmoves(Player* player, Board& board) {
+    // Підраховуємо кількість можливих ходів для гравця
     return std::count_if(std::begin(pieces), std::end(pieces), [&](const Piece& p) {
         return p.isAlive && p.color == player->color && !generateMoves(board).empty();
     });
@@ -45,7 +50,6 @@ int logic::numberofmoves(Player* player, Board& board) {
  * @return The best move.
  */
 Move logic::BestMove(int depth, bool computerPlayer, Board& board) {
-    MinimaxThread minm;
     std::vector<Move> moves = generateMoves(board);
 
     Move bestMove;
@@ -54,8 +58,18 @@ Move logic::BestMove(int depth, bool computerPlayer, Board& board) {
     for (const Move& move : moves) {
         Board newBoard = board;
         makeMove(newBoard, move);
-        int score = minm.minimax(newBoard, depth, INT_MIN, INT_MAX, !computerPlayer);
 
+        // Створюємо об'єкт потоку і запускаємо алгоритм Мінімакс
+        MinimaxThread minmaxThread(newBoard, depth, INT_MIN, INT_MAX, !computerPlayer);
+        minmaxThread.start();
+
+        // Чекаємо завершення обчислень у потоці
+        minmaxThread.join();
+
+        // Отримуємо результат обчислень Мінімакс
+        int score = minmaxThread.getResult();
+
+        // Вибираємо кращий хід згідно з оцінкою Мінімакс
         if ((computerPlayer && score > bestScore) || (!computerPlayer && score < bestScore)) {
             bestScore = score;
             bestMove = move;
@@ -73,6 +87,7 @@ Move logic::BestMove(int depth, bool computerPlayer, Board& board) {
 std::vector<Move> logic::generateMoves(Board& board) {
     std::vector<Move> moves;
 
+    // Для кожної живої шашки на дошці шукаємо можливі ходи
     for (int i = 0; i < 24; i++) {
         Piece& piece = board.pieces[i];
 
@@ -97,6 +112,7 @@ std::vector<Move> logic::generateMoves(Board& board) {
  * @brief Executes the computer's move.
  */
 void logic::ComputerMove(Board& board) {
+    // Знаходимо найкращий хід для комп'ютера і виконуємо його
     Move bestMove = BestMove(EASY_DEPTH, true, board);
     makeMove(board, bestMove);
 }

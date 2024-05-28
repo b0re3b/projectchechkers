@@ -47,10 +47,11 @@ public:
      */
     void setType(PlayerType newType) { type = newType; }
 
+    PlayerType type;
 private:
     int difficulty; /**< The difficulty level of the computer player. */
     sf::Color color; /**< The color of the player. */
-    PlayerType type; /**< The type of the player. */
+    /**< The type of the player. */
 
     friend class Board;
     friend class logic;

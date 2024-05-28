@@ -7,7 +7,7 @@
 #define MAINPROJECT_PIECE_H
 
 #include <SFML/Graphics.hpp>
-#include "piecestate.h" // Including the file with PieceState declaration
+#include "piecestate.h"
 
 class PieceState;
 class Board;
