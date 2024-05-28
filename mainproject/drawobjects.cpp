@@ -4,12 +4,12 @@
 
 /**
  * @brief Draws the game board on the SFML window.
+ *
  * @param window The SFML window to draw on.
  */
 void Board::draw(sf::RenderWindow& window) {
     window.clear();
 
-    // Draw the squares of the board
     for (int i = 0; i < size; i++) {
         for (int j = 0; j < size; j++) {
             sf::RectangleShape square(sf::Vector2f(75.f, 75.f));
@@ -25,7 +25,6 @@ void Board::draw(sf::RenderWindow& window) {
         }
     }
 
-    // Draw the pieces on the board
     for (int i = 0; i < 24; i++) {
         pieces[i].Draw(window);
     }
@@ -35,11 +34,13 @@ void Board::draw(sf::RenderWindow& window) {
 
 /**
  * @brief Highlights the possible moves for a selected piece.
+ *
  * @param pieceIndex The index of the selected piece.
  * @param window The SFML window.
  * @param board The game board.
  */
 void Board::highlight(int pieceIndex, sf::RenderWindow& window, Board& board) {
+        logic gameLogic;
     Piece& selectedPiece = pieces[pieceIndex];
 
     int selectedX = selectedPiece.x;
@@ -47,10 +48,12 @@ void Board::highlight(int pieceIndex, sf::RenderWindow& window, Board& board) {
 
     for (int i = -1; i <= 1; i += 2) {
         for (int j = -1; j <= 1; j += 2) {
+
             int targetX = selectedX + i;
             int targetY = selectedY + j;
 
             if (gameLogic.validarity(selectedPiece, targetX, targetY)) {
+
                 sf::RectangleShape highlight(sf::Vector2f(75.f, 75.f));
                 highlight.setPosition(sf::Vector2f(targetX * 75, targetY * 75));
                 highlight.setFillColor(sf::Color::Green);
@@ -67,6 +70,7 @@ void Board::highlight(int pieceIndex, sf::RenderWindow& window, Board& board) {
 
 /**
  * @brief Draws the piece on the SFML window.
+ *
  * @param window The SFML window to draw on.
  */
 void Piece::Draw(sf::RenderWindow& window) {
@@ -86,6 +90,7 @@ void Piece::Draw(sf::RenderWindow& window) {
 
 /**
  * @brief Allows the player to choose their color and difficulty level.
+ *
  * @return The player's chosen color and difficulty level.
  */
 Player Menu::chooseColor() {

@@ -53,7 +53,7 @@ void Board::InitializeGame(Player& redPlayer, Player& blackPlayer) {
  * @param window The SFML window.
  */
 void Board::inputdata(sf::RenderWindow& window) {
-    logic logicInstance;
+    logic gameLogic;
     sf::Event event;
     while (window.pollEvent(event)) {
         if (event.type == sf::Event::Closed) {
@@ -68,7 +68,7 @@ void Board::inputdata(sf::RenderWindow& window) {
                 if (clickedPieceIndex != -1 && pieces[clickedPieceIndex].isAlive &&
                     pieces[clickedPieceIndex].color == sf::Color::Black) {
                     selectedPieceIndex = clickedPieceIndex;
-                    highlight(selectedPieceIndex, window, *this);
+                    highlight(selectedPieceIndex, window, *this); // Highlight the selected piece
                 }
             }
         }
@@ -80,7 +80,7 @@ void Board::inputdata(sf::RenderWindow& window) {
                 int newY = mousePos.y / 75;
 
                 if (selectedPieceIndex != -1 && gameLogic.validarity(pieces[selectedPieceIndex], newX, newY)) {
-                    logicInstance.makeMove(*this, Move(pieces[selectedPieceIndex].x, pieces[selectedPieceIndex].y, newX, newY)); // Виклик методу на екземплярі класу
+                    gameLogic.makeMove(*this, Move(pieces[selectedPieceIndex].x, pieces[selectedPieceIndex].y, newX, newY)); // Виклик методу на екземплярі класу
                     selectedPieceIndex = -1;
                     notify();
                     if (redPlayer.color == sf::Color::Black || blackPlayer.color == sf::Color::Black) {

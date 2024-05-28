@@ -57,4 +57,4 @@ private:
     friend class logic;
 };
 
-#endif // MAINPROJECT_PLAYER_H
+#endif

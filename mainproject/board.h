@@ -115,7 +115,7 @@ public:
 
 private:
     int selectedPieceIndex = -1;    ///< Index of the currently selected piece.
-    logic gameLogic;                ///< Logic object to handle game rules and logic.
+
 };
 
 #endif // BOARD_HPP

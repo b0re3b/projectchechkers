@@ -53,6 +53,52 @@ public:
         return result;
     }
 
+/**
+ * @brief Executes the Minimax algorithm.
+ * @param board The game board.
+ * @param depth The depth of the Minimax algorithm.
+ * @param alpha The alpha value for alpha-beta pruning.
+ * @param beta The beta value for alpha-beta pruning.
+ * @param computerPlayer True if it's the computer's turn, false otherwise.
+ * @return The score of the board state.
+ */
+int minimax(Board& board, int depth, int alpha, int beta, bool computerPlayer) {
+    logic loogic;
+    if (depth == 0 || board.endgame()) {
+        return board.evaluateBoard(board);
+    }
+
+    std::vector<Move> moves = loogic.generateMoves(board);
+
+    if (computerPlayer) {
+        int maxEval = INT_MIN;
+        for (const Move& move : moves) {
+            Board newBoard = board;
+            loogic.makeMove(newBoard, move);
+            int eval = minimax(newBoard, depth - 1, alpha, beta, false);
+            maxEval = std::max(maxEval, eval);
+            alpha = std::max(alpha, eval);
+            if (beta <= alpha) {
+                break;
+            }
+        }
+        return maxEval;
+    } else {
+        int minEval = INT_MAX;
+        for (const Move& move : moves) {
+            Board newBoard = board;
+            loogic.makeMove(newBoard, move);
+            int eval = minimax(newBoard, depth - 1, alpha, beta, true);
+            minEval = std::min(minEval, eval);
+            beta = std::min(beta, eval);
+            if (beta <= alpha) {
+                break;
+            }
+        }
+        return minEval;
+    }
+}
+
 private:
     std::thread thread; ///< The Minimax thread.
     Board& board;       ///< The game board.
@@ -62,51 +108,6 @@ private:
     bool computerPlayer; ///< Indicates whether it's the computer's turn.
     int result;         ///< The result of the Minimax algorithm.
 
-    /**
-     * @brief Executes the Minimax algorithm.
-     * @param board The game board.
-     * @param depth The depth of the Minimax algorithm.
-     * @param alpha The alpha value for alpha-beta pruning.
-     * @param beta The beta value for alpha-beta pruning.
-     * @param computerPlayer True if it's the computer's turn, false otherwise.
-     * @return The score of the board state.
-     */
-    int minimax(Board& board, int depth, int alpha, int beta, bool computerPlayer) {
-        logic loogic;
-        if (depth == 0 || board.endgame()) {
-            return board.evaluateBoard(board);
-        }
-
-        std::vector<Move> moves = loogic.generateMoves(board);
-
-        if (computerPlayer) {
-            int maxEval = INT_MIN;
-            for (const Move& move : moves) {
-                Board newBoard = board;
-                loogic.makeMove(newBoard, move);
-                int eval = minimax(newBoard, depth - 1, alpha, beta, false);
-                maxEval = std::max(maxEval, eval);
-                alpha = std::max(alpha, eval);
-                if (beta <= alpha) {
-                    break;
-                }
-            }
-            return maxEval;
-        } else {
-            int minEval = INT_MAX;
-            for (const Move& move : moves) {
-                Board newBoard = board;
-                loogic.makeMove(newBoard, move);
-                int eval = minimax(newBoard, depth - 1, alpha, beta, true);
-                minEval = std::min(minEval, eval);
-                beta = std::min(beta, eval);
-                if (beta <= alpha) {
-                    break;
-                }
-            }
-            return minEval;
-        }
-    }
 };
 
 #endif

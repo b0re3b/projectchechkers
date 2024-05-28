@@ -3,16 +3,20 @@
 
 /**
  * @brief Constructor for the Board class.
+ *
  * @param red The red player.
  * @param black The black player.
  */
-Board::Board(Player& red, Player& black) : redPlayer(red), blackPlayer(black), gameLogic() {
+Board::Board(Player& red, Player& black) : redPlayer(red), blackPlayer(black) {
     InitializeGame(redPlayer, blackPlayer);
 }
 
-
-
-
+/**
+ * @brief Evaluates the current state of the board.
+ *
+ * @param board The board for which to compute the evaluation.
+ * @return The board's evaluation score.
+ */
 int Board::evaluateBoard(Board& board) {
     int score = 0;
 
@@ -28,8 +32,10 @@ int Board::evaluateBoard(Board& board) {
 
     return score;
 }
+
 /**
  * @brief Checks if there is a piece at the given coordinates.
+ *
  * @param x The x-coordinate.
  * @param y The y-coordinate.
  * @return True if a piece is found at the coordinates, false otherwise.
@@ -42,15 +48,20 @@ bool Board::isPieceAt(int x, int y) const {
     }
     return false;
 }
+
+/**
+ * @brief Checks if the game is at its end.
+ *
+ * @return True if the game has ended, false otherwise.
+ */
 bool Board::endgame() {
+    logic gameLogic;
     return gameLogic.numberofmoves(&redPlayer, *this) == 0 || gameLogic.numberofmoves(&blackPlayer, *this) == 0;
 }
 
-
-
-
 /**
  * @brief Checks if there is an opponent piece at the given coordinates.
+ *
  * @param x The x-coordinate.
  * @param y The y-coordinate.
  * @param colorToCheck The color to check against.
@@ -66,6 +77,7 @@ bool Board::opponentPiece(int x, int y, const sf::Color& colorToCheck) {
 
 /**
  * @brief Gets the index of the piece at the given mouse coordinates.
+ *
  * @param mouseX The x-coordinate of the mouse.
  * @param mouseY The y-coordinate of the mouse.
  * @return The index of the piece.

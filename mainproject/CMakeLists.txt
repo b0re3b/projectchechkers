@@ -50,7 +50,6 @@ add_executable(testproject
         move.cpp
         movenode.cpp
         drawobjects.cpp
-        paralel.h
 )
 
 # Підключаємо заголовкові файли та бібліотеку Google Test для тестів

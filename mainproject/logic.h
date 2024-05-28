@@ -61,7 +61,7 @@ public:
      * @return The number of possible moves.
      */
     int numberofmoves(Player* player, Board& board);
-
+    Piece pieces[24];
     static constexpr int EASY_DEPTH = 1;   ///< Depth for the minimax algorithm in easy mode.
     static constexpr int MEDIUM_DEPTH = 5; ///< Depth for the minimax algorithm in medium mode.
     static constexpr int HARD_DEPTH = 10;  ///< Depth for the minimax algorithm in hard mode.

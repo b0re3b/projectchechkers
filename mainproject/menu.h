@@ -25,4 +25,4 @@ private:
     sf::RenderWindow& window; /**< Reference to the SFML RenderWindow object. */
 };
 
-#endif // MENU_H
+#endif
