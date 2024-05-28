@@ -1,0 +1,392 @@
+\doxysection{Board Class Reference}
+\hypertarget{class_board}{}\label{class_board}\index{Board@{Board}}
+
+
+Represents the game board and its functionality.  
+
+
+
+
+{\ttfamily \#include $<$board.\+h$>$}
+
+Inheritance diagram for Board\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_board}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_board_ad5b157608f1afb42a279ff4618f1746b}{Board}} (\mbox{\hyperlink{class_player}{Player}} \&red, \mbox{\hyperlink{class_player}{Player}} \&black)
+\begin{DoxyCompactList}\small\item\em Constructor for the \doxylink{class_board}{Board} class. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_player}{Player}} \& \mbox{\hyperlink{class_board_a026fa9718ec3e11d9dbc14135dc8bc8b}{get\+Red\+Player}} ()
+\begin{DoxyCompactList}\small\item\em Getter for the red player. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_player}{Player}} \& \mbox{\hyperlink{class_board_a68790756b7e024ebbc9dde1dd23680ed}{get\+Black\+Player}} ()
+\begin{DoxyCompactList}\small\item\em Getter for the black player. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_board_a61dfb82c7d38f13f13bbb10a5dfdc0f2}{Initialize\+Game}} (\mbox{\hyperlink{class_player}{Player}} \&\mbox{\hyperlink{class_board_a5b740b84119ba36008624b0ed5168343}{red\+Player}}, \mbox{\hyperlink{class_player}{Player}} \&\mbox{\hyperlink{class_board_ae1fed3907b87eb89f81794344410509b}{black\+Player}})
+\begin{DoxyCompactList}\small\item\em Initializes the game board with pieces. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_board_ae0c1ec088b9664312550a2e6091c56a0}{inputdata}} (sf\+::\+Render\+Window \&window)
+\begin{DoxyCompactList}\small\item\em Handles player input for moving pieces. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_board_a1a9724c2e538c140e31c3afdba27f761}{endgame}} ()
+\begin{DoxyCompactList}\small\item\em Checks if the game has ended. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_board_a33d07c0a5b365d84bbd673c9df5ed74f}{is\+Piece\+At}} (int x, int y) const
+\begin{DoxyCompactList}\small\item\em Checks if there is a piece at the given coordinates. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_board_a790e366fefe939f72e67210d60119850}{highlight}} (int piece\+Index, sf\+::\+Render\+Window \&window, \mbox{\hyperlink{class_board}{Board}} \&board)
+\begin{DoxyCompactList}\small\item\em Highlights the possible moves for a selected piece. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_board_a1fa67ca04a50dc4a17428848413b1549}{draw}} (sf\+::\+Render\+Window \&window)
+\begin{DoxyCompactList}\small\item\em Draws the game board and pieces on the SFML window. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_board_abbe30916d4a4d9b9ef300c1265c4f1f2}{opponent\+Piece}} (int x, int y, const sf\+::\+Color \&color\+To\+Check)
+\begin{DoxyCompactList}\small\item\em Checks if a piece at a certain position belongs to the opponent. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_board_a3faffd4339880c193735bec8f04e4c70}{evaluate\+Board}} (\mbox{\hyperlink{class_board}{Board}} \&board)
+\begin{DoxyCompactList}\small\item\em Evaluates the board for the Minimax algorithm. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_board_ad3feeca6bb1b1aa48351415e549efdbe}{Mouse\+Position}} (int mouseX, int mouseY)
+\begin{DoxyCompactList}\small\item\em Generates the index of the piece that was clicked by the mouse. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_subject}{Subject}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_subject_a0884bfe374d352c6488a1e40c84246c8}{attach}} (\mbox{\hyperlink{class_observer}{Observer}} \texorpdfstring{$\ast$}{*}observer)
+\begin{DoxyCompactList}\small\item\em Attaches an observer to the subject. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_subject_a752a7596d52ab986539232f8377ca92c}{detach}} (\mbox{\hyperlink{class_observer}{Observer}} \texorpdfstring{$\ast$}{*}observer)
+\begin{DoxyCompactList}\small\item\em Detaches an observer from the subject. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_subject_af104c2baf37c7aa63b2ef6d32c2b3a9c}{notify}} ()
+\begin{DoxyCompactList}\small\item\em Notifies all observers of changes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_player}{Player}} \& \mbox{\hyperlink{class_board_a5b740b84119ba36008624b0ed5168343}{red\+Player}}
+\begin{DoxyCompactList}\small\item\em Reference to the red player. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_player}{Player}} \& \mbox{\hyperlink{class_board_ae1fed3907b87eb89f81794344410509b}{black\+Player}}
+\begin{DoxyCompactList}\small\item\em Reference to the black player. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_piece}{Piece}} \mbox{\hyperlink{class_board_a390535e7cc8ea9aa2f994161476dff5a}{pieces}} \mbox{[}24\mbox{]}
+\begin{DoxyCompactList}\small\item\em Array storing the pieces on the board. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr int \mbox{\hyperlink{class_board_a1da791ecf6f0f4b67db719b627b2c1ee}{size}} = 8
+\begin{DoxyCompactList}\small\item\em Size of the game board. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_board_af678b8e49e55b4936f8ccdf7eb516c6d}{selected\+Piece\+Index}} = -\/1
+\begin{DoxyCompactList}\small\item\em Index of the currently selected piece. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classlogic}{logic}} \mbox{\hyperlink{class_board_a6248ee3d287edf7580dd9311f31486b6}{game\+Logic}}
+\begin{DoxyCompactList}\small\item\em Logic object to handle game rules and logic. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents the game board and its functionality. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_board_ad5b157608f1afb42a279ff4618f1746b}\label{class_board_ad5b157608f1afb42a279ff4618f1746b} 
+\index{Board@{Board}!Board@{Board}}
+\index{Board@{Board}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{Board()}{Board()}}
+{\footnotesize\ttfamily Board\+::\+Board (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_player}{Player}} \&}]{red,  }\item[{\mbox{\hyperlink{class_player}{Player}} \&}]{black }\end{DoxyParamCaption})}
+
+
+
+Constructor for the \doxylink{class_board}{Board} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em red} & The red player. \\
+\hline
+{\em black} & The black player. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_board_a1fa67ca04a50dc4a17428848413b1549}\label{class_board_a1fa67ca04a50dc4a17428848413b1549} 
+\index{Board@{Board}!draw@{draw}}
+\index{draw@{draw}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Board\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})}
+
+
+
+Draws the game board and pieces on the SFML window. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & The SFML window. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_board_a1a9724c2e538c140e31c3afdba27f761}\label{class_board_a1a9724c2e538c140e31c3afdba27f761} 
+\index{Board@{Board}!endgame@{endgame}}
+\index{endgame@{endgame}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{endgame()}{endgame()}}
+{\footnotesize\ttfamily bool Board\+::endgame (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Checks if the game has ended. 
+
+\begin{DoxyReturn}{Returns}
+True if the game has ended, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{class_board_a3faffd4339880c193735bec8f04e4c70}\label{class_board_a3faffd4339880c193735bec8f04e4c70} 
+\index{Board@{Board}!evaluateBoard@{evaluateBoard}}
+\index{evaluateBoard@{evaluateBoard}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{evaluateBoard()}{evaluateBoard()}}
+{\footnotesize\ttfamily int Board\+::evaluate\+Board (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_board}{Board}} \&}]{board }\end{DoxyParamCaption})}
+
+
+
+Evaluates the board for the Minimax algorithm. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em board} & The game board. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The evaluated score. 
+\end{DoxyReturn}
+\Hypertarget{class_board_a68790756b7e024ebbc9dde1dd23680ed}\label{class_board_a68790756b7e024ebbc9dde1dd23680ed} 
+\index{Board@{Board}!getBlackPlayer@{getBlackPlayer}}
+\index{getBlackPlayer@{getBlackPlayer}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{getBlackPlayer()}{getBlackPlayer()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_player}{Player}} \& Board\+::get\+Black\+Player (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Getter for the black player. 
+
+\begin{DoxyReturn}{Returns}
+Reference to the black player. 
+\end{DoxyReturn}
+\Hypertarget{class_board_a026fa9718ec3e11d9dbc14135dc8bc8b}\label{class_board_a026fa9718ec3e11d9dbc14135dc8bc8b} 
+\index{Board@{Board}!getRedPlayer@{getRedPlayer}}
+\index{getRedPlayer@{getRedPlayer}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{getRedPlayer()}{getRedPlayer()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_player}{Player}} \& Board\+::get\+Red\+Player (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Getter for the red player. 
+
+\begin{DoxyReturn}{Returns}
+Reference to the red player. 
+\end{DoxyReturn}
+\Hypertarget{class_board_a790e366fefe939f72e67210d60119850}\label{class_board_a790e366fefe939f72e67210d60119850} 
+\index{Board@{Board}!highlight@{highlight}}
+\index{highlight@{highlight}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{highlight()}{highlight()}}
+{\footnotesize\ttfamily void Board\+::highlight (\begin{DoxyParamCaption}\item[{int}]{piece\+Index,  }\item[{sf\+::\+Render\+Window \&}]{window,  }\item[{\mbox{\hyperlink{class_board}{Board}} \&}]{board }\end{DoxyParamCaption})}
+
+
+
+Highlights the possible moves for a selected piece. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em piece\+Index} & The index of the selected piece. \\
+\hline
+{\em window} & The SFML window. \\
+\hline
+{\em board} & The game board. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_board_a61dfb82c7d38f13f13bbb10a5dfdc0f2}\label{class_board_a61dfb82c7d38f13f13bbb10a5dfdc0f2} 
+\index{Board@{Board}!InitializeGame@{InitializeGame}}
+\index{InitializeGame@{InitializeGame}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{InitializeGame()}{InitializeGame()}}
+{\footnotesize\ttfamily void Board\+::\+Initialize\+Game (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_player}{Player}} \&}]{red\+Player,  }\item[{\mbox{\hyperlink{class_player}{Player}} \&}]{black\+Player }\end{DoxyParamCaption})}
+
+
+
+Initializes the game board with pieces. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em red\+Player} & The red player. \\
+\hline
+{\em black\+Player} & The black player. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_board_ae0c1ec088b9664312550a2e6091c56a0}\label{class_board_ae0c1ec088b9664312550a2e6091c56a0} 
+\index{Board@{Board}!inputdata@{inputdata}}
+\index{inputdata@{inputdata}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{inputdata()}{inputdata()}}
+{\footnotesize\ttfamily void Board\+::inputdata (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})}
+
+
+
+Handles player input for moving pieces. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & The SFML window. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_board_a33d07c0a5b365d84bbd673c9df5ed74f}\label{class_board_a33d07c0a5b365d84bbd673c9df5ed74f} 
+\index{Board@{Board}!isPieceAt@{isPieceAt}}
+\index{isPieceAt@{isPieceAt}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{isPieceAt()}{isPieceAt()}}
+{\footnotesize\ttfamily bool Board\+::is\+Piece\+At (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption}) const}
+
+
+
+Checks if there is a piece at the given coordinates. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate. \\
+\hline
+{\em y} & The y-\/coordinate. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if there is a piece, false otherwise.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate. \\
+\hline
+{\em y} & The y-\/coordinate. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if a piece is found at the coordinates, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{class_board_ad3feeca6bb1b1aa48351415e549efdbe}\label{class_board_ad3feeca6bb1b1aa48351415e549efdbe} 
+\index{Board@{Board}!MousePosition@{MousePosition}}
+\index{MousePosition@{MousePosition}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{MousePosition()}{MousePosition()}}
+{\footnotesize\ttfamily int Board\+::\+Mouse\+Position (\begin{DoxyParamCaption}\item[{int}]{mouseX,  }\item[{int}]{mouseY }\end{DoxyParamCaption})}
+
+
+
+Generates the index of the piece that was clicked by the mouse. 
+
+Gets the index of the piece at the given mouse coordinates.
+
+
+\begin{DoxyParams}{Parameters}
+{\em mouseX} & The x-\/coordinate of the mouse. \\
+\hline
+{\em mouseY} & The y-\/coordinate of the mouse. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The index of the clicked piece.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em mouseX} & The x-\/coordinate of the mouse. \\
+\hline
+{\em mouseY} & The y-\/coordinate of the mouse. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The index of the piece. 
+\end{DoxyReturn}
+\Hypertarget{class_board_abbe30916d4a4d9b9ef300c1265c4f1f2}\label{class_board_abbe30916d4a4d9b9ef300c1265c4f1f2} 
+\index{Board@{Board}!opponentPiece@{opponentPiece}}
+\index{opponentPiece@{opponentPiece}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{opponentPiece()}{opponentPiece()}}
+{\footnotesize\ttfamily bool Board\+::opponent\+Piece (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y,  }\item[{const sf\+::\+Color \&}]{color\+To\+Check }\end{DoxyParamCaption})}
+
+
+
+Checks if a piece at a certain position belongs to the opponent. 
+
+Checks if there is an opponent piece at the given coordinates.
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate of the piece. \\
+\hline
+{\em y} & The y-\/coordinate of the piece. \\
+\hline
+{\em color\+To\+Check} & The color of the opponent. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the piece belongs to the opponent, false otherwise.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate. \\
+\hline
+{\em y} & The y-\/coordinate. \\
+\hline
+{\em color\+To\+Check} & The color to check against. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if there is an opponent piece, false otherwise. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_board_ae1fed3907b87eb89f81794344410509b}\label{class_board_ae1fed3907b87eb89f81794344410509b} 
+\index{Board@{Board}!blackPlayer@{blackPlayer}}
+\index{blackPlayer@{blackPlayer}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{blackPlayer}{blackPlayer}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_player}{Player}}\& Board\+::black\+Player}
+
+
+
+Reference to the black player. 
+
+\Hypertarget{class_board_a6248ee3d287edf7580dd9311f31486b6}\label{class_board_a6248ee3d287edf7580dd9311f31486b6} 
+\index{Board@{Board}!gameLogic@{gameLogic}}
+\index{gameLogic@{gameLogic}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{gameLogic}{gameLogic}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classlogic}{logic}} Board\+::game\+Logic\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Logic object to handle game rules and logic. 
+
+\Hypertarget{class_board_a390535e7cc8ea9aa2f994161476dff5a}\label{class_board_a390535e7cc8ea9aa2f994161476dff5a} 
+\index{Board@{Board}!pieces@{pieces}}
+\index{pieces@{pieces}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{pieces}{pieces}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_piece}{Piece}} Board\+::pieces\mbox{[}24\mbox{]}}
+
+
+
+Array storing the pieces on the board. 
+
+\Hypertarget{class_board_a5b740b84119ba36008624b0ed5168343}\label{class_board_a5b740b84119ba36008624b0ed5168343} 
+\index{Board@{Board}!redPlayer@{redPlayer}}
+\index{redPlayer@{redPlayer}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{redPlayer}{redPlayer}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_player}{Player}}\& Board\+::red\+Player}
+
+
+
+Reference to the red player. 
+
+\Hypertarget{class_board_af678b8e49e55b4936f8ccdf7eb516c6d}\label{class_board_af678b8e49e55b4936f8ccdf7eb516c6d} 
+\index{Board@{Board}!selectedPieceIndex@{selectedPieceIndex}}
+\index{selectedPieceIndex@{selectedPieceIndex}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{selectedPieceIndex}{selectedPieceIndex}}
+{\footnotesize\ttfamily int Board\+::selected\+Piece\+Index = -\/1\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Index of the currently selected piece. 
+
+\Hypertarget{class_board_a1da791ecf6f0f4b67db719b627b2c1ee}\label{class_board_a1da791ecf6f0f4b67db719b627b2c1ee} 
+\index{Board@{Board}!size@{size}}
+\index{size@{size}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{size}{size}}
+{\footnotesize\ttfamily constexpr int Board\+::size = 8\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+
+
+Size of the game board. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{board_8h}{board.\+h}}\item 
+\mbox{\hyperlink{board_8cpp}{board.\+cpp}}\item 
+\mbox{\hyperlink{drawobjects_8cpp}{drawobjects.\+cpp}}\item 
+\mbox{\hyperlink{gameloop_8cpp}{gameloop.\+cpp}}\end{DoxyCompactItemize}

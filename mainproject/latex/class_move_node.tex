@@ -1,0 +1,162 @@
+\doxysection{Move\+Node Class Reference}
+\hypertarget{class_move_node}{}\label{class_move_node}\index{MoveNode@{MoveNode}}
+
+
+Class representing a node in the Min\+Max tree.  
+
+
+
+
+{\ttfamily \#include $<$movenode.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_move_node_aa28f958fc2c53902bae7a56468b318a2}{Move\+Node}} (const \mbox{\hyperlink{class_move}{Move}} \&\mbox{\hyperlink{class_move_node_a5d7829cec47a2326b9ba12c14dd170ce}{move}}, int \mbox{\hyperlink{class_move_node_a018c8f66587b8bcc092c0d00910ae9f8}{score}})
+\begin{DoxyCompactList}\small\item\em Constructor for \doxylink{class_move_node}{Move\+Node} class. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_move}{Move}} \mbox{\hyperlink{class_move_node_a2c4d21bd5922de5c2f66a45abc2a5ca9}{get\+Move}} () const
+\begin{DoxyCompactList}\small\item\em Get the move associated with this node. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_move_node_ac6be6277905b2d5887ca4c1c151f64f7}{get\+Score}} () const
+\begin{DoxyCompactList}\small\item\em Get the score of this node. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{class_move_node}{Move\+Node}} $>$ \mbox{\hyperlink{class_move_node_a9740407daa34fcadcd18073ba87a38f4}{get\+Children}} () const
+\begin{DoxyCompactList}\small\item\em Get the children of this node. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_move_node_a067f9cb591975f3a7814ae7f112223ce}{add\+Child}} (const \mbox{\hyperlink{class_move_node}{Move\+Node}} \&child)
+\begin{DoxyCompactList}\small\item\em Add a child to this node. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_move}{Move}} \mbox{\hyperlink{class_move_node_a5d7829cec47a2326b9ba12c14dd170ce}{move}}
+\item 
+int \mbox{\hyperlink{class_move_node_a018c8f66587b8bcc092c0d00910ae9f8}{score}}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{class_move_node}{Move\+Node}} $>$ \mbox{\hyperlink{class_move_node_acd256b8218247eeaf5e37ba99defd8ec}{children}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_move_node_a12525b6ed7c8186be0bee5cf78e2a49c}{Board}}
+\item 
+class \mbox{\hyperlink{class_move_node_a79da510aedd5dc68deb7a0e3d90ba36d}{logic}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class representing a node in the Min\+Max tree. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_move_node_aa28f958fc2c53902bae7a56468b318a2}\label{class_move_node_aa28f958fc2c53902bae7a56468b318a2} 
+\index{MoveNode@{MoveNode}!MoveNode@{MoveNode}}
+\index{MoveNode@{MoveNode}!MoveNode@{MoveNode}}
+\doxysubsubsection{\texorpdfstring{MoveNode()}{MoveNode()}}
+{\footnotesize\ttfamily Move\+Node\+::\+Move\+Node (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_move}{Move}} \&}]{move,  }\item[{int}]{score }\end{DoxyParamCaption})}
+
+
+
+Constructor for \doxylink{class_move_node}{Move\+Node} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em move} & The move associated with this node. \\
+\hline
+{\em score} & The score of this node. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_move_node_a067f9cb591975f3a7814ae7f112223ce}\label{class_move_node_a067f9cb591975f3a7814ae7f112223ce} 
+\index{MoveNode@{MoveNode}!addChild@{addChild}}
+\index{addChild@{addChild}!MoveNode@{MoveNode}}
+\doxysubsubsection{\texorpdfstring{addChild()}{addChild()}}
+{\footnotesize\ttfamily void Move\+Node\+::add\+Child (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_move_node}{Move\+Node}} \&}]{child }\end{DoxyParamCaption})}
+
+
+
+Add a child to this node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em child} & The child node to be added. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_move_node_a9740407daa34fcadcd18073ba87a38f4}\label{class_move_node_a9740407daa34fcadcd18073ba87a38f4} 
+\index{MoveNode@{MoveNode}!getChildren@{getChildren}}
+\index{getChildren@{getChildren}!MoveNode@{MoveNode}}
+\doxysubsubsection{\texorpdfstring{getChildren()}{getChildren()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{class_move_node}{Move\+Node}} $>$ Move\+Node\+::get\+Children (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the children of this node. 
+
+\begin{DoxyReturn}{Returns}
+A vector of \doxylink{class_move_node}{Move\+Node} representing the children. 
+\end{DoxyReturn}
+\Hypertarget{class_move_node_a2c4d21bd5922de5c2f66a45abc2a5ca9}\label{class_move_node_a2c4d21bd5922de5c2f66a45abc2a5ca9} 
+\index{MoveNode@{MoveNode}!getMove@{getMove}}
+\index{getMove@{getMove}!MoveNode@{MoveNode}}
+\doxysubsubsection{\texorpdfstring{getMove()}{getMove()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_move}{Move}} Move\+Node\+::get\+Move (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the move associated with this node. 
+
+\begin{DoxyReturn}{Returns}
+The move associated with this node. 
+\end{DoxyReturn}
+\Hypertarget{class_move_node_ac6be6277905b2d5887ca4c1c151f64f7}\label{class_move_node_ac6be6277905b2d5887ca4c1c151f64f7} 
+\index{MoveNode@{MoveNode}!getScore@{getScore}}
+\index{getScore@{getScore}!MoveNode@{MoveNode}}
+\doxysubsubsection{\texorpdfstring{getScore()}{getScore()}}
+{\footnotesize\ttfamily int Move\+Node\+::get\+Score (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the score of this node. 
+
+\begin{DoxyReturn}{Returns}
+The score of this node. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Friends And Related Symbol Documentation}
+\Hypertarget{class_move_node_a12525b6ed7c8186be0bee5cf78e2a49c}\label{class_move_node_a12525b6ed7c8186be0bee5cf78e2a49c} 
+\index{MoveNode@{MoveNode}!Board@{Board}}
+\index{Board@{Board}!MoveNode@{MoveNode}}
+\doxysubsubsection{\texorpdfstring{Board}{Board}}
+{\footnotesize\ttfamily friend class \mbox{\hyperlink{class_board}{Board}}\hspace{0.3cm}{\ttfamily [friend]}}
+
+\Hypertarget{class_move_node_a79da510aedd5dc68deb7a0e3d90ba36d}\label{class_move_node_a79da510aedd5dc68deb7a0e3d90ba36d} 
+\index{MoveNode@{MoveNode}!logic@{logic}}
+\index{logic@{logic}!MoveNode@{MoveNode}}
+\doxysubsubsection{\texorpdfstring{logic}{logic}}
+{\footnotesize\ttfamily friend class \mbox{\hyperlink{classlogic}{logic}}\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_move_node_acd256b8218247eeaf5e37ba99defd8ec}\label{class_move_node_acd256b8218247eeaf5e37ba99defd8ec} 
+\index{MoveNode@{MoveNode}!children@{children}}
+\index{children@{children}!MoveNode@{MoveNode}}
+\doxysubsubsection{\texorpdfstring{children}{children}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{class_move_node}{Move\+Node}}$>$ Move\+Node\+::children\hspace{0.3cm}{\ttfamily [private]}}
+
+The children of this node. \Hypertarget{class_move_node_a5d7829cec47a2326b9ba12c14dd170ce}\label{class_move_node_a5d7829cec47a2326b9ba12c14dd170ce} 
+\index{MoveNode@{MoveNode}!move@{move}}
+\index{move@{move}!MoveNode@{MoveNode}}
+\doxysubsubsection{\texorpdfstring{move}{move}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_move}{Move}} Move\+Node\+::move\hspace{0.3cm}{\ttfamily [private]}}
+
+The move associated with this node. \Hypertarget{class_move_node_a018c8f66587b8bcc092c0d00910ae9f8}\label{class_move_node_a018c8f66587b8bcc092c0d00910ae9f8} 
+\index{MoveNode@{MoveNode}!score@{score}}
+\index{score@{score}!MoveNode@{MoveNode}}
+\doxysubsubsection{\texorpdfstring{score}{score}}
+{\footnotesize\ttfamily int Move\+Node\+::score\hspace{0.3cm}{\ttfamily [private]}}
+
+The score of this node. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{movenode_8h}{movenode.\+h}}\item 
+\mbox{\hyperlink{movenode_8cpp}{movenode.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,32 @@
+\doxysection{player.\+h}
+\hypertarget{player_8h_source}{}\label{player_8h_source}\mbox{\hyperlink{player_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifndef\ MAINPROJECT\_PLAYER\_H}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ MAINPROJECT\_PLAYER\_H}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_player}{Player}}\ \{}
+\DoxyCodeLine{00015\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{class_player_a97dc3c423902370176605121e8f68415}{PlayerType}}\ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_player_a97dc3c423902370176605121e8f68415ac1bb19b27818343c1926119b958741b5}{Human}},\ \ \ \ \ \ }
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_player_a97dc3c423902370176605121e8f68415a181900dad960beccb34f53c4e0ff4647}{Computer}}\ \ \ \ }
+\DoxyCodeLine{00022\ \ \ \ \ \};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00028\ \ \ \ \ \mbox{\hyperlink{class_player_aaae88a768d53a2c960f973b7aefff5b4}{Player}}(\textcolor{keyword}{const}\ sf::Color\ \mbox{\hyperlink{class_player_a3e11cd01a03f62f8295ec78e8aa855df}{color}});}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00035\ \ \ \ \ \mbox{\hyperlink{class_player_aaae88a768d53a2c960f973b7aefff5b4}{Player}}(sf::Color\ \mbox{\hyperlink{class_player_a3e11cd01a03f62f8295ec78e8aa855df}{color}},\ \mbox{\hyperlink{class_player_a97dc3c423902370176605121e8f68415}{PlayerType}}\ \mbox{\hyperlink{class_player_a06e4a3eec737ef284f7ae42a60c0967f}{type}});}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00041\ \ \ \ \ sf::Color\ \mbox{\hyperlink{class_player_a6af84629a95779c478adcd24efcefb1b}{getColor}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_player_a3e11cd01a03f62f8295ec78e8aa855df}{color}};\ \}}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \mbox{\hyperlink{class_player_a97dc3c423902370176605121e8f68415}{PlayerType}}\ \mbox{\hyperlink{class_player_a06e4a3eec737ef284f7ae42a60c0967f}{type}};\ }
+\DoxyCodeLine{00045\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_board}{Board}};}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classlogic}{logic}};}
+\DoxyCodeLine{00048\ \ \ \ \ sf::Color\ \mbox{\hyperlink{class_player_a3e11cd01a03f62f8295ec78e8aa855df}{color}};\ }
+\DoxyCodeLine{00049\ \};}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ MAINPROJECT\_PLAYER\_H}}
+
+\end{DoxyCode}

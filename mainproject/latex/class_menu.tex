@@ -1,0 +1,83 @@
+\doxysection{Menu Class Reference}
+\hypertarget{class_menu}{}\label{class_menu}\index{Menu@{Menu}}
+
+
+Class representing the game menu for player color selection.  
+
+
+
+
+{\ttfamily \#include $<$menu.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_menu_a5513badef65d42999086cf528bd23574}{Menu}} (sf\+::\+Render\+Window \&\mbox{\hyperlink{class_menu_a56a1907bf19e3ccdfbd31189c71fc18c}{window}})
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_menu}{Menu} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_player}{Player}} \mbox{\hyperlink{class_menu_a3d3853ab79d00451eba6f9eb6fca9845}{choose\+Color}} ()
+\begin{DoxyCompactList}\small\item\em Displays a menu for the player to choose their color. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+sf\+::\+Render\+Window \& \mbox{\hyperlink{class_menu_a56a1907bf19e3ccdfbd31189c71fc18c}{window}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class representing the game menu for player color selection. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_menu_a5513badef65d42999086cf528bd23574}\label{class_menu_a5513badef65d42999086cf528bd23574} 
+\index{Menu@{Menu}!Menu@{Menu}}
+\index{Menu@{Menu}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{Menu()}{Menu()}}
+{\footnotesize\ttfamily Menu\+::\+Menu (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})}
+
+
+
+Constructs a \doxylink{class_menu}{Menu} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & Reference to the SFML Render\+Window object.\\
+\hline
+\end{DoxyParams}
+Initializes the \doxylink{class_menu}{Menu} object with a reference to the SFML Render\+Window it will use for display.
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & Reference to the SFML Render\+Window object. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_menu_a3d3853ab79d00451eba6f9eb6fca9845}\label{class_menu_a3d3853ab79d00451eba6f9eb6fca9845} 
+\index{Menu@{Menu}!chooseColor@{chooseColor}}
+\index{chooseColor@{chooseColor}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{chooseColor()}{chooseColor()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_player}{Player}} Menu\+::choose\+Color (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Displays a menu for the player to choose their color. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{class_player}{Player} object with the chosen color. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_menu_a56a1907bf19e3ccdfbd31189c71fc18c}\label{class_menu_a56a1907bf19e3ccdfbd31189c71fc18c} 
+\index{Menu@{Menu}!window@{window}}
+\index{window@{window}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{window}{window}}
+{\footnotesize\ttfamily sf\+::\+Render\+Window\& Menu\+::window\hspace{0.3cm}{\ttfamily [private]}}
+
+Reference to the SFML Render\+Window object. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{menu_8h}{menu.\+h}}\item 
+\mbox{\hyperlink{drawobjects_8cpp}{drawobjects.\+cpp}}\item 
+\mbox{\hyperlink{menu_8cpp}{menu.\+cpp}}\end{DoxyCompactItemize}

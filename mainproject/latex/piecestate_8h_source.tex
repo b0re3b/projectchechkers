@@ -1,0 +1,38 @@
+\doxysection{piecestate.\+h}
+\hypertarget{piecestate_8h_source}{}\label{piecestate_8h_source}\mbox{\hyperlink{piecestate_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifndef\ MAINPROJECT\_PIECESTATE\_H}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ MAINPROJECT\_PIECESTATE\_H}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{piece_8h}{piece.h}}"{}}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_board}{Board}};}
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_piece}{Piece}};}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_piece_state}{PieceState}}\ \{}
+\DoxyCodeLine{00018\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_piece_state_ac79ad16fe62dc10bbb2ea1312d452f74}{move}}(\mbox{\hyperlink{class_piece}{Piece}}\&\ piece,\ \textcolor{keywordtype}{int}\ newX,\ \textcolor{keywordtype}{int}\ newY,\ \mbox{\hyperlink{class_board}{Board}}\&\ board)\ =\ 0;}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_piece_state_a6c983313f49e00f7d9037564a9e66863}{attack}}(\mbox{\hyperlink{class_piece}{Piece}}\&\ piece,\ \textcolor{keywordtype}{int}\ targetX,\ \textcolor{keywordtype}{int}\ targetY,\ \mbox{\hyperlink{class_board}{Board}}\&\ board)\ =\ 0;}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_piece_state_ae39cfd2df412b8b40e6abdcf2a54c334}{\string~PieceState}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00041\ \};}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00046\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_regular_state}{RegularState}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_piece_state}{PieceState}}\ \{}
+\DoxyCodeLine{00047\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_regular_state_a085a9b18d68207ffda51e652b2559852}{move}}(\mbox{\hyperlink{class_piece}{Piece}}\&\ piece,\ \textcolor{keywordtype}{int}\ newX,\ \textcolor{keywordtype}{int}\ newY,\ \mbox{\hyperlink{class_board}{Board}}\&\ board)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_regular_state_a953913ac0730a8ea143117466ede30b7}{attack}}(\mbox{\hyperlink{class_piece}{Piece}}\&\ piece,\ \textcolor{keywordtype}{int}\ targetX,\ \textcolor{keywordtype}{int}\ targetY,\ \mbox{\hyperlink{class_board}{Board}}\&\ board)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00065\ \};}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00070\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_king_state}{KingState}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_piece_state}{PieceState}}\ \{}
+\DoxyCodeLine{00071\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_king_state_a67a2100ad7b04c81e58be343e44c8b35}{move}}(\mbox{\hyperlink{class_piece}{Piece}}\&\ piece,\ \textcolor{keywordtype}{int}\ newX,\ \textcolor{keywordtype}{int}\ newY,\ \mbox{\hyperlink{class_board}{Board}}\&\ board)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_king_state_ad82468a6ebbc59cadcd27d6e6d907457}{attack}}(\mbox{\hyperlink{class_piece}{Piece}}\&\ piece,\ \textcolor{keywordtype}{int}\ targetX,\ \textcolor{keywordtype}{int}\ targetY,\ \mbox{\hyperlink{class_board}{Board}}\&\ board)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00089\ \};}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ MAINPROJECT\_PIECESTATE\_H}}
+
+\end{DoxyCode}

@@ -1,0 +1,41 @@
+\doxysection{logic.\+h}
+\hypertarget{logic_8h_source}{}\label{logic_8h_source}\mbox{\hyperlink{logic_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ MAINPROJECT\_LOGIC\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ MAINPROJECT\_LOGIC\_H}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{piece_8h}{piece.h}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{move_8h}{move.h}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{movenode_8h}{movenode.h}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{player_8h}{player.h}}"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <climits>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}iostream"{}}}
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_board}{Board}};}
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classlogic}{logic}}\ \{}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classlogic_a053e8f0135f2304c1957dc3353982cb1}{validarity}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_piece}{Piece}}\&\ piece,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y);}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00031\ \ \ \ \ \mbox{\hyperlink{class_move_node}{MoveNode}}\ \mbox{\hyperlink{classlogic_a88b8e3890050565ad5b25e33a4ff0210}{MinMaxTree}}(\mbox{\hyperlink{class_board}{Board}}\ board,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classlogic_a98222089e28ede4c0f9548b5e56dcf4c}{depth}},\ \textcolor{keywordtype}{bool}\ computerPlayer);}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00039\ \ \ \ \ \mbox{\hyperlink{class_move}{Move}}\ \mbox{\hyperlink{classlogic_a07424ba719f3ef78d1868fa4ac2b044a}{BestMove}}(\textcolor{keywordtype}{int}\ \mbox{\hyperlink{classlogic_a98222089e28ede4c0f9548b5e56dcf4c}{depth}},\ \textcolor{keywordtype}{bool}\ computerPlayer,\mbox{\hyperlink{class_board}{Board}}\&\ board);}
+\DoxyCodeLine{00045\ \ \ \ \ std::vector<Move>\ \mbox{\hyperlink{classlogic_aa21deedc12121f33e5444944533d8ba2}{generateMoves}}(\mbox{\hyperlink{class_board}{Board}}\&\ board);}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classlogic_a4a097b848a805f26d9e60dfa3b28bb47}{minimax}}(\mbox{\hyperlink{class_board}{Board}}\&\ board,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classlogic_a98222089e28ede4c0f9548b5e56dcf4c}{depth}},\ \textcolor{keywordtype}{bool}\ computerPlayer);}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classlogic_a44d18e806ebdc17bd42b41d57674d6b5}{ComputerMove}}(\mbox{\hyperlink{class_board}{Board}}\&\ board);}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classlogic_ae5b55ff2c2db0d7815af4023ad6ddde9}{makeMove}}(\mbox{\hyperlink{class_board}{Board}}\&\ board,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_move}{Move}}\&\ move);}
+\DoxyCodeLine{00066\ \ \ \ \ \mbox{\hyperlink{class_piece}{Piece}}\ \mbox{\hyperlink{classlogic_a29a5268b3d96fea6042e549ae9a9b923}{pieces}}[24];}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classlogic_ae3ecccc09a7c269e0985913a1a62d1c3}{size}}\ =\ 8;}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classlogic_abd36c2d16e63245ed2cd00b505bb34e6}{numberofmoves}}(\mbox{\hyperlink{class_player}{Player}}*\ player,\ \ \mbox{\hyperlink{class_board}{Board}}\&\ board);}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classlogic_a98222089e28ede4c0f9548b5e56dcf4c}{depth}}\ =\ 5;}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \};}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

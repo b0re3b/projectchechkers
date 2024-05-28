@@ -1,0 +1,100 @@
+\doxysection{Piece\+State Class Reference}
+\hypertarget{class_piece_state}{}\label{class_piece_state}\index{PieceState@{PieceState}}
+
+
+Abstract base class for defining the state of a piece.  
+
+
+
+
+{\ttfamily \#include $<$piecestate.\+h$>$}
+
+Inheritance diagram for Piece\+State\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_piece_state}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_piece_state_ac79ad16fe62dc10bbb2ea1312d452f74}{move}} (\mbox{\hyperlink{class_piece}{Piece}} \&piece, int newX, int newY, \mbox{\hyperlink{class_board}{Board}} \&board)=0
+\begin{DoxyCompactList}\small\item\em Virtual method to handle moving the piece. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_piece_state_a6c983313f49e00f7d9037564a9e66863}{attack}} (\mbox{\hyperlink{class_piece}{Piece}} \&piece, int targetX, int targetY, \mbox{\hyperlink{class_board}{Board}} \&board)=0
+\begin{DoxyCompactList}\small\item\em Virtual method to handle attacking with the piece. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_piece_state_ae39cfd2df412b8b40e6abdcf2a54c334}{\texorpdfstring{$\sim$}{\string~}\+Piece\+State}} ()=default
+\begin{DoxyCompactList}\small\item\em Virtual destructor for \doxylink{class_piece_state}{Piece\+State} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Abstract base class for defining the state of a piece. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_piece_state_ae39cfd2df412b8b40e6abdcf2a54c334}\label{class_piece_state_ae39cfd2df412b8b40e6abdcf2a54c334} 
+\index{PieceState@{PieceState}!````~PieceState@{\texorpdfstring{$\sim$}{\string~}PieceState}}
+\index{````~PieceState@{\texorpdfstring{$\sim$}{\string~}PieceState}!PieceState@{PieceState}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}PieceState()}{\string~PieceState()}}
+{\footnotesize\ttfamily virtual Piece\+State\+::\texorpdfstring{$\sim$}{\string~}\+Piece\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+Virtual destructor for \doxylink{class_piece_state}{Piece\+State} class. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_piece_state_a6c983313f49e00f7d9037564a9e66863}\label{class_piece_state_a6c983313f49e00f7d9037564a9e66863} 
+\index{PieceState@{PieceState}!attack@{attack}}
+\index{attack@{attack}!PieceState@{PieceState}}
+\doxysubsubsection{\texorpdfstring{attack()}{attack()}}
+{\footnotesize\ttfamily virtual void Piece\+State\+::attack (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_piece}{Piece}} \&}]{piece,  }\item[{int}]{targetX,  }\item[{int}]{targetY,  }\item[{\mbox{\hyperlink{class_board}{Board}} \&}]{board }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Virtual method to handle attacking with the piece. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em piece} & The piece to perform the attack. \\
+\hline
+{\em targetX} & The x-\/coordinate of the target piece. \\
+\hline
+{\em targetY} & The y-\/coordinate of the target piece. \\
+\hline
+{\em board} & The game board. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_regular_state_a953913ac0730a8ea143117466ede30b7}{Regular\+State}}, and \mbox{\hyperlink{class_king_state_ad82468a6ebbc59cadcd27d6e6d907457}{King\+State}}.
+
+\Hypertarget{class_piece_state_ac79ad16fe62dc10bbb2ea1312d452f74}\label{class_piece_state_ac79ad16fe62dc10bbb2ea1312d452f74} 
+\index{PieceState@{PieceState}!move@{move}}
+\index{move@{move}!PieceState@{PieceState}}
+\doxysubsubsection{\texorpdfstring{move()}{move()}}
+{\footnotesize\ttfamily virtual void Piece\+State\+::move (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_piece}{Piece}} \&}]{piece,  }\item[{int}]{newX,  }\item[{int}]{newY,  }\item[{\mbox{\hyperlink{class_board}{Board}} \&}]{board }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Virtual method to handle moving the piece. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em piece} & The piece to be moved. \\
+\hline
+{\em newX} & The new x-\/coordinate of the piece. \\
+\hline
+{\em newY} & The new y-\/coordinate of the piece. \\
+\hline
+{\em board} & The game board. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_regular_state_a085a9b18d68207ffda51e652b2559852}{Regular\+State}}, and \mbox{\hyperlink{class_king_state_a67a2100ad7b04c81e58be343e44c8b35}{King\+State}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{piecestate_8h}{piecestate.\+h}}\end{DoxyCompactItemize}

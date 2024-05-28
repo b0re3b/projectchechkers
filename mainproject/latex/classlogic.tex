@@ -1,0 +1,280 @@
+\doxysection{logic Class Reference}
+\hypertarget{classlogic}{}\label{classlogic}\index{logic@{logic}}
+
+
+{\ttfamily \#include $<$logic.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classlogic_a053e8f0135f2304c1957dc3353982cb1}{validarity}} (const \mbox{\hyperlink{class_piece}{Piece}} \&piece, int x, int y)
+\begin{DoxyCompactList}\small\item\em Checks the validity of a move for a given piece. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_move_node}{Move\+Node}} \mbox{\hyperlink{classlogic_a88b8e3890050565ad5b25e33a4ff0210}{Min\+Max\+Tree}} (\mbox{\hyperlink{class_board}{Board}} board, int \mbox{\hyperlink{classlogic_a98222089e28ede4c0f9548b5e56dcf4c}{depth}}, bool computer\+Player)
+\begin{DoxyCompactList}\small\item\em Implements the Minimax algorithm to search for the best move. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_move}{Move}} \mbox{\hyperlink{classlogic_a07424ba719f3ef78d1868fa4ac2b044a}{Best\+Move}} (int \mbox{\hyperlink{classlogic_a98222089e28ede4c0f9548b5e56dcf4c}{depth}}, bool computer\+Player, \mbox{\hyperlink{class_board}{Board}} \&board)
+\begin{DoxyCompactList}\small\item\em Finds the best move using the Minimax algorithm. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{class_move}{Move}} $>$ \mbox{\hyperlink{classlogic_aa21deedc12121f33e5444944533d8ba2}{generate\+Moves}} (\mbox{\hyperlink{class_board}{Board}} \&board)
+\begin{DoxyCompactList}\small\item\em Generates all possible moves for the current board state. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classlogic_a4a097b848a805f26d9e60dfa3b28bb47}{minimax}} (\mbox{\hyperlink{class_board}{Board}} \&board, int \mbox{\hyperlink{classlogic_a98222089e28ede4c0f9548b5e56dcf4c}{depth}}, bool computer\+Player)
+\begin{DoxyCompactList}\small\item\em Minimax algorithm to evaluate the board and choose the best move. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classlogic_a44d18e806ebdc17bd42b41d57674d6b5}{Computer\+Move}} (\mbox{\hyperlink{class_board}{Board}} \&board)
+\begin{DoxyCompactList}\small\item\em Executes the computer\textquotesingle{}s move. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classlogic_abd36c2d16e63245ed2cd00b505bb34e6}{numberofmoves}} (\mbox{\hyperlink{class_player}{Player}} \texorpdfstring{$\ast$}{*}player, \mbox{\hyperlink{class_board}{Board}} \&board)
+\begin{DoxyCompactList}\small\item\em Counts the number of possible moves for a player. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classlogic_ae5b55ff2c2db0d7815af4023ad6ddde9}{make\+Move}} (\mbox{\hyperlink{class_board}{Board}} \&board, const \mbox{\hyperlink{class_move}{Move}} \&move)
+\begin{DoxyCompactList}\small\item\em Makes a move on the board. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_piece}{Piece}} \mbox{\hyperlink{classlogic_a29a5268b3d96fea6042e549ae9a9b923}{pieces}} \mbox{[}24\mbox{]}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr int \mbox{\hyperlink{classlogic_ae3ecccc09a7c269e0985913a1a62d1c3}{size}} = 8
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const int \mbox{\hyperlink{classlogic_a98222089e28ede4c0f9548b5e56dcf4c}{depth}} = 5
+\begin{DoxyCompactList}\small\item\em Depth for the minimax algorithm. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classlogic_a07424ba719f3ef78d1868fa4ac2b044a}\label{classlogic_a07424ba719f3ef78d1868fa4ac2b044a} 
+\index{logic@{logic}!BestMove@{BestMove}}
+\index{BestMove@{BestMove}!logic@{logic}}
+\doxysubsubsection{\texorpdfstring{BestMove()}{BestMove()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_move}{Move}} logic\+::\+Best\+Move (\begin{DoxyParamCaption}\item[{int}]{depth,  }\item[{bool}]{computer\+Player,  }\item[{\mbox{\hyperlink{class_board}{Board}} \&}]{board }\end{DoxyParamCaption})}
+
+
+
+Finds the best move using the Minimax algorithm. 
+
+Determines the best move for the computer player.
+
+
+\begin{DoxyParams}{Parameters}
+{\em depth} & The depth of the search tree. \\
+\hline
+{\em computer\+Player} & Boolean indicating if it\textquotesingle{}s the computer\textquotesingle{}s turn. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The best move found.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em depth} & The depth of the Minimax algorithm. \\
+\hline
+{\em computer\+Player} & True if the computer is playing, false otherwise. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The best move. 
+\end{DoxyReturn}
+\Hypertarget{classlogic_a44d18e806ebdc17bd42b41d57674d6b5}\label{classlogic_a44d18e806ebdc17bd42b41d57674d6b5} 
+\index{logic@{logic}!ComputerMove@{ComputerMove}}
+\index{ComputerMove@{ComputerMove}!logic@{logic}}
+\doxysubsubsection{\texorpdfstring{ComputerMove()}{ComputerMove()}}
+{\footnotesize\ttfamily void logic\+::\+Computer\+Move (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_board}{Board}} \&}]{board }\end{DoxyParamCaption})}
+
+
+
+Executes the computer\textquotesingle{}s move. 
+
+\Hypertarget{classlogic_aa21deedc12121f33e5444944533d8ba2}\label{classlogic_aa21deedc12121f33e5444944533d8ba2} 
+\index{logic@{logic}!generateMoves@{generateMoves}}
+\index{generateMoves@{generateMoves}!logic@{logic}}
+\doxysubsubsection{\texorpdfstring{generateMoves()}{generateMoves()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{class_move}{Move}} $>$ logic\+::generate\+Moves (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_board}{Board}} \&}]{board }\end{DoxyParamCaption})}
+
+
+
+Generates all possible moves for the current board state. 
+
+Generates possible moves for all pieces on the board.
+
+
+\begin{DoxyParams}{Parameters}
+{\em board} & The current board. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector containing all possible moves.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em board} & The game board. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of possible moves. 
+\end{DoxyReturn}
+\Hypertarget{classlogic_ae5b55ff2c2db0d7815af4023ad6ddde9}\label{classlogic_ae5b55ff2c2db0d7815af4023ad6ddde9} 
+\index{logic@{logic}!makeMove@{makeMove}}
+\index{makeMove@{makeMove}!logic@{logic}}
+\doxysubsubsection{\texorpdfstring{makeMove()}{makeMove()}}
+{\footnotesize\ttfamily void logic\+::make\+Move (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_board}{Board}} \&}]{board,  }\item[{const \mbox{\hyperlink{class_move}{Move}} \&}]{move }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Makes a move on the board. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em board} & The current board state. \\
+\hline
+{\em move} & The move to make.\\
+\hline
+{\em board} & The game board. \\
+\hline
+{\em move} & The move to make. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classlogic_a4a097b848a805f26d9e60dfa3b28bb47}\label{classlogic_a4a097b848a805f26d9e60dfa3b28bb47} 
+\index{logic@{logic}!minimax@{minimax}}
+\index{minimax@{minimax}!logic@{logic}}
+\doxysubsubsection{\texorpdfstring{minimax()}{minimax()}}
+{\footnotesize\ttfamily int logic\+::minimax (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_board}{Board}} \&}]{board,  }\item[{int}]{depth,  }\item[{bool}]{computer\+Player }\end{DoxyParamCaption})}
+
+
+
+Minimax algorithm to evaluate the board and choose the best move. 
+
+Implements the Minimax algorithm for move selection.
+
+
+\begin{DoxyParams}{Parameters}
+{\em board} & The current board state. \\
+\hline
+{\em depth} & The depth of the search tree. \\
+\hline
+{\em computer\+Player} & Boolean indicating if it\textquotesingle{}s the computer\textquotesingle{}s turn. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The evaluation score of the board.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em board} & The game board. \\
+\hline
+{\em depth} & The depth of the Minimax algorithm. \\
+\hline
+{\em computer\+Player} & True if the computer is playing, false otherwise. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The score of the board state. 
+\end{DoxyReturn}
+\Hypertarget{classlogic_a88b8e3890050565ad5b25e33a4ff0210}\label{classlogic_a88b8e3890050565ad5b25e33a4ff0210} 
+\index{logic@{logic}!MinMaxTree@{MinMaxTree}}
+\index{MinMaxTree@{MinMaxTree}!logic@{logic}}
+\doxysubsubsection{\texorpdfstring{MinMaxTree()}{MinMaxTree()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_move_node}{Move\+Node}} logic\+::\+Min\+Max\+Tree (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_board}{Board}}}]{board,  }\item[{int}]{depth,  }\item[{bool}]{computer\+Player }\end{DoxyParamCaption})}
+
+
+
+Implements the Minimax algorithm to search for the best move. 
+
+Generates the Minimax tree and returns the best move.
+
+
+\begin{DoxyParams}{Parameters}
+{\em board} & The current board state. \\
+\hline
+{\em depth} & The depth of the search tree. \\
+\hline
+{\em computer\+Player} & Boolean indicating if it\textquotesingle{}s the computer\textquotesingle{}s turn. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The \doxylink{class_move_node}{Move\+Node} representing the best move found.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em board} & The game board. \\
+\hline
+{\em depth} & The depth of the tree. \\
+\hline
+{\em computer\+Player} & True if the computer is playing, false otherwise. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The best move. 
+\end{DoxyReturn}
+\Hypertarget{classlogic_abd36c2d16e63245ed2cd00b505bb34e6}\label{classlogic_abd36c2d16e63245ed2cd00b505bb34e6} 
+\index{logic@{logic}!numberofmoves@{numberofmoves}}
+\index{numberofmoves@{numberofmoves}!logic@{logic}}
+\doxysubsubsection{\texorpdfstring{numberofmoves()}{numberofmoves()}}
+{\footnotesize\ttfamily int logic\+::numberofmoves (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_player}{Player}} \texorpdfstring{$\ast$}{*}}]{player,  }\item[{\mbox{\hyperlink{class_board}{Board}} \&}]{board }\end{DoxyParamCaption})}
+
+
+
+Counts the number of possible moves for a player. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & The player. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of possible moves. 
+\end{DoxyReturn}
+\Hypertarget{classlogic_a053e8f0135f2304c1957dc3353982cb1}\label{classlogic_a053e8f0135f2304c1957dc3353982cb1} 
+\index{logic@{logic}!validarity@{validarity}}
+\index{validarity@{validarity}!logic@{logic}}
+\doxysubsubsection{\texorpdfstring{validarity()}{validarity()}}
+{\footnotesize\ttfamily bool logic\+::validarity (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_piece}{Piece}} \&}]{piece,  }\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+Checks the validity of a move for a given piece. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em piece} & The piece to check the move for. \\
+\hline
+{\em x} & The x-\/coordinate of the destination. \\
+\hline
+{\em y} & The y-\/coordinate of the destination. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the move is valid, false otherwise. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classlogic_a98222089e28ede4c0f9548b5e56dcf4c}\label{classlogic_a98222089e28ede4c0f9548b5e56dcf4c} 
+\index{logic@{logic}!depth@{depth}}
+\index{depth@{depth}!logic@{logic}}
+\doxysubsubsection{\texorpdfstring{depth}{depth}}
+{\footnotesize\ttfamily const int logic\+::depth = 5\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Depth for the minimax algorithm. 
+
+\Hypertarget{classlogic_a29a5268b3d96fea6042e549ae9a9b923}\label{classlogic_a29a5268b3d96fea6042e549ae9a9b923} 
+\index{logic@{logic}!pieces@{pieces}}
+\index{pieces@{pieces}!logic@{logic}}
+\doxysubsubsection{\texorpdfstring{pieces}{pieces}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_piece}{Piece}} logic\+::pieces\mbox{[}24\mbox{]}}
+
+\Hypertarget{classlogic_ae3ecccc09a7c269e0985913a1a62d1c3}\label{classlogic_ae3ecccc09a7c269e0985913a1a62d1c3} 
+\index{logic@{logic}!size@{size}}
+\index{size@{size}!logic@{logic}}
+\doxysubsubsection{\texorpdfstring{size}{size}}
+{\footnotesize\ttfamily constexpr int logic\+::size = 8\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{logic_8h}{logic.\+h}}\item 
+\mbox{\hyperlink{logic_8cpp}{logic.\+cpp}}\end{DoxyCompactItemize}

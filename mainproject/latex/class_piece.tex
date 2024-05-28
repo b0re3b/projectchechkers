@@ -1,0 +1,219 @@
+\doxysection{Piece Class Reference}
+\hypertarget{class_piece}{}\label{class_piece}\index{Piece@{Piece}}
+
+
+Represents a checker piece on the board.  
+
+
+
+
+{\ttfamily \#include $<$piece.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_piece_a2f5a54013ebbb9369043ef8c4c1cacd8}{Piece}} (\mbox{\hyperlink{class_piece_state}{Piece\+State}} \texorpdfstring{$\ast$}{*}initial\+State=nullptr, bool king=false)
+\begin{DoxyCompactList}\small\item\em Constructor for the \doxylink{class_piece}{Piece} class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_piece_a9f95b8ff5068a8a2cd8c5476e5692462}{Draw}} (sf\+::\+Render\+Window \&window)
+\begin{DoxyCompactList}\small\item\em Draws the piece on the given SFML window. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_piece_a5d7a4f6bade94cb33b6f634de8aa7918}{\texorpdfstring{$\sim$}{\string~}\+Piece}} ()
+\begin{DoxyCompactList}\small\item\em Destructor for the \doxylink{class_piece}{Piece} class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_piece_a8062a9d9bdfc534de2d9311da79cdc2e}{set\+State}} (\mbox{\hyperlink{class_piece_state}{Piece\+State}} \texorpdfstring{$\ast$}{*}new\+State)
+\begin{DoxyCompactList}\small\item\em Sets the state of the piece. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_piece_a18dcc6c141d038a3144aaa7f7be68d3d}{move}} (int newX, int newY, \mbox{\hyperlink{class_board}{Board}} \&board)
+\begin{DoxyCompactList}\small\item\em Moves the piece to the specified position on the board. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_piece_adf9d72a423e6097acfdd908e47d95145}{attack}} (int targetX, int targetY, \mbox{\hyperlink{class_board}{Board}} \&board)
+\begin{DoxyCompactList}\small\item\em Attacks the piece at the specified position on the board. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_piece_a98ddd530a5ffb3ee8242dc5b986aa3c5}{is\+King}}
+\item 
+bool \mbox{\hyperlink{class_piece_a2706790c861fa4181f55f742d50ed105}{is\+Alive}}
+\item 
+int \mbox{\hyperlink{class_piece_a895b6803ce74fe8574d6168d66ac6bb5}{x}}
+\item 
+int \mbox{\hyperlink{class_piece_a97d61c9e42873e2274620c91178e879b}{y}}
+\item 
+sf\+::\+Color \mbox{\hyperlink{class_piece_a41c2a748b38cf1e4fe03f6fccf3958e8}{color}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_piece_state}{Piece\+State}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_piece_a829d7cce3b9000db4323320dc82a25ef}{state}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a checker piece on the board. 
+
+This class stores the state of a checker piece, including its position, color, whether it\textquotesingle{}s a king, and whether it\textquotesingle{}s still in play. It also provides functionality to draw the piece on the screen. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_piece_a2f5a54013ebbb9369043ef8c4c1cacd8}\label{class_piece_a2f5a54013ebbb9369043ef8c4c1cacd8} 
+\index{Piece@{Piece}!Piece@{Piece}}
+\index{Piece@{Piece}!Piece@{Piece}}
+\doxysubsubsection{\texorpdfstring{Piece()}{Piece()}}
+{\footnotesize\ttfamily Piece\+::\+Piece (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_piece_state}{Piece\+State}} \texorpdfstring{$\ast$}{*}}]{initial\+State = {\ttfamily nullptr},  }\item[{bool}]{king = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+Constructor for the \doxylink{class_piece}{Piece} class. 
+
+Renders the checker piece on the screen.
+
+
+\begin{DoxyParams}{Parameters}
+{\em initial\+State} & The initial state of the piece. \\
+\hline
+{\em king} & Flag indicating whether the piece is a king.\\
+\hline
+\end{DoxyParams}
+This function draws a circle shape representing the checker piece within the specified SFML Render\+Window. The piece is only drawn if it is alive (is\+Alive). If the piece is a king, an additional yellow outline is added to distinguish it.
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & Reference to the SFML Render\+Window object where the piece will be drawn. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_piece_a5d7a4f6bade94cb33b6f634de8aa7918}\label{class_piece_a5d7a4f6bade94cb33b6f634de8aa7918} 
+\index{Piece@{Piece}!````~Piece@{\texorpdfstring{$\sim$}{\string~}Piece}}
+\index{````~Piece@{\texorpdfstring{$\sim$}{\string~}Piece}!Piece@{Piece}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Piece()}{\string~Piece()}}
+{\footnotesize\ttfamily Piece\+::\texorpdfstring{$\sim$}{\string~}\+Piece (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Destructor for the \doxylink{class_piece}{Piece} class. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_piece_adf9d72a423e6097acfdd908e47d95145}\label{class_piece_adf9d72a423e6097acfdd908e47d95145} 
+\index{Piece@{Piece}!attack@{attack}}
+\index{attack@{attack}!Piece@{Piece}}
+\doxysubsubsection{\texorpdfstring{attack()}{attack()}}
+{\footnotesize\ttfamily void Piece\+::attack (\begin{DoxyParamCaption}\item[{int}]{targetX,  }\item[{int}]{targetY,  }\item[{\mbox{\hyperlink{class_board}{Board}} \&}]{board }\end{DoxyParamCaption})}
+
+
+
+Attacks the piece at the specified position on the board. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em targetX} & The x-\/coordinate of the target position. \\
+\hline
+{\em targetY} & The y-\/coordinate of the target position. \\
+\hline
+{\em board} & Reference to the game board. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_piece_a9f95b8ff5068a8a2cd8c5476e5692462}\label{class_piece_a9f95b8ff5068a8a2cd8c5476e5692462} 
+\index{Piece@{Piece}!Draw@{Draw}}
+\index{Draw@{Draw}!Piece@{Piece}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily void Piece\+::\+Draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})}
+
+
+
+Draws the piece on the given SFML window. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & The SFML window on which to draw the piece. \\
+\hline
+\end{DoxyParams}
+Check if the piece is alive (not captured)
+
+Create a circle shape for the piece
+
+Radius of 30 pixels
+
+Set the fill color of the piece (red or black)
+
+If the piece is a king, add a yellow outline
+
+Outline thickness
+
+Outline color
+
+Calculate the position on the board and draw the shape\Hypertarget{class_piece_a18dcc6c141d038a3144aaa7f7be68d3d}\label{class_piece_a18dcc6c141d038a3144aaa7f7be68d3d} 
+\index{Piece@{Piece}!move@{move}}
+\index{move@{move}!Piece@{Piece}}
+\doxysubsubsection{\texorpdfstring{move()}{move()}}
+{\footnotesize\ttfamily void Piece\+::move (\begin{DoxyParamCaption}\item[{int}]{newX,  }\item[{int}]{newY,  }\item[{\mbox{\hyperlink{class_board}{Board}} \&}]{board }\end{DoxyParamCaption})}
+
+
+
+Moves the piece to the specified position on the board. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em newX} & The x-\/coordinate of the new position. \\
+\hline
+{\em newY} & The y-\/coordinate of the new position. \\
+\hline
+{\em board} & Reference to the game board. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_piece_a8062a9d9bdfc534de2d9311da79cdc2e}\label{class_piece_a8062a9d9bdfc534de2d9311da79cdc2e} 
+\index{Piece@{Piece}!setState@{setState}}
+\index{setState@{setState}!Piece@{Piece}}
+\doxysubsubsection{\texorpdfstring{setState()}{setState()}}
+{\footnotesize\ttfamily void Piece\+::set\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_piece_state}{Piece\+State}} \texorpdfstring{$\ast$}{*}}]{new\+State }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets the state of the piece. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+State} & The new state of the piece. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_piece_a41c2a748b38cf1e4fe03f6fccf3958e8}\label{class_piece_a41c2a748b38cf1e4fe03f6fccf3958e8} 
+\index{Piece@{Piece}!color@{color}}
+\index{color@{color}!Piece@{Piece}}
+\doxysubsubsection{\texorpdfstring{color}{color}}
+{\footnotesize\ttfamily sf\+::\+Color Piece\+::color}
+
+The color of the piece. \Hypertarget{class_piece_a2706790c861fa4181f55f742d50ed105}\label{class_piece_a2706790c861fa4181f55f742d50ed105} 
+\index{Piece@{Piece}!isAlive@{isAlive}}
+\index{isAlive@{isAlive}!Piece@{Piece}}
+\doxysubsubsection{\texorpdfstring{isAlive}{isAlive}}
+{\footnotesize\ttfamily bool Piece\+::is\+Alive}
+
+Flag indicating whether the piece is still in play. \Hypertarget{class_piece_a98ddd530a5ffb3ee8242dc5b986aa3c5}\label{class_piece_a98ddd530a5ffb3ee8242dc5b986aa3c5} 
+\index{Piece@{Piece}!isKing@{isKing}}
+\index{isKing@{isKing}!Piece@{Piece}}
+\doxysubsubsection{\texorpdfstring{isKing}{isKing}}
+{\footnotesize\ttfamily bool Piece\+::is\+King}
+
+Flag indicating whether the piece is a king. \Hypertarget{class_piece_a829d7cce3b9000db4323320dc82a25ef}\label{class_piece_a829d7cce3b9000db4323320dc82a25ef} 
+\index{Piece@{Piece}!state@{state}}
+\index{state@{state}!Piece@{Piece}}
+\doxysubsubsection{\texorpdfstring{state}{state}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_piece_state}{Piece\+State}}\texorpdfstring{$\ast$}{*} Piece\+::state\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_piece_a895b6803ce74fe8574d6168d66ac6bb5}\label{class_piece_a895b6803ce74fe8574d6168d66ac6bb5} 
+\index{Piece@{Piece}!x@{x}}
+\index{x@{x}!Piece@{Piece}}
+\doxysubsubsection{\texorpdfstring{x}{x}}
+{\footnotesize\ttfamily int Piece\+::x}
+
+The x-\/coordinate of the piece on the board. \Hypertarget{class_piece_a97d61c9e42873e2274620c91178e879b}\label{class_piece_a97d61c9e42873e2274620c91178e879b} 
+\index{Piece@{Piece}!y@{y}}
+\index{y@{y}!Piece@{Piece}}
+\doxysubsubsection{\texorpdfstring{y}{y}}
+{\footnotesize\ttfamily int Piece\+::y}
+
+The y-\/coordinate of the piece on the board. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{piece_8h}{piece.\+h}}\item 
+\mbox{\hyperlink{drawobjects_8cpp}{drawobjects.\+cpp}}\item 
+\mbox{\hyperlink{piece_8cpp}{piece.\+cpp}}\end{DoxyCompactItemize}

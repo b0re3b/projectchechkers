@@ -1,0 +1,31 @@
+\doxysection{gameloop.\+h}
+\hypertarget{gameloop_8h_source}{}\label{gameloop_8h_source}\mbox{\hyperlink{gameloop_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#ifndef\ GAME\_HPP}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ GAME\_HPP}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{board_8h}{board.h}}"{}}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_game}{Game}}\ \{}
+\DoxyCodeLine{00018\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00022\ \ \ \ \ sf::RenderWindow\&\ \mbox{\hyperlink{class_game_ad0fb4d8653dcf289fd6573cf5ba0f3d1}{window}};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{class_board}{Board}}\ \mbox{\hyperlink{class_game_af5bc546b0c766ecf2f7e008f750832ed}{board}};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{class_player}{Player}}\&\ \mbox{\hyperlink{class_game_a747a458871d587d8544ab222b4dedfa5}{humanPlayer}};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00037\ \ \ \ \ \mbox{\hyperlink{class_player}{Player}}\&\ \mbox{\hyperlink{class_game_abaf753fdf7bba5de3e126be09259c38e}{computerPlayer}};}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00050\ \ \ \ \ \mbox{\hyperlink{class_game_ad2552ce8878861f03865debbfb7f3fa4}{Game}}(sf::RenderWindow\&\ \mbox{\hyperlink{class_game_ad0fb4d8653dcf289fd6573cf5ba0f3d1}{window}},\ \mbox{\hyperlink{class_player}{Player}}\&\ \mbox{\hyperlink{class_game_a747a458871d587d8544ab222b4dedfa5}{humanPlayer}},\ \mbox{\hyperlink{class_player}{Player}}\&\ \mbox{\hyperlink{class_game_abaf753fdf7bba5de3e126be09259c38e}{computerPlayer}});}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_a1ab78f5ed0d5ea879157357cf2fb2afa}{run}}();}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \};}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ GAME\_HPP}}
+
+\end{DoxyCode}

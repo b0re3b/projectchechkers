@@ -1,0 +1,31 @@
+\doxysection{movenode.\+h}
+\hypertarget{movenode_8h_source}{}\label{movenode_8h_source}\mbox{\hyperlink{movenode_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#ifndef\ MAINPROJECT\_MOVENODE\_H}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#define\ MAINPROJECT\_MOVENODE\_H}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{move_8h}{move.h}}"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_move_node}{MoveNode}}\ \{}
+\DoxyCodeLine{00011\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{class_move_node_aa28f958fc2c53902bae7a56468b318a2}{MoveNode}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_move}{Move}}\&\ \mbox{\hyperlink{class_move_node_a5d7829cec47a2326b9ba12c14dd170ce}{move}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_move_node_a018c8f66587b8bcc092c0d00910ae9f8}{score}});}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{class_move}{Move}}\ \mbox{\hyperlink{class_move_node_a2c4d21bd5922de5c2f66a45abc2a5ca9}{getMove}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_move_node_ac6be6277905b2d5887ca4c1c151f64f7}{getScore}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00035\ \ \ \ \ std::vector<MoveNode>\ \mbox{\hyperlink{class_move_node_a9740407daa34fcadcd18073ba87a38f4}{getChildren}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_move_node_a067f9cb591975f3a7814ae7f112223ce}{addChild}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_move_node}{MoveNode}}\&\ child);}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_board}{Board}};}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classlogic}{logic}};}
+\DoxyCodeLine{00046\ \ \ \ \ \mbox{\hyperlink{class_move}{Move}}\ \mbox{\hyperlink{class_move_node_a5d7829cec47a2326b9ba12c14dd170ce}{move}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_move_node_a018c8f66587b8bcc092c0d00910ae9f8}{score}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00048\ \ \ \ \ std::vector<MoveNode>\ \mbox{\hyperlink{class_move_node_acd256b8218247eeaf5e37ba99defd8ec}{children}};\ }
+\DoxyCodeLine{00049\ \};}
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

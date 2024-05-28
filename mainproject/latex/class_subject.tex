@@ -1,0 +1,92 @@
+\doxysection{Subject Class Reference}
+\hypertarget{class_subject}{}\label{class_subject}\index{Subject@{Subject}}
+
+
+\doxylink{class_subject}{Subject} class that observes changes and notifies observers.  
+
+
+
+
+{\ttfamily \#include $<$observer.\+h$>$}
+
+Inheritance diagram for Subject\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_subject}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_subject_a0884bfe374d352c6488a1e40c84246c8}{attach}} (\mbox{\hyperlink{class_observer}{Observer}} \texorpdfstring{$\ast$}{*}observer)
+\begin{DoxyCompactList}\small\item\em Attaches an observer to the subject. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_subject_a752a7596d52ab986539232f8377ca92c}{detach}} (\mbox{\hyperlink{class_observer}{Observer}} \texorpdfstring{$\ast$}{*}observer)
+\begin{DoxyCompactList}\small\item\em Detaches an observer from the subject. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_subject_af104c2baf37c7aa63b2ef6d32c2b3a9c}{notify}} ()
+\begin{DoxyCompactList}\small\item\em Notifies all observers of changes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{class_observer}{Observer}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{class_subject_a39d24e695db0a792799b351dbebde992}{observers}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{class_subject}{Subject} class that observes changes and notifies observers. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_subject_a0884bfe374d352c6488a1e40c84246c8}\label{class_subject_a0884bfe374d352c6488a1e40c84246c8} 
+\index{Subject@{Subject}!attach@{attach}}
+\index{attach@{attach}!Subject@{Subject}}
+\doxysubsubsection{\texorpdfstring{attach()}{attach()}}
+{\footnotesize\ttfamily void Subject\+::attach (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_observer}{Observer}} \texorpdfstring{$\ast$}{*}}]{observer }\end{DoxyParamCaption})}
+
+
+
+Attaches an observer to the subject. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em observer} & The observer to attach. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_subject_a752a7596d52ab986539232f8377ca92c}\label{class_subject_a752a7596d52ab986539232f8377ca92c} 
+\index{Subject@{Subject}!detach@{detach}}
+\index{detach@{detach}!Subject@{Subject}}
+\doxysubsubsection{\texorpdfstring{detach()}{detach()}}
+{\footnotesize\ttfamily void Subject\+::detach (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_observer}{Observer}} \texorpdfstring{$\ast$}{*}}]{observer }\end{DoxyParamCaption})}
+
+
+
+Detaches an observer from the subject. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em observer} & The observer to detach. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_subject_af104c2baf37c7aa63b2ef6d32c2b3a9c}\label{class_subject_af104c2baf37c7aa63b2ef6d32c2b3a9c} 
+\index{Subject@{Subject}!notify@{notify}}
+\index{notify@{notify}!Subject@{Subject}}
+\doxysubsubsection{\texorpdfstring{notify()}{notify()}}
+{\footnotesize\ttfamily void Subject\+::notify (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Notifies all observers of changes. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_subject_a39d24e695db0a792799b351dbebde992}\label{class_subject_a39d24e695db0a792799b351dbebde992} 
+\index{Subject@{Subject}!observers@{observers}}
+\index{observers@{observers}!Subject@{Subject}}
+\doxysubsubsection{\texorpdfstring{observers}{observers}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{class_observer}{Observer}}\texorpdfstring{$\ast$}{*}$>$ Subject\+::observers\hspace{0.3cm}{\ttfamily [private]}}
+
+Vector to store observers. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{observer_8h}{observer.\+h}}\item 
+\mbox{\hyperlink{observer_8cpp}{observer.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,110 @@
+\doxysection{Game\+Observer Class Reference}
+\hypertarget{class_game_observer}{}\label{class_game_observer}\index{GameObserver@{GameObserver}}
+
+
+Class representing a game observer.  
+
+
+
+
+{\ttfamily \#include $<$gameobserver.\+h$>$}
+
+Inheritance diagram for Game\+Observer\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_game_observer}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_game_observer_a2d58fcf159cfc9726ead1618adfdeac8}{Game\+Observer}} (\mbox{\hyperlink{class_board}{Board}} \&\mbox{\hyperlink{class_game_observer_a00e2c7a2890b8a72a703de537dd9f7ab}{board}}, sf\+::\+Render\+Window \&\mbox{\hyperlink{class_game_observer_aaf456918d497df1bc2edec2c5d1605bc}{window}})
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_game_observer}{Game\+Observer} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_game_observer_ad8e1ebc2c4b7a0017a2ffaec964a7bcd}{\texorpdfstring{$\sim$}{\string~}\+Game\+Observer}} ()
+\begin{DoxyCompactList}\small\item\em Destroys the \doxylink{class_game_observer}{Game\+Observer} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_observer_a9ad220c686a2c9f7ffd4dc332743f7c5}{update}} () override
+\begin{DoxyCompactList}\small\item\em Updates the window when changes occur in the game board. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_observer}{Observer}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{class_observer_afcc6b67be6c386f2f3d2c363aa59cb47}{\texorpdfstring{$\sim$}{\string~}\+Observer}} ()
+\begin{DoxyCompactList}\small\item\em Virtual destructor for \doxylink{class_observer}{Observer} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_board}{Board}} \& \mbox{\hyperlink{class_game_observer_a00e2c7a2890b8a72a703de537dd9f7ab}{board}}
+\item 
+sf\+::\+Render\+Window \& \mbox{\hyperlink{class_game_observer_aaf456918d497df1bc2edec2c5d1605bc}{window}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class representing a game observer. 
+
+This class observes changes in the game board and updates the window accordingly. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_game_observer_a2d58fcf159cfc9726ead1618adfdeac8}\label{class_game_observer_a2d58fcf159cfc9726ead1618adfdeac8} 
+\index{GameObserver@{GameObserver}!GameObserver@{GameObserver}}
+\index{GameObserver@{GameObserver}!GameObserver@{GameObserver}}
+\doxysubsubsection{\texorpdfstring{GameObserver()}{GameObserver()}}
+{\footnotesize\ttfamily Game\+Observer\+::\+Game\+Observer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_board}{Board}} \&}]{board,  }\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructs a \doxylink{class_game_observer}{Game\+Observer} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em board} & Reference to the game board. \\
+\hline
+{\em window} & Reference to the SFML Render\+Window object. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_game_observer_ad8e1ebc2c4b7a0017a2ffaec964a7bcd}\label{class_game_observer_ad8e1ebc2c4b7a0017a2ffaec964a7bcd} 
+\index{GameObserver@{GameObserver}!````~GameObserver@{\texorpdfstring{$\sim$}{\string~}GameObserver}}
+\index{````~GameObserver@{\texorpdfstring{$\sim$}{\string~}GameObserver}!GameObserver@{GameObserver}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}GameObserver()}{\string~GameObserver()}}
+{\footnotesize\ttfamily Game\+Observer\+::\texorpdfstring{$\sim$}{\string~}\+Game\+Observer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Destroys the \doxylink{class_game_observer}{Game\+Observer} object. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_game_observer_a9ad220c686a2c9f7ffd4dc332743f7c5}\label{class_game_observer_a9ad220c686a2c9f7ffd4dc332743f7c5} 
+\index{GameObserver@{GameObserver}!update@{update}}
+\index{update@{update}!GameObserver@{GameObserver}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Game\+Observer\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Updates the window when changes occur in the game board. 
+
+
+
+Implements \mbox{\hyperlink{class_observer_ac75e4b339faeb3ea6fe0a01bf0b4a215}{Observer}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_game_observer_a00e2c7a2890b8a72a703de537dd9f7ab}\label{class_game_observer_a00e2c7a2890b8a72a703de537dd9f7ab} 
+\index{GameObserver@{GameObserver}!board@{board}}
+\index{board@{board}!GameObserver@{GameObserver}}
+\doxysubsubsection{\texorpdfstring{board}{board}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_board}{Board}}\& Game\+Observer\+::board\hspace{0.3cm}{\ttfamily [private]}}
+
+Reference to the game board. \Hypertarget{class_game_observer_aaf456918d497df1bc2edec2c5d1605bc}\label{class_game_observer_aaf456918d497df1bc2edec2c5d1605bc} 
+\index{GameObserver@{GameObserver}!window@{window}}
+\index{window@{window}!GameObserver@{GameObserver}}
+\doxysubsubsection{\texorpdfstring{window}{window}}
+{\footnotesize\ttfamily sf\+::\+Render\+Window\& Game\+Observer\+::window\hspace{0.3cm}{\ttfamily [private]}}
+
+Reference to the SFML Render\+Window object. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{gameobserver_8h}{gameobserver.\+h}}\end{DoxyCompactItemize}

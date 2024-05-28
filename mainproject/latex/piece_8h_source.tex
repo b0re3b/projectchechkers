@@ -1,0 +1,45 @@
+\doxysection{piece.\+h}
+\hypertarget{piece_8h_source}{}\label{piece_8h_source}\mbox{\hyperlink{piece_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifndef\ MAINPROJECT\_PIECE\_H}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ MAINPROJECT\_PIECE\_H}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{piecestate_8h}{piecestate.h}}"{}}\ \textcolor{comment}{//\ Including\ the\ file\ with\ PieceState\ declaration}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_piece_state}{PieceState}};}
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_board}{Board}};}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_piece}{Piece}}\ \{}
+\DoxyCodeLine{00021\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{class_piece_state}{PieceState}}*\ \mbox{\hyperlink{class_piece_a829d7cce3b9000db4323320dc82a25ef}{state}};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00030\ \ \ \ \ \mbox{\hyperlink{class_piece_a2f5a54013ebbb9369043ef8c4c1cacd8}{Piece}}(\mbox{\hyperlink{class_piece_state}{PieceState}}*\ initialState\ =\ \textcolor{keyword}{nullptr},\ \textcolor{keywordtype}{bool}\ king\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_piece_a9f95b8ff5068a8a2cd8c5476e5692462}{Draw}}(sf::RenderWindow\&\ window);}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{class_piece_a5d7a4f6bade94cb33b6f634de8aa7918}{\string~Piece}}()\ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ \mbox{\hyperlink{class_piece_a829d7cce3b9000db4323320dc82a25ef}{state}};}
+\DoxyCodeLine{00043\ \ \ \ \ \}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_piece_a8062a9d9bdfc534de2d9311da79cdc2e}{setState}}(\mbox{\hyperlink{class_piece_state}{PieceState}}*\ newState)\ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ \mbox{\hyperlink{class_piece_a829d7cce3b9000db4323320dc82a25ef}{state}};}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_piece_a829d7cce3b9000db4323320dc82a25ef}{state}}\ =\ newState;}
+\DoxyCodeLine{00052\ \ \ \ \ \}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_piece_a18dcc6c141d038a3144aaa7f7be68d3d}{move}}(\textcolor{keywordtype}{int}\ newX,\ \textcolor{keywordtype}{int}\ newY,\ \mbox{\hyperlink{class_board}{Board}}\&\ board);}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_piece_adf9d72a423e6097acfdd908e47d95145}{attack}}(\textcolor{keywordtype}{int}\ targetX,\ \textcolor{keywordtype}{int}\ targetY,\ \mbox{\hyperlink{class_board}{Board}}\&\ board);}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_piece_a98ddd530a5ffb3ee8242dc5b986aa3c5}{isKing}};\ \ \ \ }
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_piece_a2706790c861fa4181f55f742d50ed105}{isAlive}};\ \ \ }
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_piece_a895b6803ce74fe8574d6168d66ac6bb5}{x}};\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_piece_a97d61c9e42873e2274620c91178e879b}{y}};\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00074\ \ \ \ \ sf::Color\ \mbox{\hyperlink{class_piece_a41c2a748b38cf1e4fe03f6fccf3958e8}{color}};\ }
+\DoxyCodeLine{00075\ \};}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ MAINPROJECT\_PIECE\_H}}
+
+\end{DoxyCode}

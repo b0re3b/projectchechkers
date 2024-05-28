@@ -1,0 +1,33 @@
+\doxysection{gamefacade.\+h}
+\hypertarget{gamefacade_8h_source}{}\label{gamefacade_8h_source}\mbox{\hyperlink{gamefacade_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{gameloop_8h}{gameloop.h}}"{}}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{menu_8h}{menu.h}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{gameobserver_8h}{gameobserver.h}}"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_game_facade}{GameFacade}}\ \{}
+\DoxyCodeLine{00010\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00011\ \ \ \ \ sf::RenderWindow\ \mbox{\hyperlink{class_game_facade_aab535edea6a3d765137de612ee77857e}{window}};\ }
+\DoxyCodeLine{00012\ \ \ \ \ \mbox{\hyperlink{class_menu}{Menu}}\ \mbox{\hyperlink{class_game_facade_ae70fb38583b2cc99958f88d3df9817ff}{menu}};\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{class_game_facade_ab0c835267be71fd77aa92630e068647d}{GameFacade}}()\ :\ \mbox{\hyperlink{class_game_facade_aab535edea6a3d765137de612ee77857e}{window}}(sf::VideoMode(600,\ 600),\ \textcolor{stringliteral}{"{}Checkers"{}}),\ \mbox{\hyperlink{class_game_facade_ae70fb38583b2cc99958f88d3df9817ff}{menu}}(\mbox{\hyperlink{class_game_facade_aab535edea6a3d765137de612ee77857e}{window}})\ \{\}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_facade_a402bb111aaea4c57ef257b9f2eb645c5}{runGame}}()\ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Choose\ player\ colors}}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_player}{Player}}\ playerColor\ =\ \mbox{\hyperlink{class_game_facade_ae70fb38583b2cc99958f88d3df9817ff}{menu}}.\mbox{\hyperlink{class_menu_a3d3853ab79d00451eba6f9eb6fca9845}{chooseColor}}();}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_player}{Player}}\ humanPlayer(playerColor.\mbox{\hyperlink{class_player_a6af84629a95779c478adcd24efcefb1b}{getColor}}(),\ \mbox{\hyperlink{class_player_a97dc3c423902370176605121e8f68415ac1bb19b27818343c1926119b958741b5}{Player::PlayerType::Human}});}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_player}{Player}}\ opponent(playerColor.\mbox{\hyperlink{class_player_a6af84629a95779c478adcd24efcefb1b}{getColor}}()\ ==\ sf::Color::Red\ ?\ sf::Color::Black\ :\ sf::Color::Red,\ \mbox{\hyperlink{class_player_a97dc3c423902370176605121e8f68415a181900dad960beccb34f53c4e0ff4647}{Player::PlayerType::Computer}});}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ game\ observer}}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_game_observer}{GameObserver}}\ observer(\mbox{\hyperlink{class_board}{Board}},\ sf::Window);\ \textcolor{comment}{//\ Assuming\ 'board'\ and\ 'window'\ are\ defined\ somewhere}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Start\ the\ game}}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_game}{Game}}\ game(\mbox{\hyperlink{class_game_facade_aab535edea6a3d765137de612ee77857e}{window}},\ humanPlayer,\ opponent);}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ game.\mbox{\hyperlink{class_game_a1ab78f5ed0d5ea879157357cf2fb2afa}{run}}();}
+\DoxyCodeLine{00035\ \ \ \ \ \}}
+\DoxyCodeLine{00036\ \};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ }
+
+\end{DoxyCode}

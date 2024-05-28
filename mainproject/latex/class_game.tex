@@ -1,0 +1,150 @@
+\doxysection{Game Class Reference}
+\hypertarget{class_game}{}\label{class_game}\index{Game@{Game}}
+
+
+Represents the main game logic and interaction.  
+
+
+
+
+{\ttfamily \#include $<$gameloop.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_game_ad2552ce8878861f03865debbfb7f3fa4}{Game}} (sf\+::\+Render\+Window \&\mbox{\hyperlink{class_game_ad0fb4d8653dcf289fd6573cf5ba0f3d1}{window}}, \mbox{\hyperlink{class_player}{Player}} \&\mbox{\hyperlink{class_game_a747a458871d587d8544ab222b4dedfa5}{human\+Player}}, \mbox{\hyperlink{class_player}{Player}} \&\mbox{\hyperlink{class_game_abaf753fdf7bba5de3e126be09259c38e}{computer\+Player}})
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_game}{Game} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_a1ab78f5ed0d5ea879157357cf2fb2afa}{run}} ()
+\begin{DoxyCompactList}\small\item\em Runs the main game loop. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+sf\+::\+Render\+Window \& \mbox{\hyperlink{class_game_ad0fb4d8653dcf289fd6573cf5ba0f3d1}{window}}
+\begin{DoxyCompactList}\small\item\em Reference to the SFML Render\+Window for displaying the game. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_board}{Board}} \mbox{\hyperlink{class_game_af5bc546b0c766ecf2f7e008f750832ed}{board}}
+\begin{DoxyCompactList}\small\item\em Instance of the \doxylink{class_board}{Board} class, representing the game board. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_player}{Player}} \& \mbox{\hyperlink{class_game_a747a458871d587d8544ab222b4dedfa5}{human\+Player}}
+\begin{DoxyCompactList}\small\item\em Reference to the \doxylink{class_player}{Player} object representing the human player. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_player}{Player}} \& \mbox{\hyperlink{class_game_abaf753fdf7bba5de3e126be09259c38e}{computer\+Player}}
+\begin{DoxyCompactList}\small\item\em Reference to the \doxylink{class_player}{Player} object representing the computer player. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents the main game logic and interaction. 
+
+This class manages the core gameplay loop, including drawing the board, handling input, and facilitating turns between the human and computer players. It holds references to the game window, the board, and the player objects. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_game_ad2552ce8878861f03865debbfb7f3fa4}\label{class_game_ad2552ce8878861f03865debbfb7f3fa4} 
+\index{Game@{Game}!Game@{Game}}
+\index{Game@{Game}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{Game()}{Game()}}
+{\footnotesize\ttfamily Game\+::\+Game (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window,  }\item[{\mbox{\hyperlink{class_player}{Player}} \&}]{human\+Player,  }\item[{\mbox{\hyperlink{class_player}{Player}} \&}]{computer\+Player }\end{DoxyParamCaption})}
+
+
+
+Constructs a \doxylink{class_game}{Game} object. 
+
+Initializes a \doxylink{class_game}{Game} instance with references to the necessary components\+: the game window, human player, computer player, and the board (which is created internally).
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & Reference to the SFML Render\+Window used for rendering. \\
+\hline
+{\em human\+Player} & Reference to the \doxylink{class_player}{Player} object representing the human player. \\
+\hline
+{\em computer\+Player} & Reference to the \doxylink{class_player}{Player} object representing the computer player.\\
+\hline
+\end{DoxyParams}
+Initializes a \doxylink{class_game}{Game} instance, associating it with a Render\+Window, two \doxylink{class_player}{Player} objects (human and computer), and a \doxylink{class_board}{Board} to manage the game state.
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & The SFML Render\+Window used for rendering the game. \\
+\hline
+{\em human\+Player} & The \doxylink{class_player}{Player} object representing the human player. \\
+\hline
+{\em computer\+Player} & The \doxylink{class_player}{Player} object representing the computer player. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_game_a1ab78f5ed0d5ea879157357cf2fb2afa}\label{class_game_a1ab78f5ed0d5ea879157357cf2fb2afa} 
+\index{Game@{Game}!run@{run}}
+\index{run@{run}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily void Game\+::run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Runs the main game loop. 
+
+This function initiates the core game loop. It continuously\+:
+\begin{DoxyEnumerate}
+\item Clears the window.
+\item Draws the current state of the board.
+\item Handles player input (from both human and computer players).
+\item Updates the game state accordingly.
+\item Displays the updated game state on the screen.
+\end{DoxyEnumerate}
+
+The loop continues until the game window is closed.
+
+This function handles the continuous cycle of the game\+:
+\begin{DoxyEnumerate}
+\item Clears the window to prepare for rendering.
+\item Draws the current state of the board onto the window.
+\item Collects input from the player through the window.
+\item Displays the updated window contents on the screen.
+\end{DoxyEnumerate}
+
+The loop continues until the window is closed. 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_game_af5bc546b0c766ecf2f7e008f750832ed}\label{class_game_af5bc546b0c766ecf2f7e008f750832ed} 
+\index{Game@{Game}!board@{board}}
+\index{board@{board}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{board}{board}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_board}{Board}} Game\+::board\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Instance of the \doxylink{class_board}{Board} class, representing the game board. 
+
+\Hypertarget{class_game_abaf753fdf7bba5de3e126be09259c38e}\label{class_game_abaf753fdf7bba5de3e126be09259c38e} 
+\index{Game@{Game}!computerPlayer@{computerPlayer}}
+\index{computerPlayer@{computerPlayer}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{computerPlayer}{computerPlayer}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_player}{Player}}\& Game\+::computer\+Player\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Reference to the \doxylink{class_player}{Player} object representing the computer player. 
+
+\Hypertarget{class_game_a747a458871d587d8544ab222b4dedfa5}\label{class_game_a747a458871d587d8544ab222b4dedfa5} 
+\index{Game@{Game}!humanPlayer@{humanPlayer}}
+\index{humanPlayer@{humanPlayer}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{humanPlayer}{humanPlayer}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_player}{Player}}\& Game\+::human\+Player\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Reference to the \doxylink{class_player}{Player} object representing the human player. 
+
+\Hypertarget{class_game_ad0fb4d8653dcf289fd6573cf5ba0f3d1}\label{class_game_ad0fb4d8653dcf289fd6573cf5ba0f3d1} 
+\index{Game@{Game}!window@{window}}
+\index{window@{window}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{window}{window}}
+{\footnotesize\ttfamily sf\+::\+Render\+Window\& Game\+::window\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Reference to the SFML Render\+Window for displaying the game. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{gameloop_8h}{gameloop.\+h}}\item 
+\mbox{\hyperlink{gameloop_8cpp}{gameloop.\+cpp}}\end{DoxyCompactItemize}

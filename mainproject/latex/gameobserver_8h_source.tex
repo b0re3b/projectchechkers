@@ -1,0 +1,33 @@
+\doxysection{gameobserver.\+h}
+\hypertarget{gameobserver_8h_source}{}\label{gameobserver_8h_source}\mbox{\hyperlink{gameobserver_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ MAINPROJECT\_GAMEOBSERVER\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ MAINPROJECT\_GAMEOBSERVER\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{observer_8h}{observer.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{board_8h}{board.h}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_game_observer}{GameObserver}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_observer}{Observer}}\ \{}
+\DoxyCodeLine{00014\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00015\ \ \ \ \ \mbox{\hyperlink{class_board}{Board}}\&\ \mbox{\hyperlink{class_game_observer_a00e2c7a2890b8a72a703de537dd9f7ab}{board}};\ }
+\DoxyCodeLine{00016\ \ \ \ \ sf::RenderWindow\&\ \mbox{\hyperlink{class_game_observer_aaf456918d497df1bc2edec2c5d1605bc}{window}};\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{class_game_observer_a2d58fcf159cfc9726ead1618adfdeac8}{GameObserver}}(\mbox{\hyperlink{class_board}{Board}}\&\ \mbox{\hyperlink{class_game_observer_a00e2c7a2890b8a72a703de537dd9f7ab}{board}},\ sf::RenderWindow\&\ \mbox{\hyperlink{class_game_observer_aaf456918d497df1bc2edec2c5d1605bc}{window}})\ :\ \mbox{\hyperlink{class_game_observer_a00e2c7a2890b8a72a703de537dd9f7ab}{board}}(\mbox{\hyperlink{class_game_observer_a00e2c7a2890b8a72a703de537dd9f7ab}{board}}),\ \mbox{\hyperlink{class_game_observer_aaf456918d497df1bc2edec2c5d1605bc}{window}}(\mbox{\hyperlink{class_game_observer_aaf456918d497df1bc2edec2c5d1605bc}{window}})\ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_game_observer_a00e2c7a2890b8a72a703de537dd9f7ab}{board}}.\mbox{\hyperlink{class_subject_a0884bfe374d352c6488a1e40c84246c8}{attach}}(\textcolor{keyword}{this});}
+\DoxyCodeLine{00027\ \ \ \ \ \}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{class_game_observer_ad8e1ebc2c4b7a0017a2ffaec964a7bcd}{\string~GameObserver}}()\ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_game_observer_a00e2c7a2890b8a72a703de537dd9f7ab}{board}}.\mbox{\hyperlink{class_subject_a752a7596d52ab986539232f8377ca92c}{detach}}(\textcolor{keyword}{this});}
+\DoxyCodeLine{00034\ \ \ \ \ \}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_observer_a9ad220c686a2c9f7ffd4dc332743f7c5}{update}}()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_game_observer_aaf456918d497df1bc2edec2c5d1605bc}{window}}.clear();}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_game_observer_a00e2c7a2890b8a72a703de537dd9f7ab}{board}}.\mbox{\hyperlink{class_board_a1fa67ca04a50dc4a17428848413b1549}{draw}}(\mbox{\hyperlink{class_game_observer_aaf456918d497df1bc2edec2c5d1605bc}{window}});}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_game_observer_aaf456918d497df1bc2edec2c5d1605bc}{window}}.display();}
+\DoxyCodeLine{00043\ \ \ \ \ \}}
+\DoxyCodeLine{00044\ \};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ MAINPROJECT\_GAMEOBSERVER\_H}}
+
+\end{DoxyCode}

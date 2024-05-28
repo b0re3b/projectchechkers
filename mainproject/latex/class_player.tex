@@ -1,0 +1,157 @@
+\doxysection{Player Class Reference}
+\hypertarget{class_player}{}\label{class_player}\index{Player@{Player}}
+
+
+Class representing a player in the game.  
+
+
+
+
+{\ttfamily \#include $<$player.\+h$>$}
+
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{class_player_a97dc3c423902370176605121e8f68415}{Player\+Type}} \{ \mbox{\hyperlink{class_player_a97dc3c423902370176605121e8f68415ac1bb19b27818343c1926119b958741b5}{Human}}
+, \mbox{\hyperlink{class_player_a97dc3c423902370176605121e8f68415a181900dad960beccb34f53c4e0ff4647}{Computer}}
+ \}
+\begin{DoxyCompactList}\small\item\em Enumeration representing the type of player. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_player_aaae88a768d53a2c960f973b7aefff5b4}{Player}} (const sf\+::\+Color \mbox{\hyperlink{class_player_a3e11cd01a03f62f8295ec78e8aa855df}{color}})
+\begin{DoxyCompactList}\small\item\em Constructor for \doxylink{class_player}{Player} class with default type as Human. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_player_a9ceaaf5c4f494db523411bdcaf781189}{Player}} (sf\+::\+Color \mbox{\hyperlink{class_player_a3e11cd01a03f62f8295ec78e8aa855df}{color}}, \mbox{\hyperlink{class_player_a97dc3c423902370176605121e8f68415}{Player\+Type}} \mbox{\hyperlink{class_player_a06e4a3eec737ef284f7ae42a60c0967f}{type}})
+\begin{DoxyCompactList}\small\item\em Constructor for \doxylink{class_player}{Player} class. \end{DoxyCompactList}\item 
+sf\+::\+Color \mbox{\hyperlink{class_player_a6af84629a95779c478adcd24efcefb1b}{get\+Color}} () const
+\begin{DoxyCompactList}\small\item\em Getter function for the color of the player. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_player_a97dc3c423902370176605121e8f68415}{Player\+Type}} \mbox{\hyperlink{class_player_a06e4a3eec737ef284f7ae42a60c0967f}{type}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+sf\+::\+Color \mbox{\hyperlink{class_player_a3e11cd01a03f62f8295ec78e8aa855df}{color}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_player_a12525b6ed7c8186be0bee5cf78e2a49c}{Board}}
+\item 
+class \mbox{\hyperlink{class_player_a79da510aedd5dc68deb7a0e3d90ba36d}{logic}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class representing a player in the game. 
+
+\doxysubsection{Member Enumeration Documentation}
+\Hypertarget{class_player_a97dc3c423902370176605121e8f68415}\label{class_player_a97dc3c423902370176605121e8f68415} 
+\index{Player@{Player}!PlayerType@{PlayerType}}
+\index{PlayerType@{PlayerType}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{PlayerType}{PlayerType}}
+{\footnotesize\ttfamily enum class \mbox{\hyperlink{class_player_a97dc3c423902370176605121e8f68415}{Player\+::\+Player\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Enumeration representing the type of player. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Human@{Human}!Player@{Player}}\index{Player@{Player}!Human@{Human}}}\Hypertarget{class_player_a97dc3c423902370176605121e8f68415ac1bb19b27818343c1926119b958741b5}\label{class_player_a97dc3c423902370176605121e8f68415ac1bb19b27818343c1926119b958741b5} 
+Human&Human player \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Computer@{Computer}!Player@{Player}}\index{Player@{Player}!Computer@{Computer}}}\Hypertarget{class_player_a97dc3c423902370176605121e8f68415a181900dad960beccb34f53c4e0ff4647}\label{class_player_a97dc3c423902370176605121e8f68415a181900dad960beccb34f53c4e0ff4647} 
+Computer&Computer player \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_player_aaae88a768d53a2c960f973b7aefff5b4}\label{class_player_aaae88a768d53a2c960f973b7aefff5b4} 
+\index{Player@{Player}!Player@{Player}}
+\index{Player@{Player}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{Player()}{Player()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Player\+::\+Player (\begin{DoxyParamCaption}\item[{const sf\+::\+Color}]{color }\end{DoxyParamCaption})}
+
+
+
+Constructor for \doxylink{class_player}{Player} class with default type as Human. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em color} & The color of the player. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_player_a9ceaaf5c4f494db523411bdcaf781189}\label{class_player_a9ceaaf5c4f494db523411bdcaf781189} 
+\index{Player@{Player}!Player@{Player}}
+\index{Player@{Player}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{Player()}{Player()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Player\+::\+Player (\begin{DoxyParamCaption}\item[{sf\+::\+Color}]{color,  }\item[{\mbox{\hyperlink{class_player_a97dc3c423902370176605121e8f68415}{Player\+Type}}}]{type }\end{DoxyParamCaption})}
+
+
+
+Constructor for \doxylink{class_player}{Player} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em color} & The color of the player. \\
+\hline
+{\em type} & The type of the player. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_player_a6af84629a95779c478adcd24efcefb1b}\label{class_player_a6af84629a95779c478adcd24efcefb1b} 
+\index{Player@{Player}!getColor@{getColor}}
+\index{getColor@{getColor}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{getColor()}{getColor()}}
+{\footnotesize\ttfamily sf\+::\+Color Player\+::get\+Color (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Getter function for the color of the player. 
+
+\begin{DoxyReturn}{Returns}
+The color of the player. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Friends And Related Symbol Documentation}
+\Hypertarget{class_player_a12525b6ed7c8186be0bee5cf78e2a49c}\label{class_player_a12525b6ed7c8186be0bee5cf78e2a49c} 
+\index{Player@{Player}!Board@{Board}}
+\index{Board@{Board}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{Board}{Board}}
+{\footnotesize\ttfamily friend class \mbox{\hyperlink{class_board}{Board}}\hspace{0.3cm}{\ttfamily [friend]}}
+
+\Hypertarget{class_player_a79da510aedd5dc68deb7a0e3d90ba36d}\label{class_player_a79da510aedd5dc68deb7a0e3d90ba36d} 
+\index{Player@{Player}!logic@{logic}}
+\index{logic@{logic}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{logic}{logic}}
+{\footnotesize\ttfamily friend class \mbox{\hyperlink{classlogic}{logic}}\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_player_a3e11cd01a03f62f8295ec78e8aa855df}\label{class_player_a3e11cd01a03f62f8295ec78e8aa855df} 
+\index{Player@{Player}!color@{color}}
+\index{color@{color}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{color}{color}}
+{\footnotesize\ttfamily sf\+::\+Color Player\+::color\hspace{0.3cm}{\ttfamily [private]}}
+
+The color of the player. \Hypertarget{class_player_a06e4a3eec737ef284f7ae42a60c0967f}\label{class_player_a06e4a3eec737ef284f7ae42a60c0967f} 
+\index{Player@{Player}!type@{type}}
+\index{type@{type}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{type}{type}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_player_a97dc3c423902370176605121e8f68415}{Player\+Type}} Player\+::type}
+
+The type of the player. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{player_8h}{player.\+h}}\item 
+\mbox{\hyperlink{player_8cpp}{player.\+cpp}}\end{DoxyCompactItemize}

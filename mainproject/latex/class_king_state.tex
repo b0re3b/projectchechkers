@@ -1,0 +1,91 @@
+\doxysection{King\+State Class Reference}
+\hypertarget{class_king_state}{}\label{class_king_state}\index{KingState@{KingState}}
+
+
+Concrete class representing the state of a king piece.  
+
+
+
+
+{\ttfamily \#include $<$piecestate.\+h$>$}
+
+Inheritance diagram for King\+State\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_king_state}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_king_state_a67a2100ad7b04c81e58be343e44c8b35}{move}} (\mbox{\hyperlink{class_piece}{Piece}} \&piece, int newX, int newY, \mbox{\hyperlink{class_board}{Board}} \&board) override
+\begin{DoxyCompactList}\small\item\em Method to handle moving a king piece. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_king_state_ad82468a6ebbc59cadcd27d6e6d907457}{attack}} (\mbox{\hyperlink{class_piece}{Piece}} \&piece, int targetX, int targetY, \mbox{\hyperlink{class_board}{Board}} \&board) override
+\begin{DoxyCompactList}\small\item\em Method to handle attacking with a king piece. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_piece_state}{Piece\+State}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{class_piece_state_ae39cfd2df412b8b40e6abdcf2a54c334}{\texorpdfstring{$\sim$}{\string~}\+Piece\+State}} ()=default
+\begin{DoxyCompactList}\small\item\em Virtual destructor for \doxylink{class_piece_state}{Piece\+State} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Concrete class representing the state of a king piece. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_king_state_ad82468a6ebbc59cadcd27d6e6d907457}\label{class_king_state_ad82468a6ebbc59cadcd27d6e6d907457} 
+\index{KingState@{KingState}!attack@{attack}}
+\index{attack@{attack}!KingState@{KingState}}
+\doxysubsubsection{\texorpdfstring{attack()}{attack()}}
+{\footnotesize\ttfamily void King\+State\+::attack (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_piece}{Piece}} \&}]{piece,  }\item[{int}]{targetX,  }\item[{int}]{targetY,  }\item[{\mbox{\hyperlink{class_board}{Board}} \&}]{board }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Method to handle attacking with a king piece. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em piece} & The king piece to perform the attack. \\
+\hline
+{\em targetX} & The x-\/coordinate of the target piece. \\
+\hline
+{\em targetY} & The y-\/coordinate of the target piece. \\
+\hline
+{\em board} & The game board. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_piece_state_a6c983313f49e00f7d9037564a9e66863}{Piece\+State}}.
+
+\Hypertarget{class_king_state_a67a2100ad7b04c81e58be343e44c8b35}\label{class_king_state_a67a2100ad7b04c81e58be343e44c8b35} 
+\index{KingState@{KingState}!move@{move}}
+\index{move@{move}!KingState@{KingState}}
+\doxysubsubsection{\texorpdfstring{move()}{move()}}
+{\footnotesize\ttfamily void King\+State\+::move (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_piece}{Piece}} \&}]{piece,  }\item[{int}]{newX,  }\item[{int}]{newY,  }\item[{\mbox{\hyperlink{class_board}{Board}} \&}]{board }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Method to handle moving a king piece. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em piece} & The king piece to be moved. \\
+\hline
+{\em newX} & The new x-\/coordinate of the piece. \\
+\hline
+{\em newY} & The new y-\/coordinate of the piece. \\
+\hline
+{\em board} & The game board. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_piece_state_ac79ad16fe62dc10bbb2ea1312d452f74}{Piece\+State}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{piecestate_8h}{piecestate.\+h}}\item 
+\mbox{\hyperlink{piecestate_8cpp}{piecestate.\+cpp}}\end{DoxyCompactItemize}
