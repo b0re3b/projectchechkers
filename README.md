@@ -1,4 +1,4 @@
-# Main priject and threads
+# Main project and threads
 
 All program code files are in the repository(https://github.com/b0re3b/projectchechkers), also you can check previous documentation and compare it (https://b0re3b.github.io/projectchechkers/)
 
