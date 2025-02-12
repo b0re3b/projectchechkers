@@ -64,7 +64,7 @@ public:
         }
     }
 };
-sosal
+
 class Board {
 private:
     const int size = 8;
@@ -128,7 +128,7 @@ public:
             return (deltaX == 1 || deltaX == -1) && (deltaY == 1 || deltaY == -1);
         }
     }
-loh
+
     void inputdata(sf::RenderWindow& window) {
         sf::Event event;
         while (window.pollEvent(event)) {
@@ -174,7 +174,7 @@ loh
             }
         }
     }
-hahahah
+
     void highlight(int pieceIndex, sf::RenderWindow& window, Board& board) {
         Piece& selectedPiece = pieces[pieceIndex];
 
